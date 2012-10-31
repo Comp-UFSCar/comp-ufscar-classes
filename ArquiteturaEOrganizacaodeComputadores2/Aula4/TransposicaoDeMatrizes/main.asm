@@ -19,7 +19,7 @@ include Irvine32.inc
 
 .code
 
-include Matriz.asm
+include incMatriz.asm
 
 PreparaAmbiente proc near
 	mov	eax, blue +(white * 16)
