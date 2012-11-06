@@ -1,7 +1,7 @@
 TITLE DiasdaSemana
 
 ;Author: @CamiloMoreira
-;CAMILO
+;TESTE DE CONFLITO
 ;Revision:
 
 INCLUDE Irvine32.inc
