@@ -1,8 +1,8 @@
-TITLE MASM Template						(main.asm)
+TITLE Fibonacci Sequence
 
-; Description:
+; Author: @LucasDavid
 ; 
-; Revision date:
+; Revision:
 
 INCLUDE Irvine32.inc
 .data

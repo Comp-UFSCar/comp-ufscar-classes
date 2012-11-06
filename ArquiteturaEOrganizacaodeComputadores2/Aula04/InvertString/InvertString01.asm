@@ -1,7 +1,8 @@
-TITLE MASM Template						(main.asm)
+TITLE Invert String
 
-;; Description:
-;; Revision date:
+;Author: @LucasDavid
+;
+;Revision:
 
 INCLUDE Irvine32.inc
 .data

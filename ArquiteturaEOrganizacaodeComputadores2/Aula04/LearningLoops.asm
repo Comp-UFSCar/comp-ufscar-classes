@@ -1,8 +1,8 @@
-TITLE MASM Template						(main.asm)
+TITLE Learning Loops
 
-; Description:
+; Description: @LucasDavid
 ; 
-; Revision date:
+; Revision:
 
 INCLUDE Irvine32.inc
 .data

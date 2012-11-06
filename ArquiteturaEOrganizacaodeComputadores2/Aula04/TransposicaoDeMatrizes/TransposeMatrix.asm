@@ -1,12 +1,17 @@
-title Transposicao de Matrizes (main.asm)
+title Transposicao de Matrizes
+
+;Author: @LucasDavid
+;
+;Revision:
+
 include Irvine32.inc
 
 	M_TAM_X = 3
 	M_TAM_Y = 3
 
-	.data
-		matrizA  byte M_TAM_X *M_TAM_Y dup (?)
-		matrizB  byte M_TAM_Y *M_TAM_X dup (?)
+.data
+	matrizA  byte M_TAM_X *M_TAM_Y dup (?)
+	matrizB  byte M_TAM_Y *M_TAM_X dup (?)
 
 	prompt1 byte "Matriz original: ", 0h
 	prompt2 byte "Matriz transposta: ", 0h

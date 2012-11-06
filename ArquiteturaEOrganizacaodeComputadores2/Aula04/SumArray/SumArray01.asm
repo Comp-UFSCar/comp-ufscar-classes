@@ -1,8 +1,8 @@
-TITLE MASM Template						(main.asm)
+TITLE Summing a array
 
-; Description:
+; Author: @LucasDavid
 ; 
-; Revision date:
+; Revision:
 
 INCLUDE Irvine32.inc
 .data
