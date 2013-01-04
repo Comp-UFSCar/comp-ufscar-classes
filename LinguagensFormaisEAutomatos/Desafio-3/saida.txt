@@ -1,0 +1,160 @@
+0:0:dvd mp3 anel sapato vestido gravata celular videogame
+1:0:relogio tv gravata anel pulseira
+2:1:brinco celular anel camisa dvd caderno creme notebook sapato
+3:1:copo pente tenis xampu bermuda camisa sapato mp3 colar chinelo terno creme
+4:0:raquete vestido sapato videogame chapeu
+5:0:videogame notebook esponja mp3 brinco
+6:1:chinelo bermuda raquete relogio creme brinco chapeu taco
+7:1:raquete chapeu pente taco vestido relogio livro brinco
+8:0:pulseira tv relogio mp3
+9:1:colar raquete brinco pulseira bermuda vestido tenis notebook
+10:1:dvd gravata brinco terno mp3 videogame raquete
+11:1:dvd colar videogame gravata sapato raquete bermuda
+12:0:relogio creme esponja anel terno gravata camisa mp3 colar notebook
+13:0:brinco mp3 vestido dvd terno anel videogame livro pulseira
+14:1:colar brinco dvd videogame celular raquete relogio
+15:0:pente mp3 sapato videogame brinco camisa radio gravata
+16:0:colar relogio sapato videogame terno mp3 dvd
+17:1:caneta relogio mp3 anel notebook radio gravata brinco pulseira vestido colar
+18:1:relogio chinelo camisa gravata brinco bola caneta tenis terno livro
+19:0:bermuda colar anel notebook camisa livro creme raquete
+20:0:anel taco gravata relogio pulseira raquete celular creme
+21:0:relogio creme pulseira mp3 livro celular notebook sapato anel
+22:1:livro mp3 gravata raquete notebook brinco pente terno anel
+23:1:chinelo brinco colar livro caderno dvd anel mp3 creme tenis notebook
+24:0:terno tv
+25:0:pente colar raquete tenis videogame livro dvd
+26:1:gravata videogame colar notebook
+27:0:videogame pente pulseira anel brinco notebook
+28:1:celular anel gravata tenis esponja relogio dvd sapato notebook pulseira
+29:1:sapato notebook colar pulseira livro dvd mp3 relogio celular
+30:0:colar brinco terno relogio raquete notebook pulseira gravata
+31:0:camisa colar chinelo sapato tenis livro xampu dvd relogio pulseira mp3 escova celular colher anel
+32:0:raquete mp3 notebook dvd esponja celular gravata pente sapato
+33:1:relogio mp3 caneta colar brinco celular notebook tenis anel caderno pulseira
+34:1:videogame relogio mp3 vestido colar brinco celular livro
+35:0:relogio pente celular colar sapato notebook pulseira terno
+36:0:mp3 pulseira sapato gravata pente chinelo caneta dvd chapeu relogio notebook xampu
+37:1:anel mp3 videogame notebook pente
+38:1:notebook livro chapeu anel relogio terno mp3 pulseira bermuda
+39:0:caneta notebook terno livro vestido relogio pente sapato
+40:0:taco notebook mp3 esponja livro brinco
+41:0:chapeu notebook escova dvd colar celular terno mp3 anel esponja
+42:1:relogio brinco camisa notebook caderno anel gravata dvd celular tenis
+43:0:notebook videogame pulseira dvd caneta
+44:0:notebook pente videogame mp3 anel
+45:1:chinelo creme dvd anel notebook vestido tenis camisa mp3 colar
+46:0:notebook esponja caneta terno raquete celular anel brinco pulseira
+47:0:chapeu tenis celular livro sapato gravata raquete terno relogio
+48:0:raquete pulseira colar anel celular videogame livro
+49:1:tenis notebook celular mp3 brinco pulseira dvd sabonete terno
+50:1:brinco caneta videogame terno colar celular anel relogio pulseira
+51:0:esponja pulseira brinco anel videogame notebook
+52:0:vestido chapeu anel pulseira celular brinco videogame livro mp3
+53:0:anel celular videogame chapeu colar mp3 relogio vestido
+54:0:terno tv
+55:0:vestido camisa pulseira tenis raquete bermuda creme gravata radio mp3 dvd brinco
+56:0:escova caderno relogio livro gravata chapeu sapato celular creme terno dvd colar brinco
+57:0:brinco videogame raquete celular caneta vestido mp3
+58:0:brinco relogio raquete colar pulseira dvd livro videogame
+59:0:raquete mp3 colar livro videogame vestido anel
+60:1:gravata vestido dvd brinco sapato pulseira relogio terno notebook
+61:0:pulseira brinco sapato notebook relogio mp3 gravata livro terno
+62:0:videogame creme livro relogio terno pente mp3 anel
+63:0:colar pulseira videogame terno chapeu mp3 gravata livro
+64:0:vestido creme caderno anel notebook gravata brinco chapeu colar tenis
+65:0:raquete celular relogio videogame vestido
+66:0:notebook raquete relogio celular brinco mp3 anel esponja chapeu
+67:0:raquete notebook pulseira creme mp3 brinco terno gravata
+68:0:colar gravata relogio mp3 pente notebook esponja dvd terno vestido pulseira
+69:0:esponja videogame livro celular relogio colar anel dvd vestido
+70:0:terno esponja pulseira raquete videogame pente anel colar
+71:0:vestido colar relogio mp3 pulseira brinco videogame terno
+72:0:brinco dvd sapato colar relogio mp3 celular raquete anel bermuda chapeu terno
+73:0:pulseira videogame vestido brinco terno celular mp3 anel
+74:0:anel celular vestido mp3 videogame colar brinco relogio dvd
+75:0:dvd notebook brinco terno pulseira vestido raquete anel
+76:0:gravata dvd videogame vestido celular mp3 terno
+77:0:colar anel gravata videogame dvd vestido terno relogio caneta
+78:0:vestido chinelo relogio colar raquete notebook gravata brinco anel pulseira
+79:0:brinco pulseira anel terno gravata taco celular raquete
+80:0:notebook gravata pulseira tenis terno anel brinco celular relogio
+81:0:celular brinco tv esponja anel
+82:0:colar anel terno videogame chapeu relogio brinco gravata dvd esponja
+83:0:pulseira chinelo dvd anel videogame terno celular relogio
+84:0:colar relogio terno pulseira anel vestido celular brinco notebook
+85:0:dvd esponja relogio raquete pulseira videogame gravata anel pente caneta colar
+86:0:brinco anel celular tenis pulseira relogio sapato videogame
+87:0:terno tv
+88:0:colar livro gravata relogio vestido mp3 notebook sapato pente esponja pulseira
+89:1:anel livro notebook gravata dvd relogio mp3 celular vestido bermuda
+90:0:raquete colar videogame celular pulseira brinco gravata dvd pente
+91:0:relogio pulseira vestido mp3 anel videogame brinco gravata celular escova
+92:0:pente sapato taco pulseira raquete vestido colar mp3
+93:0:raquete pulseira relogio vestido chapeu gravata anel livro celular colar terno dvd
+94:0:notebook mp3 anel videogame
+95:0:terno chinelo pulseira brinco videogame dvd anel livro colar mp3
+96:0:raquete terno anel celular videogame
+97:0:vestido mp3 terno notebook anel relogio celular colar
+98:0:brinco livro videogame creme chapeu anel relogio pulseira vestido
+99:0:colar celular videogame mp3 terno relogio anel brinco
+100:0:notebook celular terno mp3 colar raquete
+101:1:vestido sapato celular brinco livro terno gravata dvd relogio mp3 raquete
+102:0:notebook dvd terno colar pulseira chapeu raquete anel
+103:0:brinco videogame anel colar relogio mp3 pente vestido terno
+104:0:colar pente raquete videogame celular relogio anel brinco
+105:1:mp3 videogame relogio terno dvd colar celular
+106:0:dvd pulseira videogame mp3 colar anel gravata tenis brinco sapato
+107:1:celular brinco dvd caneta pulseira mp3 colar videogame terno pente
+108:0:anel pulseira taco relogio mp3 gravata chapeu terno celular
+109:1:videogame raquete anel brinco colar terno gravata
+110:0:terno tv
+111:0:vestido colar terno pulseira brinco celular notebook relogio pente
+112:0:anel vestido tenis mp3 videogame dvd colar brinco gravata relogio
+113:0:gravata notebook terno celular mp3 anel relogio pulseira dvd colar
+114:0:taco relogio chinelo terno livro celular colar dvd
+115:0:sapato pulseira relogio dvd anel gravata terno vestido livro chapeu raquete colar
+116:0:livro gravata relogio brinco celular pente videogame dvd anel vestido
+117:0:terno dvd colar relogio pulseira notebook mp3 pente celular brinco
+118:0:vestido notebook raquete terno brinco pente dvd anel gravata
+119:0:notebook vestido raquete mp3 brinco anel celular relogio
+120:0:pente brinco celular colar mp3 relogio anel gravata pulseira creme videogame
+121:0:vestido mp3 terno celular colar videogame esponja
+122:0:mp3 gravata colar notebook sapato brinco celular pente pulseira dvd vestido anel
+123:1:livro celular videogame pulseira terno brinco relogio
+124:0:vestido brinco pulseira celular raquete relogio anel pente notebook
+125:0:relogio terno mp3 sapato dvd videogame anel gravata
+126:0:videogame terno dvd mp3 gravata anel sapato relogio
+127:0:gravata terno dvd videogame mp3 pulseira anel celular colar
+128:0:anel mp3 colar chapeu notebook brinco pulseira vestido camisa gravata celular
+129:0:terno pente vestido pulseira videogame brinco celular colar
+130:0:terno pulseira vestido notebook mp3 caneta brinco relogio gravata anel colar
+131:0:gravata terno mp3 chapeu celular pulseira colar anel dvd notebook
+132:0:notebook anel gravata pente mp3 terno brinco relogio celular pulseira colar
+133:1:tv terno
+134:0:notebook relogio vestido chapeu caneta colar celular livro pulseira anel
+135:0:tv celular colar
+136:0:brinco vestido anel videogame mp3 dvd terno pulseira relogio
+137:0:brinco mp3 terno colar notebook celular relogio vestido
+138:0:dvd vestido notebook terno anel brinco colar celular relogio
+139:0:brinco videogame colar anel terno pulseira dvd relogio vestido
+140:0:dvd vestido terno brinco pente pulseira relogio videogame mp3
+141:0:terno celular pulseira mp3 colar gravata caneta relogio esponja anel notebook
+142:0:pulseira terno colar anel relogio celular videogame pente brinco
+143:0:pulseira terno mp3 brinco colar dvd relogio celular gravata notebook
+144:0:videogame brinco pulseira relogio livro terno celular
+145:0:brinco mp3 colar terno relogio anel videogame celular
+146:1:chapeu dvd terno raquete sapato celular brinco vestido anel pente livro colar
+147:0:brinco colar vestido celular notebook relogio mp3 terno
+148:0:celular pulseira tv anel
+149:0:terno relogio brinco celular videogame anel mp3 colar
+150:0:videogame pulseira dvd notebook anel
+151:0:dvd videogame pente celular pulseira brinco vestido colar caneta gravata relogio
+152:0:anel pulseira terno celular colar brinco videogame vestido
+153:1:videogame pulseira mp3 relogio colar livro dvd terno
+154:0:vestido relogio colar terno notebook celular anel mp3
+155:0:brinco terno notebook pente dvd vestido mp3 livro celular
+156:0:brinco relogio pulseira vestido celular anel videogame mp3 colar gravata
+157:0:terno esponja anel brinco caneta gravata colar vestido relogio videogame
+158:0:notebook dvd colar pulseira relogio brinco raquete terno
+159:0:pulseira colar dvd celular videogame terno anel mp3 caneta esponja
