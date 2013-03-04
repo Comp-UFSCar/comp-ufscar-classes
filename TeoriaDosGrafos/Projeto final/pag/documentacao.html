@@ -1,0 +1,608 @@
+<div class="container">
+    <div class="page-header">
+        <h1>Documentação</h1>
+    </div>
+
+    <h3>Descrição do projeto</h3>
+    <p>
+        Projeto acodesentado para a disciplina de
+        Teoria dos Grafos, ofertado pela a Universidade Federal de São Carlos.<br />
+        Este trabalho tem como objetivo a acodesentação dos algoritmos fundamentais no estudo da <code>teoria dos
+        grafos</code>.<br />
+
+    <div class="row well">
+        <div class="span2" style="font-weight: bold">
+            <strong>Professor:</strong><br />
+            <strong>Grupo de alunos:</strong><br />
+            <strong>Início:</strong>
+            <strong>Apresentação:</strong>
+        </div>
+        <div class="span8">
+            <a href="mailto:alexandre@dc.ufscar.br">Alexandre Luis Magalhães Levada.</a><br />
+            <a href="mailto:lucasolivdavid@gmail.com">Lucas Oliveira David</a> e
+            <a href="mailto:lucas_yamanaka@hotmail.com">Lucas Yamanaka</a>.<br />
+            20/11/2012<br />
+            01/02/2012
+        </div>
+    </div>
+    <hr />
+
+    <h3>Sumário</h3>
+    <ul>
+        <li>Introdução</li>
+        <li>Tabela de algoritmos implementados</li>
+        <li>
+            Descrição dos algoritmos
+            <ul>
+                <li>Kruskal</li>
+                <li>Prim</li>
+                <li>Busca em largura</li>
+                <li>Busca em profundidade</li>
+                <li>Dijkstra</li>
+                <li>Welch e Powell</li>
+            </ul>
+        </li>
+        <li>
+            Elementos gráficos desenvolvidos
+            <ul>
+                <li>Raio de vértices relativos a sua conectividade</li>
+                <li>Coloração gráfica</li>
+            </ul>
+        </li>
+    </ul>
+    <hr />
+    
+    <h3>Tabela de algoritmos implementados</h3>
+    <table class="table table-bordered table-striped table-hover">
+        <thead>
+            <tr>
+                <th>#</th>
+                <th>Algoritmo</th>
+                <th>Descrição</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+                <td>1</td>
+                <td>Prim</td>
+                <td>MST: árvore <i>spanning</i> mínima</td>
+            </tr>
+            <tr>
+                <td>2</td>
+                <td>Kruskal</td>
+                <td>MST: árvore <i>spanning</i> mínima</td>
+            </tr>
+            <tr>
+                <td>3</td>
+                <td>Busca em largura</td>
+                <td>Crescimento de árvore seguindo a prioridade contida em uma estrutura de fila</td>
+            </tr>
+            <tr>
+                <td>4</td>
+                <td>Busca em profundidade</td>
+                <td>Crescimento de árvore seguindo a prioridade contida em uma estrutura de pilha</td>
+            </tr>
+            <tr>
+                <td>5</td>
+                <td>Dijkstra</td>
+                <td>Árvore de caminhos mínimos</td>
+            </tr>
+            <tr>
+                <td>5</td>
+                <td>Coloração</td>
+                <td>Algoritmo Welch e Powell para coloração de grafos</td>
+            </tr>
+        </tbody>
+    </table>
+    <hr />
+    
+    <h3>Descrição dos algoritmos</h3>
+    <h4>Prim</h4>
+    <strong>Descrição</strong>
+    <p>
+    	Dado um grafo G, o qual possui arestas com custos arbitrários contídos no intervalo Real,
+        o algoritmo de Prim tem como objetivo alcançar a <i>MST - Minimal Spanning Tree</i>
+        (Sedgewick appud Feofiloff, IME-USP, 2012).<br />
+        A abordagem adotada é a escolha da aresta de menor peso dentre todas as arestas adjacentes a
+        algum vértice já alcançado, desde que a inserção esta aresta não implique no surgimento de um
+        ciclo.        
+    </p>
+    <strong>Codificação</strong>
+    <pre>
+var i, j, numAresInseridas = 0,
+numVertices = Grafo.MatrizAdj.length,
+lsVertInserido = [],
+aresOrigMenor, aresDestMenor, aresPesoMenor, aresOrigAtual;
+
+var mst = [];  // minimal spanning tree
+for (i = 0; i < numVertices; i++) {
+    mst[i] = [];
+    for(j = 0; j < numVertices; j++)
+        mst[i][j] = 0;      // inicializa a minimal spanning tree
+}
+
+lsVertInserido.push(Grafo.VertInicial);   //  insere o primeiro vertice na lista de vertices que estamos visitando
+
+// enquanto o numero de arestas inseridas ee menor que o numero de vertices -1,
+// o que implicaria que a arvore ja foi alcancada
+while(numAresInseridas < numVertices -1) {
+  
+    aresPesoMenor = -1;
+    
+    for (i = 0; i < lsVertInserido.length; i++) {
+        aresOrigAtual = lsVertInserido[i];
+    
+        for (j = 0; j < numVertices; j++)
+            if(lsVertInserido.indexOf(j) == -1) // se este vertice ainda nao foi inserido
+                // se existe uma aresta e seu peso e menor do que o peso atual ou esse nao esta iniciado
+                if (Grafo.MatrizAdj[aresOrigAtual][j] > 0 &&
+                    (Grafo.MatrizAdj[aresOrigAtual][j] < aresPesoMenor || aresPesoMenor == -1)) {
+                    aresOrigMenor = aresOrigAtual;
+                    aresDestMenor = j;
+                    aresPesoMenor = Grafo.MatrizAdj[aresOrigAtual][j];
+                }
+    }
+    
+    // insere aresta na minimal spanning tree
+    lsVertInserido.push(aresDestMenor);
+    mst[aresOrigMenor][aresDestMenor] = aresPesoMenor;
+    mst[aresDestMenor][aresOrigMenor] = aresPesoMenor;
+    
+    numAresInseridas++;
+}
+    </pre>
+    <strong>Dificuldades</strong>
+    <p>
+    	A implementação do algoritmo de Prim ocorreu seu grandes dificuldades. Uma vez idelizada a ideia de uma estrutura capaz de 
+        recodesentar o conjuto de as arestas já inseridas, evitando assim recorrências de inserções das mesmas,
+        o grupo foi capaz de desenvolve-lo em pouco tempo e os resultados obtidos foram satisfatórios.
+    </p>
+    <hr />
+
+    <h4>Kruskal</h4>
+    <strong>Descrição</strong>
+    <p>
+        Assim como o algoritmo de Prim, o objetivo do algoritmo de Kruskal é obter a MST. Entretanto utilizando-se de uma
+        abordagem diferente: escolher a menor aresta em todo o grafo desde que essa escolha não implique na criação de um
+        ciclo.
+    </p>
+    <strong>Codificação</strong>
+    <pre>
+var lsAresPrioridade = [], lsGruposInseguros = [];
+var i, j, arestaAtual, numVertices = Grafo.MatrizAdj.length;
+var menorAtual, tmpTroca, numAresColocadas = 0;
+
+var mst = [];  // minimal spanning tree
+for (i = 0; i < numVertices; i++) {
+    mst[i] = [];
+    for(j = 0; j < numVertices; j++)
+        mst[i][j] = 0;      // inicializa a minimal spanning tree
+}
+
+// adiciona todas as arestas a lista de prioridades
+for(i = 0; i < numVertices; i++)
+    for(j = i +1; j < numVertices; j++)
+        if(Grafo.MatrizAdj[i][j] > 0)
+            lsAresPrioridade.push({
+                v1: i, 
+                v2: j, 
+                peso: Grafo.MatrizAdj[i][j]
+            });
+
+var ConjContemA, ConjContemB, interacao = 0;
+// enquanto numero de arestas e menor que o numero de vertices -1 
+// ou existem elementos na lista de prioridades
+while(numAresColocadas < numVertices -1 || lsAresPrioridade.length) {
+    // Vamos procurar a menor aresta
+    menorAtual = 0;
+    for(i = 1; i < lsAresPrioridade.length; i++) {
+        if(lsAresPrioridade[menorAtual].peso > lsAresPrioridade[i].peso) 
+            menorAtual = i;
+    }
+    tmpTroca = lsAresPrioridade[0];  // Coloca a menor aresta na primeira posicao do vetor
+    lsAresPrioridade[0] = lsAresPrioridade[menorAtual];
+    lsAresPrioridade[menorAtual] = tmpTroca;
+    arestaAtual = lsAresPrioridade.shift(); // equivalente ao .pop(), mas retira da primeira posicao do vetor
+    
+    // verifica se os vertices ligados pela aresta encontrada pertencem a um mesmo conjunto
+    // (se sim, essa aresta NAO E SEGURA)
+    ConjContemA = ConjContemB = -1;
+    i = 0;
+    
+    while(i < lsGruposInseguros.length && (ConjContemA == -1 || ConjContemB == -1)) {
+        j = 0;
+        
+        while(j < lsGruposInseguros[i].length && (ConjContemA == -1 || ConjContemB == -1)) {
+            if(lsGruposInseguros[i][j] == arestaAtual.v1) ConjContemA = i;
+            if(lsGruposInseguros[i][j] == arestaAtual.v2) ConjContemB = i;
+            
+            j++;
+        }
+        i++;
+    }
+    
+    // se os dois conjuntos nao sao iguais, ou ambos nao estao em nenhum conjunto (A e B == -1)
+    // um novo vertice acaba de ser encontrado ou eles pertencem a sub-arvores distintas
+    if(ConjContemA == -1 && ConjContemB == -1 || ConjContemA != ConjContemB) {
+        
+        // Nenhum deles esta definido. Insere um novo conjunto na lista com ambos
+        if(ConjContemA == -1 && ConjContemB == -1)
+            lsGruposInseguros[lsGruposInseguros.length] = [arestaAtual.v1, arestaAtual.v2];
+        
+        // cada um faz parte de um conjunto diferente, une ambos conjuntos
+        else if(ConjContemA > -1 && ConjContemB > -1) {
+            var conjMaisProx = ConjContemA < ConjContemB ? ConjContemA : ConjContemB;
+            var conjMaisDist = ConjContemA > ConjContemB ? ConjContemA : ConjContemB;
+            
+            while(lsGruposInseguros[conjMaisDist].length > 0)
+                lsGruposInseguros[conjMaisProx].push(lsGruposInseguros[conjMaisDist].pop());
+            
+            lsGruposInseguros.splice(conjMaisDist, 1); // remove conjunto vazio
+        }
+        // v1 faz parte de um conjunto mas v2 nao. Insere v2 no conjunto de v1
+        else if(ConjContemA > -1)
+            lsGruposInseguros[ConjContemA].push(arestaAtual.v2);
+        else
+            // v2 faz parte de um conjunto mas v1 nao. Insere v1 no conjunto de v2
+            lsGruposInseguros[ConjContemB].push(arestaAtual.v1);
+        
+        // Adiciona a aresta na mst
+        mst[arestaAtual.v1][arestaAtual.v2] = arestaAtual.peso; 
+        mst[arestaAtual.v2][arestaAtual.v1] = arestaAtual.peso;
+        
+        // incrementa o numero de arestas encontradas
+        numAresColocadas++;   
+    }
+}
+    </pre>
+    <strong>Dificuldades</strong>
+    <p>
+    	O grupo considerou o Algoritmo de Kruskal como o mais difícil, em questão de implementação. A necessidade de se trabalhar com
+        conjuntos de vértices implica em uma grande quantidade de linhas de código para manipular vetores, aumentando ou unindo-os.
+        Em comparação com o algoritmo de Prim, podemos dizer que ele possui uma perda significativa de desempenho, ao menos neste
+        projeto. Entretanto, é nítido que o algoritmo de Kruskal tem um efeito significativamente superior em grafos desconexos:
+        este tem como resultado uma floresta contendo todas as MSTs extraídas das comunidades não interligadas, enquanto o
+        algoritmo de Prim seria apenas capaz de resultar na MST da comunidade que contém o vértice inicial.
+    </p>
+    <hr />
+
+    <h4>Busca em largura</h4>
+    <strong>Descrição</strong>
+    <p>
+        A busca em largura, ou BFS (Breadth First Search), tem como objetivo obter o tamanho do menor caminho entre dois vértices.
+        A partir dele, também é possível aplicar backtracking para descobrir quantos caminhos existem entre eles. A busca em
+        largura monta uma árvore visitando todos os vizinhos de um vértice antes de avançar para o próximo.
+    </p>
+    <strong>Codificação</strong>
+    <pre>
+var tempo = 0, i, j, mat = [], vertices = [], cinzas = []
+    
+// declara a nova matriz de adjacencia e um vetor que contem
+// os vertices achados durante o algoritmo de busca em largura
+for (i = 0; i < Grafo.MatrizAdj.length; i++) {
+    mat[i] = []
+    for (j = 0; j < Grafo.MatrizAdj.length; j++)
+        mat[i][j] = 0
+    
+    vertices.push({
+        ini: 0,
+        fim: 0,
+        coded: 0,
+        cor:  0 // branco
+    })
+}
+
+vertices[Grafo.VertInicial].cor = 1 // cinza
+cinzas.push(Grafo.VertInicial)  // empilha vertice inicial na fila de prioridades
+
+//  enquanto existem cinzas, ie, vertices que possuem filhos nao olhados
+while (cinzas.length > 0) {
+    var vertAtual = cinzas.shift()
+    
+    for (i = 0; i < Grafo.MatrizAdj.length; i++)
+        //	o vertice i ee vizinho do vertice atual e ee branco
+        if (Grafo.MatrizAdj[vertAtual][i] != 0 && vertices[i].cor == 0) {
+            cinzas.push(i)
+            vertices[i].ini = ++tempo
+            vertices[i].cor = 1
+            vertices[i].coded = vertAtual
+        }
+    
+    vertices[vertAtual].cor = 2
+    vertices[vertAtual].fim = ++tempo
+}
+
+// neste ponto, o algoritmo de busca em profundidade ja foi executado, mas seu resultado esta
+// contido no vetor vertices. Preenchemos, a partir de vertices a matriz mat
+for (i = 0; i < Grafo.MatrizAdj.length; i++) {
+    if (i == Grafo.VertInicial)
+        continue; // nao deixa que o vertice inicial tenha um codedecessor
+    
+    mat[i][vertices[i].coded] = Grafo.MatrizAdj[i][vertices[i].coded]
+    mat[vertices[i].coded][i] = Grafo.MatrizAdj[vertices[i].coded][i]
+}
+    </pre>
+    <strong>Dificuldades</strong>
+    <p>
+        A busca em largura é considerada pelo grupo o algoritmo de mais fácil implementação. Também se mostra um dos menores algoritmos, em questão
+        de linhas de código.
+    </p>
+    <hr />
+
+    <h4>Busca em profundidade</h4>
+    <strong>Descrição</strong>
+    <p>
+        Busca em profundidade, também conhecida como DFS (Depth First Search), também monta uma árvore semelhantemente à busca em
+        largura, mas de forma diferente: ela visita vértice após vértice, até não encontrar caminhos válidos, e só entao volta por
+        eles para procurar mais vértices. Esta busca possui diversas aplicações, por exemplo, encontrar a saída de um labirinto.
+    </p>
+    <strong>Codificação</strong>
+    <pre>
+function Visitar(pVertices, pIndice, pTempo) {	    
+    pVertices[pIndice].ini = ++pTempo
+    pVertices[pIndice].cor = 1
+
+    for (var i = 0; i < Grafo.MatrizAdj.length; i++)
+        if (Grafo.MatrizAdj[pIndice][i] != 0 && pVertices[i].cor == 0) {
+            pVertices[i].coded = pIndice
+            pTempo = Visitar(pVertices, i, pTempo)
+        }
+
+    pVertices[pIndice].cor = 2
+    pVertices[pIndice].fim = ++pTempo	    
+    
+    return pTempo
+}
+
+var tempo = 0, i, j, mat = [], vertices = []
+    
+// declara a nova matriz de adjacencia e um vetor que contem
+// os vertices achados durante o algoritmo de busca em profundidade
+for (i = 0; i < Grafo.MatrizAdj.length; i++) {
+    mat[i] = []
+    for (j = 0; j < Grafo.MatrizAdj.length; j++)
+        mat[i][j] = 0
+    
+    vertices.push({
+        ini: 0,
+        fim: 0,
+        coded: 0,
+        cor:  0 // branco
+    })
+}
+
+// algoritmo de busca em profundidade
+tempo = Visitar(vertices, Grafo.VertInicial, tempo)
+
+// neste ponto, o algoritmo de busca em profundidade ja foi executado, mas seu resultado esta
+// contido no vetor vertices. Preenchemos, a partir de vertices a matriz mat
+for (i = 0; i < Grafo.MatrizAdj.length; i++) {
+    mat[i][vertices[i].coded] = Grafo.MatrizAdj[i][vertices[i].coded]
+    mat[vertices[i].coded][i] = Grafo.MatrizAdj[vertices[i].coded][i]
+}
+    </pre>
+    <strong>Dificuldades</strong>
+    <p>
+        O algoritmo de busca em profundidade não acodesentou nenhuma dificuldade. De fato, a utilização de um algoritmo recursivo proporcionou uma
+        quantidade reduzida de linhas de código.
+    </p>
+    <hr />
+
+    <h4>Dijkstra</h4>
+    <strong>Descrição</strong>
+    <p>
+        Dijkstra é semelhante ao algoritmo de Prim, mas com uma diferença: Este garante uma árvore de caminhos mínimos, ou seja,
+        dados dois vértices, a distância entre eles através do grafo resultante será a menor possível.
+        Neste algoritmo, inicia-se com um vértice inicial dado peso zero, e os demais peso infinito. A partir do vértice de peso
+        zero, é aplicado o relaxamento das arestas até seus vizinhos, e isto é repetido para o próximo vértice de menor peso
+        (que ainda não foi escolhido).
+    </p>
+    <strong>Codificação</strong>
+    <pre>
+//  Q: vetor de vertices a serem analizados
+//  matAcm: matriz de adjacencia de uma arvore de caminhos minimos
+var Q = [], i, j, VertMenor, PosMenor, matAcm, numVertices = Grafo.MatrizAdj.length;
+var acm = [];  // armazena os vertices pertencentes a arvore de caminhos minimos
+
+for (i = 0; i < Grafo.MatrizAdj.length; i++)
+    Q.push({ index: i, coded: -1, custo: -1 });
+
+Q[Grafo.VertInicial].custo = 0;
+Q[Grafo.VertInicial].coded = 0;
+
+while(Q.length > 0) {
+    PosMenor = 0;
+    
+    //  encontra o vertice de menor custo
+    for(i = 1; i < Q.length; i++)
+        if(Q[PosMenor].custo == -1 || (Q[i].custo < Q[PosMenor].custo && Q[i].custo != -1))
+            PosMenor = i;
+    
+    VertMenor = Q.splice(PosMenor, 1)[0]; // retira o vertice do vetor
+    acm.push(VertMenor);
+    
+    for(i = 0; i < Q.length; i++) {
+        if(Grafo.MatrizAdj[VertMenor.index][Q[i].index] > 0)  //  para todos os vertices adjacentes
+            if(Q[i].custo == -1 || Q[i].custo > VertMenor.custo +Grafo.MatrizAdj[VertMenor.index][Q[i].index]) {  //  relaxa aresta
+                Q[i].custo = VertMenor.custo +Grafo.MatrizAdj[VertMenor.index][Q[i].index];
+                Q[i].coded = VertMenor.index;
+            }
+    }
+}
+
+matAcm = [];
+for (i = 0; i < numVertices; i++) {
+    matAcm[i] = [];
+    for(j = 0; j < numVertices; j++)
+        matAcm[i][j] = 0;
+}
+
+for(i = 0; i < numVertices; i++) {
+    matAcm[acm[i].index][acm[i].coded] = Grafo.MatrizAdj[acm[i].index][acm[i].coded];
+    matAcm[acm[i].coded][acm[i].index] = Grafo.MatrizAdj[acm[i].coded][acm[i].index];
+}
+    </pre>
+    <strong>Dificuldades</strong>
+    <p>
+        Nenhuma dificuldade foi encontrada no algoritmo de Dijkstra.
+    </p>
+    <hr />
+
+    <h4>Welch e Powell</h4>
+    <strong>Descrição</strong>
+    <p>
+        O algoritmo de Welch e Powell tem como objetivo obter a sequência de cores correspondente aos vértices
+        de um grafo de maneira que não seja atribuído a nenhum vértice adjacente uma mesma cor e o número
+        mínimo de cores seja utilizado. Obviamente, tal algoritmo não admite grafos com <i>loops</i>.
+    </p>
+    <strong>Codificação</strong>
+    <pre>
+function SelectionSort(_C) {
+    var menorElem, tmpTroca, i, j;
+
+    for (i = 0; i < _C.length; i++) {
+        menorElem = i
+
+        for (j = i +1; j < _C.length; j++)
+            if (_C[menorElem].grau < _C[j].grau) menorElem = j // ordena decrescentemente
+
+        if ( menorElem == i )
+            continue
+        
+        tmpTroca      = _C[i]
+        _C[i] = _C[menorElem]
+        _C[menorElem] = tmpTroca
+    }
+
+    return _C
+}
+
+var mat = [], C = [], cores = [], corAtual, i, j, k
+
+for (i = 0; i < Grafo.MatrizAdj.length; i++) {
+
+    // copia matriz de adjacencia original do grafo
+    mat[i] = []
+    for (j = 0; j < Grafo.MatrizAdj.length; j++)
+        mat[i][j] = Grafo.MatrizAdj[i][j]
+    
+    // Preencher C[] com os respectivos graus de cada vertice.
+    C[i] = { vertice: i, grau: 0, cores: [] }
+
+    for (j = i +1; j < Grafo.MatrizAdj.length; j++)
+        if (Grafo.MatrizAdj[i][j] != 0)
+            C[i].grau++
+}
+
+// ordena decrescentemente os vertices pela sua conectividade
+C = SelectionSort(C)
+
+for (i = 0; i < C.length; i++)
+    for (j = 0; j < i +1; j++) // Preenche cores de acordo com cada vertice
+        C[i].cores.push(j)
+
+// Como coloracao de grafos nao admite loops, vamos armazenar as cores dos vertices
+// na posicao i,i da propria matriz de adjacencia.
+for (i = 0; i < C.length; i++) {
+
+    k = 0
+    while (C[i].cores[k] == -1)  k++     // seleciona a primeira cor valida
+    corAtual = mat[i][i] = C[i].cores[k] // vertice C[i].vertice recebe a primeira cor de sua lista
+    
+    for (j = i +1; j < C.length; j++) {        // para todas as adjecencias de C[i].vertice                    
+        if (Grafo.MatrizAdj[ C[i].vertice ][ C[j].vertice ] != 0)
+            C[j].cores[k] = -1     // retira cor da lista de cores do vertice adjacente
+    }
+}
+    </pre>
+    <strong>Dificuldades</strong>
+    <p>
+        Houve uma dificuldade em conseguir representar as cores dos vértices nos grafos devido a forma como a construcão gráfica
+        havia sido implementada: <code>Grafo.Grafico.Init()</code> que é chamado sem parâmetro algum, para construir o grafo
+        em cima da matriz de adjacência <code>Grafo.MatrizAdj</code> ou um parametro <code>true</code> caso devesse construir o grafo
+        sobre <code>Grafo.Algoritmos.MatrizAdj</code> (a matriz gerada por algum dos algoritmos aplicados).<br />
+        Além da necessidade de manter a matriz de adjacência original, era necessário passar mais uma informacão: o conjunto
+        de cores relacionadas aos vértices.<br />
+        Utilizou-se então a seguinte representacão: <code>Grafo.Algoritmos.MatrizAdj</code> seria copiada para
+        <code>Grafo.Algoritmos.MatrizAdj</code> e as posicões <b>[i][i]</b> desta serião utilizadas para indicar qual cor o
+        vértice <b>i</b> assumiria (uma vez que no grafo original estas posicões seriam necessariamente <b>0</b>).
+    </p>
+    <hr />
+
+    <h3>Elementos gráficos desenvolvidos</h3>
+    
+    <h4>Diferenciação de vértices proporcional ao número de ligações</h4>
+    <p>
+    	Inicialmente, sob o ponto de vista do grupo, seria realmente interessante o desenvolvimento de uma característica gráfica
+        específica: a recodesentação de vértices de diferentes tamanhos, respeitando uma proporcionalidade, isto é,
+        atribuir essa diferença um sentido real.
+        Naturalmente, foi associado a esta característica a quantidade de ligações que um determinado vértice realizava.
+    </p>
+    <strong>Codificação</strong>
+    <p>
+        Abaixo está descrito o trecho do código <code>Javascript</code> que calcula o raio de um vértice (extraído do arquivo
+        <code>js/grafo-grafico.js</code>, linha 112).
+    </p>
+    <pre>
+var tmpRaio = Grafo.Grafico.NodeRadius        
+// verifica se media de graus = 0. Se sim, a conta abaixo nao ee executada
+// (ela retornaria 'infinity'). tmpRaio continua valendo 25 (valor minimo)
+if (Grafo.MediaDeGraus)
+    tmpRaio = Grafo.Grau[index] *Grafo.Grafico.NodeRadius / Grafo.MediaDeGraus
+tmpRaio = parseInt(tmpRaio) // trunca valor obtido da divisão
+            
+if (tmpRaio < Grafo.Grafico.NodeRadius)    // O raio obtido é menor que o valor mínimo permitido
+    tmpRaio = Grafo.Grafico.NodeRadius
+if (tmpRaio > Grafo.Grafico.NodeRadius *3) // O raio obtido é maior que o valor máximo permitido
+    tmpRaio = Grafo.Grafico.NodeRadius *3
+
+$circle.attr('r', tmpRaio) // Atribui a um determinado nó tal raio
+    </pre>
+    <strong>Dificuldades</strong>
+    <p>
+    	Observou-se grandes dificuldades em recodesentar grafos em que os vértices mantinham grandes disparidades,
+        em relação a seus graus, uma vez que vértices com muitas conexões se tornavam exorbitantemente grandes.
+        A fim de superar esse erro, o tamanho dos vértices seriam então definidos a partir do resultado da divisão entre seu próprio grau
+        e a média de graus de todos os vértices. Além disso, uma constante foi definida: essa corresponde ao limite inferior do intervalo
+        que o raio de um vértice pode alcançar, enquanto o triplo desta mesma é o limitante superior.
+    </p>
+    <hr />
+
+    <h4>Coloração gráfica</h4>
+    <p>
+        A fim de demonstrar a aplicação do algoritmo de coloração de grafos, uma função gráfica foi adicionado ao trecho de código
+        responsável por desenhar o grafo na página. Quando o algoritmo de coloração é aplicado e invoca a função
+        <strong>Grafo.Grafico.Init('coloracao')</strong>, esta percorrerá a matriz de adjacência nas posições (i, i), adicionando
+        ao atributo <code>cor</code> um inteiro qualquer.
+        Quando outro algoritmo, que não o de coloracão, é aplicado, o atributo <code>cor</code> é sempre inicializado
+        com <b>0</b>.
+    </p>
+    <strong>Codificação</strong>
+    <pre>
+// DEFINE VERTICES
+for (i = 0; i < tmpMatrizAdj.length; i++)
+    nodes.push({
+        name: '',
+        cor: function () { return pAlg == 'coloracao' ? Grafo.MatriAdj[i][i] : 0 }
+    })
+
+[...]
+
+var node = svg.selectAll('.node')
+    .data(force.nodes())
+    .enter().append('g')
+    .attr('class', 'node')
+    .on('mouseover', SelecVertice)
+    .on('mouseout', BlurVertice)
+    .append('circle')
+    .attr('r', Grafo.Grafico.NodeRadius)
+    .style("fill", function(d) { return color(d.cor); })
+    .call(force.drag)
+    </pre>
+    <strong>Dificuldades</strong>
+    <p>
+        Nenhuma dificuldade foi encontrada nesse momento, uma vez que a biblioteca <strong>D3</strong> possui o
+        método <strong>color()</strong>, implementado a fim de converter um inteiro qualquer em uma cor válida.
+    </p>
+    
+</div>

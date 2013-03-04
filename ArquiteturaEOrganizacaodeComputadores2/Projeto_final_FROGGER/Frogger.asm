@@ -9,9 +9,6 @@ TITLE Frogger ARC2 (main.asm)
 ; Lucas Oliveira David 		 - 407917
 ; Pedro Padoveze Barbosa 	 - 407895
 
-INCLUDE Irvine32.inc
-INCLUDE macros.inc
-
 FROG_SAPO_A	= 9				 ; define numerico referente ao sapo A!
 FROG_SAPO_B = FROG_SAPO_A *2 ; define numerico referente ao sapo B. Deve ser sempre um numero com no minimo o dobro de SAPO_A, a fim de distinguir
 							 ; com qual sapo os objetos colidiram (os objetos tem sempre um valor menor que o SAPO_A).
@@ -549,12 +546,12 @@ FROG_AtualizarTransito proc
 	Atualizar:
 		cmp FROG_TransitoSentido[esi], 35
 		je NAOMOVER
-		mov dx, FROG_VelocAtual[esi]		;#?determina o delay de ciclos para que a rotaÃ§Ã£o seja efetuada
+		mov dx, FROG_VelocAtual[esi]		;#?determina o delay de ciclos para que a rotação seja efetuada
 		cmp dx, 0
 		
 		jne skip
-			mov bx, FROG_TransitoLinha[esi]		;#?determina qual linha do trÃ¢nsito sofrerÃ¡ rotaÃ§Ã£o
-			mov ax, FROG_TransitoSentido	  [esi]		;#?determina qual sentido o trÃ¢nsito estÃ¡ orientado [Ã­mpar <- / par ->]
+			mov bx, FROG_TransitoLinha[esi]		;#?determina qual linha do trânsito sofrerá rotação
+			mov ax, FROG_TransitoSentido	  [esi]		;#?determina qual sentido o trânsito está orientado [ímpar <- / par ->]
 			shr ax, 1
 			shl ax, 15
 			shr ax, 15
@@ -580,7 +577,7 @@ FROG_AtualizarTransito endp
 FROG_RotacionarTransito proc
 	pushad
 
-	mov ax, FROG_TransitoSentido	  [esi]		;#?determina qual sentido o trÃ¢nsito estÃ¡ orientado [Ã­mpar <- / par ->]
+	mov ax, FROG_TransitoSentido	  [esi]		;#?determina qual sentido o trânsito está orientado [ímpar <- / par ->]
 	shl ax, 15
 	shr ax, 15
 
@@ -670,7 +667,7 @@ FROG_RotacionarTransito endp
 FROG_RotacionarAgua proc
 	pushad
 
-	mov ax, FROG_TransitoSentido	  [esi]		;#?determina qual sentido o trÃ¢nsito estÃ¡ orientado [Ã­mpar <- / par ->]
+	mov ax, FROG_TransitoSentido	  [esi]		;#?determina qual sentido o trânsito está orientado [ímpar <- / par ->]
 	shl ax, 15
 	shr ax, 15
 
@@ -947,18 +944,18 @@ AchouLinha:
 	DesenharSapoA_1:
 		mov	al, blue + (lightgreen * 16)
 		call SetTextColor
-		mWrite "Â¢ Â•"
+		mWrite "¢ •"
 		jmp D_Finally
 	DesenharSapoA_2:
 		mov	al, blue + (lightgreen * 16)
 		call SetTextColor
 		cmp FROG_respiracao, 3
 		ja FROG_respiracao_A
-			mWrite ")Â”("
+			mWrite ")”("
 			inc FROG_respiracao
 			jmp D_Finally
 		FROG_respiracao_A:
-			mWrite ")Â™("
+			mWrite ")™("
 			inc FROG_respiracao
 			cmp FROG_respiracao, 6
 			jne D_Finally
@@ -969,18 +966,18 @@ AchouLinha:
 	DesenharSapoB_1:
 		mov	al, white + (lightBlue *16)
 		call SetTextColor
-		mWrite "Â¢ Â•"
+		mWrite "¢ •"
 		jmp D_Finally
 	DesenharSapoB_2:
 		mov	al, white + (lightBlue *16)
 		call SetTextColor
 		cmp FROG_respiracao, 3
 		ja FROG_respiracao_B
-			mWrite ")Â”("
+			mWrite ")”("
 			inc FROG_respiracao
 			jmp D_Finally
 		FROG_respiracao_B:
-			mWrite ")Â™("
+			mWrite ")™("
 			inc FROG_respiracao
 			cmp FROG_respiracao, 6
 			jne D_Finally
@@ -997,7 +994,7 @@ AchouLinha:
 	DesenharMortoA_2:
 		mov	al, white + (red * 16)
 		call SetTextColor
-		mWrite ")Â™("
+		mWrite ")™("
 		jmp D_Finally
 	
 	DesenharMortoB_1:
@@ -1009,7 +1006,7 @@ AchouLinha:
 	DesenharMortoB_2:
 		mov	al, white + (red * 16)
 		call SetTextColor
-		mWrite ")Â™("
+		mWrite ")™("
 
 	D_Finally:	
 	ret
@@ -1037,7 +1034,7 @@ FROG_NovoCampo ENDP
 
 ; =================================================
 ; Procedimento: FROG_DefinirCampo
-; Descricao: extrai as informaÃ§Ãµes necessÃ¡rias previamente armazenadas no vetor de FROG_Campo_Temp.
+; Descricao: extrai as informações necessárias previamente armazenadas no vetor de FROG_Campo_Temp.
 FROG_DefinirCampo PROC
 
 	mov ecx, 15
@@ -1373,7 +1370,7 @@ FROG_ExibirIntro PROC
 	loop Intro_L
 
 	mov eax, 0
- 
+
 	call ReadChar
 	PulouIntro:
 	ret
@@ -1427,7 +1424,7 @@ FROG_InitJogo endp
 
 ; =================================================
 ; Procedimento: FROG_NovoJogo
-; Descricao: chamado por InitJogo, quando um dos sapos morre ou quando hÃ¡ mudanÃ§a de fase.
+; Descricao: chamado por InitJogo, quando um dos sapos morre ou quando há mudança de fase.
 ; Restaura as variaveis dos sapos.
 FROG_NovoJogo proc
 	NovoJogo:
@@ -1485,11 +1482,3 @@ FROG_NovoJogo proc
 	FROG_InitJogo_Finally:
 	ret
 FROG_NovoJogo endp
-
-main PROC
-    call FROG_InitJogo
-
-    exit
-main ENDP
-
-END main

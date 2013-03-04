@@ -1,0 +1,58 @@
+/*
+ * GRAFO.CSS
+ * VERSAO: 0.1
+ * 
+ * DATA CRIACAO:       20/11/2012
+ * ULTIMA MODIFICACAO: 20/11/2012
+ * 
+ * DESCRICAO: declara os componentes graficos relacionados ao grafo que exibido
+ * 
+ * 
+ * +++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+ * LISTA DE MODIFICACOES:
+ * 
+ * 20/11/2012: criacao do arquivo, .grafo-vertice, grafo-aresta.
+ * 22/11/2012: +.linkSelected
+ *
+ * +++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+*/
+
+.link {
+    stroke:#eee;
+    stroke-width:4px;
+    transition: all 1s;
+    -moz-transition: all 1s; /* Firefox 4 */
+    -webkit-transition: all 1s; /* Safari and Chrome */
+    -o-transition: all 1s; /* Opera */
+}
+.linkSelected {
+    stroke-width:6px;
+    stroke:#ffcc00;
+}
+
+.node circle {
+    fill:#fff;
+    stroke:#cccccc;
+    stroke-width:2px;
+	transition: all 1s;
+    -moz-transition: all 1s; /* Firefox 4 */
+    -webkit-transition: all 1s; /* Safari and Chrome */
+    -o-transition: all 1s; /* Opera */
+}
+
+.nodeSelected circle {
+	fill: #fff;
+	stroke:#0480be;	
+	stroke-width:6px;
+	transition: all 1s;
+    -moz-transition: all 1s; /* Firefox 4 */
+    -webkit-transition: all 1s; /* Safari and Chrome */
+    -o-transition: all 1s; /* Opera */
+}
+
+text {
+    fill: "#000";
+    font: 20px monospace;
+    font-weight:bold;
+    pointer-events: none;
+}

@@ -1,0 +1,25 @@
+<div class="navbar navbar-static-top">
+    <div class="navbar-inner">
+        <div class="container">
+            <button type="button" class="btn btn-navbar" data-toggle="collapse" data-target=".nav-collapse">
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+            </button>
+            <div class="nav-collapse collapse">
+                <ul class="nav">
+                    <li class="<?php if($url[0] == 'index') echo 'active' ?>">
+                        <a href="<?php echo AbsPath ?>">Inicio</a>
+                    </li>
+                    <li class="<?php if($url[0] == 'documentacao') echo 'active' ?>">
+                        <a href="<?php echo AbsPath ?>documentacao">Documentação</a>
+                    </li>
+                    <li class="<?php if($url[0] == 'referencias') echo 'active' ?>">
+                        <a href="<?php echo AbsPath ?>referencias">Referências</a>
+                    </li>
+                    
+                </ul>
+            </div>
+        </div>
+    </div>
+</div><br /><br />

@@ -1,0 +1,41 @@
+<!-- MENSAGEM MODAL QUE EXIBE MATRIZ DE ADJACENCIA DO GRAFO -->
+<div id="modal-opcoes" class="modal hide fade" tabindex="-1" role="dialog">
+    <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
+        <h3 id="myModalLabel">Opções</h3>
+    </div>
+    <div class="modal-body">
+        <form action="#">
+            <fieldset>
+                <legend>Recursos lógicos</legend>
+
+                <label>Vértice inicial</label>
+                <input id="txt-VertInicial" type="text" class="span1" value="1" />
+                <label class="checkbox"><input type="checkbox"> Grafo direcionado</label>
+
+                <legend>Recursos gráficos</legend>
+                <label><input type="checkbox" checked /> Física ativa</label><br />
+    
+                <div class="pull-left">
+                    <label>Altura e largura</label>
+                    <input type="text" value="100%" class="span1" /> x
+                    <input type="text" value="100%" class="span1" />
+
+                    <label>Raio dos vértices</label>
+                    <input type="text" value="" class="span1" />
+                </div>
+                <div class="pull-right">
+                    <label>Comprimento das arestas</label>
+                    <input type="text" value="300" class="span1" />
+
+                    <label>Coeficiente de movimentação</label>
+                    <input type="text" value="-300" class="span1" />
+                </div>
+            </fieldset>
+        </form>
+    </div>
+    <div class="modal-footer">
+        <input type="reset" class="btn" data-dismiss="modal" aria-hidden="true" value="Cancelar" />
+        <input type="submit" class="btn btn-danger" data-dismiss="modal" aria-hidden="true" value="Confirmar" />
+    </div>
+</div>

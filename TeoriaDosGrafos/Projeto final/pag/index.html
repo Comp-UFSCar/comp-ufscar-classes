@@ -1,0 +1,67 @@
+<div class="container">
+    <div class="page-header">
+        <h1>Teoria dos Grafos</h1>
+    </div>
+    <ul class="nav nav-pills">
+        <li><a href="#modal-matriz" data-toggle="modal"><i class="icon-th"></i> Matriz de adjacência</a></li>
+        <li class="dropdown">
+            <a class="dropdown-toggle" id="bt-algoritmos" role="button" data-toggle="dropdown"
+               href="#"><i class="icon-random"></i> Algoritmos <b class="caret"></b></a>
+            <ul id="menu3" class="dropdown-menu" role="menu">
+                <li><a id="algoritmo-kruskal" href="#">Kruskal</a></li>
+                <li><a id="algoritmo-prim" href="#">Prim</a></li>
+                <li><a id="algoritmo-dijkstra" href="#">Dijkstra</a></li>
+                <li class="divider"></li>
+                <li><a id="algoritmo-profundidade" href="#">Busca em profundidade</a></li>
+                <li><a id="algoritmo-largura" href="#">Busca em largura</a></li>
+                <li class="divider"></li>
+                <li><a id="algoritmo-coloracao" href="#">Coloracão de grafos</a></li>
+            </ul>
+        </li>
+
+        <li class="pull-right">
+            <a id="bt-console" href="#"><i class="icon-comment"></i> Console</a>
+        </li>
+        <li class="pull-right"><a href="#" id="bt-atualiza-grafo"><i class="icon-refresh"></i> Reiniciar</a></li>        
+    </ul>
+</div>
+
+<hr class="soften tag-border" />
+<div id="GrafoContainer" class="container">
+    <center>
+    <br /><div style="margin-top:50px; height:60%; min-height:100px">
+        <h1>
+            <img src="img/loader.gif" />
+            <small>Carregando...</small>
+        </h1>
+    </div>
+    </center>
+</div>
+<hr class="soften tag-border" />
+<div class="container">
+    <ul class="nav nav-pills">
+        <li><a href="#modal-atalhos" data-toggle="modal"><i class="icon-flag"></i> Atalhos</a></li>
+        <!-- <li><a href="#modal-opcoes" data-toggle="modal"><i class="icon-cog"></i> Opções</a></li> -->
+    </ul>
+</div>
+
+<?php
+    include 'includes/modal-matriz.html';
+    include 'includes/modal-atalhos.html';
+    // include 'includes/modal-opcoes.html'//TODO
+?>
+
+<!-- Scripts do Grafo -->
+<script src="js/libs/d3.v2.min.js"></script> 
+<script src="js/console.js" type="text/javascript"></script>
+<script src="js/modelos/grafo.js" type="text/javascript"></script>
+<script src="js/grafo-grafico.js" type="text/javascript"></script>
+<script src="js/inicio.js" type="text/javascript"></script>
+
+<!-- Algoritmos de manipulacao do grafo -->
+<script src="js/modelos/algoritmos/kruskal.js" type="text/javascript"></script>
+<script src="js/modelos/algoritmos/prim.js" type="text/javascript"></script>
+<script src="js/modelos/algoritmos/dijkstra.js" type="text/javascript"></script>
+<script src="js/modelos/algoritmos/profundidade.js" type="text/javascript"></script>
+<script src="js/modelos/algoritmos/largura.js" type="text/javascript"></script>
+<script src="js/modelos/algoritmos/coloracao.js" type="text/javascript"></script>
