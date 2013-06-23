@@ -1,0 +1,59 @@
+<?xml version="1.0"?>
+<xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+    
+    <!--definição de um cep-->
+    <xsd:simpleType name="tCep">
+        <xsd:restriction base="xsd:string">
+            <xsd:pattern value="\d{5}-\d{3}"/>
+        </xsd:restriction>
+    </xsd:simpleType>
+
+    <!--definição de um telefone-->
+    <xsd:simpleType name="tTelefone">
+        <xsd:restriction base="xsd:string">
+            <xsd:pattern value="(\d{2})\d{4}-\d{4}"/>
+        </xsd:restriction>
+    </xsd:simpleType>
+
+    <!--definição de um estado do pais-->
+    <xsd:simpleType name="tEstado">
+        <xsd:restriction base="xsd:string">
+            <xsd:enumeration value="SP"/>
+            <xsd:enumeration value="RJ"/>
+            <xsd:enumeration value="MG"/>
+        </xsd:restriction>
+    </xsd:simpleType>
+
+    <!--definição de um cpf-->
+    <xsd:simpleType name="tCpf">
+        <xsd:restriction base="xsd:string">
+            <xsd:pattern value="\d{3}.\d{3}.\d{3}-\d{2}"/>
+        </xsd:restriction>
+    </xsd:simpleType>
+
+    <xs:element name="funcionario">
+        <xs:complexType>
+            <xs:sequence>
+                <xs:element name="nome" type="xs:string" minOccurs="1" maxOccurs="1" />
+                <xs:element name="endereco" minOccurs="0" maxOccurs="1">
+                    <xs:complexType>
+                        <xs:sequence>
+                            <xs:element name="rua" type="xs:string" minOccurs="1"></xs:element>
+                            <xs:element name="bairro" type="xs:string" minOccurs="1"></xs:element>
+                            <xs:element name="numero" type="xs:integer" minOccurs="1"></xs:element>
+                            <xs:element name="cidade" type="xs:string" minOccurs="1"></xs:element>
+                            <xsd:element name="estado" type="tEstado" minOccurs="1"></xsd:element>
+                            <xsd:element name="cep" type="tCep" minOccurs="1"></xsd:element>
+                        </xs:sequence>
+                    </xs:complexType>
+                </xs:element>
+                <xsd:element name="cpf" type="tCpf" minOccurs="1" maxOccurs="1" />
+                <xs:element name="data_nasc" type="xs:date"/>
+                <xs:element name="data_inicio" type="xs:date"/>
+                <xs:element name="num_tel" type="xs:string"/>
+                <xs:element name="salario_base" type="xs:decimal" minOccurs="1" maxOccurs="1" />
+                <xs:element name="comissao" type="xs:decimal"/>
+            </xs:sequence>
+        </xs:complexType>
+    </xs:element>
+</xs:schema>

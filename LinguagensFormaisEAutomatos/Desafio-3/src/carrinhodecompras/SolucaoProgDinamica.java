@@ -10,7 +10,7 @@ package carrinhodecompras;
  *
  * A tecnica utilizada foi a programacao dinamica, que consiste em compultar a solucao para problemas parciais,
  * que possuem intersecao diferente de zero. Posteriormente, solucoes maiores baseadas nas anteriores sao calculadas
- * e assim sucessivamente ate que se chege ao tamanho do problema original.
+ * e assim sucessivamente ate que se chegue ao tamanho do problema original.
  * 
  * Referencia: LEVITIN, Anany. Introduction to The Design & Analysis of Algorithms. 2ND Edition.
  *
