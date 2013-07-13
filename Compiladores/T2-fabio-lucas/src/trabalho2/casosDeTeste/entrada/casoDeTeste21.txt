@@ -1,0 +1,9 @@
+-- diferentes tipos de for
+-- usando variáveis não amarradas
+for j=0,a+c do
+   i = i+1
+end
+for b,c,x,y in 10,20-b,30-a,1 do
+   print('Valores incrementados')
+   print(a+b+c+x+y)
+end

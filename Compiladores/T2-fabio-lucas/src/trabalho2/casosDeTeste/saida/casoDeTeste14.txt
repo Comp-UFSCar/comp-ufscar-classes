@@ -1,0 +1,12 @@
+Escopo: multiplica
+   a(parametro)
+   b(parametro)
+Escopo: divide
+   a(parametro)
+   b(parametro)
+Escopo: soma
+   a(parametro)
+   b(parametro)
+   c(variavel)
+Escopo: global
+   c(variavel)

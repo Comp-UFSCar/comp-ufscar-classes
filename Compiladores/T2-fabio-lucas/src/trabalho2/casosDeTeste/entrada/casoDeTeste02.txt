@@ -1,0 +1,21 @@
+-- funcoes aninhadas, sem variáveis nem parâmetros
+
+function a() 
+    function b()
+    end
+    function c()
+        function d()
+        end
+        function e()
+        end
+    end
+    function f()
+    end
+end;
+
+function g()
+    function h()
+        function i()
+        end
+    end
+end

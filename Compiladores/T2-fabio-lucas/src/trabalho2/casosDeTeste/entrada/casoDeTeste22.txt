@@ -1,0 +1,16 @@
+-- funções e métodos
+function math.soma(a,b)
+    return a + b
+end;
+
+function math.subtrai(c,d)
+    return c + d
+end;
+
+function math:multiplica(e,f)
+    return e * f
+end;
+
+function math.divide:resultado(g,h)
+    return g / h
+end;

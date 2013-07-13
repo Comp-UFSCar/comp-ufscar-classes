@@ -1,0 +1,6 @@
+-- uma expressão simples, com variáveis globais
+x = 10
+y = 10
+z,h,a = x + y, y*10, 22
+
+print(z)

@@ -1,0 +1,13 @@
+-- funcao que calcula o fatorial
+-- usando variáveis não amarradas
+n = x
+function fact(n)
+   n3 = 0
+   if n2 == 0 then
+      return 1
+   else
+      return n3 * fact(n4 - 1)
+   end
+end;
+
+print(fact(n))

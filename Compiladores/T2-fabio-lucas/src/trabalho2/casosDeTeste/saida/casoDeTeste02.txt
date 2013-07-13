@@ -1,0 +1,10 @@
+Escopo: b
+Escopo: d
+Escopo: e
+Escopo: c
+Escopo: f
+Escopo: a
+Escopo: i
+Escopo: h
+Escopo: g
+Escopo: global

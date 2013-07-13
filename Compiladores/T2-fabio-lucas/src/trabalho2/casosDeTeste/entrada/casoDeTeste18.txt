@@ -1,0 +1,8 @@
+-- uma expressão simples, com variáveis globais
+-- usando variáveis não amarradas
+x = 10 + t
+y = 10 + z
+z,h,a = x + y, y*10, 22
+
+print(z)
+print(v)

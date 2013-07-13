@@ -1,0 +1,5 @@
+Escopo: a
+Escopo: b
+Escopo: c
+Escopo: d
+Escopo: global

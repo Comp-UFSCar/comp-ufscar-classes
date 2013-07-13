@@ -1,0 +1,6 @@
+Escopo: global
+   x(variavel)
+   y(variavel)
+   z(variavel)
+   h(variavel)
+   a(variavel)

@@ -1,0 +1,22 @@
+-- funcoes simples, com variaveis, parâmetros, e globais
+x1 = 0
+
+function a(p1, p2)
+    x2 = 0
+    x3 = 0
+end;
+
+function b(p3, p4)
+    x4 = 0
+    x5 = 0
+end;
+
+function c(p5, p6)
+    x6 = 0
+    x7 = 0
+end;
+
+function d(p7, p8)
+    x8 = 0
+    x9 = 0
+end;

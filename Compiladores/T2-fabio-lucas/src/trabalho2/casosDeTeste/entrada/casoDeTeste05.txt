@@ -1,0 +1,42 @@
+-- funcoes aninhadas, com variáveis sem sobreposição
+x1 = 0
+function a()
+    x2 = 0
+    x3 = 0
+    function b()
+        x4 = 0
+    end
+    x5 = 0
+    function c()
+        x6 = 0
+        function d()
+            x7 = 0
+            x8 = 0
+        end
+        function e()
+            x9 = 0
+            x10 = 0
+        end
+    end
+    x11 = 0
+    function f()
+        x12 = 0
+    end
+    x13 = 0
+end;
+
+x14 = 0
+
+function g()
+    x15 = 0
+    function h()
+        x16 = 0
+        function i()
+            x17 = 0
+        end
+        x18 = 0
+    end
+    x19 = 0
+end
+
+x20 = 0

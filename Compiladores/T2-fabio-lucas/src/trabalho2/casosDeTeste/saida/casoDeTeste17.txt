@@ -1,0 +1,63 @@
+6,15:Variavel x12 nao amarrada
+8,13:Variavel j nao amarrada
+Escopo: for
+   i(variavel)
+   j(variavel)
+10,8:Variavel x13 nao amarrada
+12,19:Variavel p4 nao amarrada
+13,14:Variavel x3 nao amarrada
+15,18:Variavel x9 nao amarrada
+Escopo: b
+   p3(parametro)
+   p1(parametro)
+   x4(variavel)
+18,15:Variavel x12 nao amarrada
+23,18:Variavel p14 nao amarrada
+24,21:Variavel x71 nao amarrada
+28,20:Variavel x54 nao amarrada
+Escopo: d
+   x5(parametro)
+   p1(parametro)
+   x7(variavel)
+   x8(variavel)
+34,25:Variavel x15 nao amarrada
+Escopo: e
+   p91(parametro)
+   p10(parametro)
+   p9(variavel)
+   p10(variavel)
+Escopo: c
+   p1(parametro)
+   x5(parametro)
+   x6(variavel)
+Escopo: f
+   p11(parametro)
+   x1(parametro)
+   x125(variavel)
+Escopo: a
+   p1(parametro)
+   x1(parametro)
+   x2(variavel)
+   x5(variavel)
+   x1(variavel)
+   x13(variavel)
+53,22:Variavel j nao amarrada
+Escopo: for
+   j2(variavel)
+Escopo: i
+   x16(parametro)
+   p18(parametro)
+56,21:Variavel x164 nao amarrada
+Escopo: h
+   p13(parametro)
+   x14(parametro)
+   x16(variavel)
+   x18(variavel)
+Escopo: g
+   p13(parametro)
+   p14(parametro)
+   x19(variavel)
+61,7:Variavel x141 nao amarrada
+Escopo: global
+   x1(variavel)
+   x14(variavel)

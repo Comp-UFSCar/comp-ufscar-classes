@@ -1,0 +1,14 @@
+Escopo: a
+   x2(variavel)
+   x3(variavel)
+Escopo: b
+   x4(variavel)
+   x5(variavel)
+Escopo: c
+   x6(variavel)
+   x7(variavel)
+Escopo: d
+   x8(variavel)
+   x9(variavel)
+Escopo: global
+   x1(variavel)

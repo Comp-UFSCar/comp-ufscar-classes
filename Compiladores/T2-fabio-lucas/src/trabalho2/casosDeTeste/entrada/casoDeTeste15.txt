@@ -1,0 +1,8 @@
+-- diferentes tipos de for
+a,b,c = 30,34,47
+for i=0,a+c do
+   i = i+1
+end
+for b,c,x,y in 10,20-b,30-a,1 do
+   print('Valores incrementados')
+end

@@ -1,0 +1,22 @@
+-- funcoes simples, apenas com variaveis, e globais
+x1 = 0
+
+function a()
+    x2 = 0
+    x3 = 0
+end;
+
+function b()
+    x4 = 0
+    x5 = 0
+end;
+
+function c()
+    x6 = 0
+    x7 = 0
+end;
+
+function d()
+    x8 = 0
+    x9 = 0
+end;

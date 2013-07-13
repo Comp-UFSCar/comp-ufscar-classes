@@ -1,0 +1,8 @@
+3,5:Variavel x nao amarrada
+6,7:Variavel n2 nao amarrada
+9,24:Variavel n4 nao amarrada
+Escopo: fact
+   n(parametro)
+   n3(variavel)
+Escopo: global
+   n(variavel)

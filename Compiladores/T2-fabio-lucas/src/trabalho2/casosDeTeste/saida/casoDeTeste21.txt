@@ -1,0 +1,15 @@
+3,9:Variavel a nao amarrada
+3,11:Variavel c nao amarrada
+4,8:Variavel i nao amarrada
+Escopo: for
+   j(variavel)
+   i(variavel)
+6,22:Variavel b nao amarrada
+6,27:Variavel a nao amarrada
+8,10:Variavel a nao amarrada
+Escopo: for
+   b(variavel)
+   c(variavel)
+   x(variavel)
+   y(variavel)
+Escopo: global

@@ -1,0 +1,9 @@
+3,10:Variavel t nao amarrada
+4,10:Variavel z nao amarrada
+8,7:Variavel v nao amarrada
+Escopo: global
+   x(variavel)
+   y(variavel)
+   z(variavel)
+   h(variavel)
+   a(variavel)

@@ -1,0 +1,11 @@
+Escopo: for
+   i(variavel)
+Escopo: for
+   b(variavel)
+   c(variavel)
+   x(variavel)
+   y(variavel)
+Escopo: global
+   a(variavel)
+   b(variavel)
+   c(variavel)

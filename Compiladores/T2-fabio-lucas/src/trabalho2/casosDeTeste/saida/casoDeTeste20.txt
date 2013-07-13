@@ -1,0 +1,20 @@
+7,11:Variavel x nao amarrada
+9,18:Variavel y nao amarrada
+10,27:Variavel j nao amarrada
+Escopo: for
+   i(variavel)
+13,20:Variavel k nao amarrada
+15,20:Variavel cont nao amarrada
+Escopo: perfeitos
+   n(parametro)
+   x(variavel)
+   soma(variavel)
+   cont(variavel)
+25,26:Variavel d nao amarrada
+Escopo: max
+   a(parametro)
+   b(parametro)
+   c(parametro)
+   maior(variavel)
+32,13:Variavel x nao amarrada
+Escopo: global

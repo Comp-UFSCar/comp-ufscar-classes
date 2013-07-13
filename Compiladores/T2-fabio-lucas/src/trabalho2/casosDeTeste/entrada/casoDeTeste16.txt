@@ -1,0 +1,25 @@
+-- funcoes simples, apenas com variaveis, e globais
+-- usando variáveis não amarradas
+x1 = x
+
+function a()
+    x2 = x11 + 2
+    x3 = x21 + x1
+end;
+
+function b()
+    x4 = x12 * 3
+    x5 = x14 * x1
+end;
+
+function c()
+    x6 = 19 / x14
+    x7 = x64
+end;
+
+function d()
+    x8 = 0
+    x9 = x1
+end;
+
+print(x12)

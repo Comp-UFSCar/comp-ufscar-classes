@@ -1,0 +1,15 @@
+Escopo: math.soma
+   a(parametro)
+   b(parametro)
+Escopo: math.subtrai
+   c(parametro)
+   d(parametro)
+Escopo: math.multiplica
+   self(parametro)
+   e(parametro)
+   f(parametro)
+Escopo: math.divide.resultado
+   self(parametro)
+   g(parametro)
+   h(parametro)
+Escopo: global
