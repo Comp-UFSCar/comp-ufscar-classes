@@ -1,0 +1,72 @@
+--- ANALYZING GAME SBP-level0.txt
+
+run:
+
+* Testing Analyzer.breadthFirstSearch()
+Rows: 4, Cols: 5
+1 -1 -1 1 1 
+1 0 3 4 1 
+1 0 2 2 1 
+1 1 1 1 1 
+Problem solved with the following steps:
+231 calls of the method solved() were required.
+0 was the recursion tree's depth.
+669 was the number of nodes created.
+Rows: 4, Cols: 5
+1 2 2 1 1 
+1 0 0 3 1 
+1 0 0 4 1 
+1 1 1 1 1 
+
+BUILD SUCCESSFUL (total time: 0 seconds)
+
+-----------------------------
+
+run:
+
+* Testing Analyzer.depthFirstSearch()
+Rows: 4, Cols: 5
+1 -1 -1 1 1 
+1 0 3 4 1 
+1 0 2 2 1 
+1 1 1 1 1 
+Exception in thread "main" java.lang.StackOverflowError
+	at java.util.HashMap.inflateTable(HashMap.java:321)
+	at java.util.HashMap.put(HashMap.java:492)
+	at java.util.HashSet.add(HashSet.java:217)
+	at java.util.AbstractCollection.addAll(AbstractCollection.java:342)
+	at Engine.Engine.movements(Engine.java:357)
+	at Engine.Engine.movements(Engine.java:283)
+	at Engine.Engine.applyMove(Engine.java:383)
+	at Engine.Engine.applyMoveClonning(Engine.java:432)
+	at Analyzer.Analyzer.depthFirstSearch(Analyzer.java:145)
+        ....  [THIS LINE ABOVE REPEATS 1014 times...]
+Java Result: 1
+BUILD SUCCESSFUL (total time: 0 seconds)
+
+-----------------------------
+
+run:
+
+* Testing Analyzer.interactiveDeepeningDepthFirstSearch()
+Rows: 4, Cols: 5
+1 -1 -1 1 1 
+1 0 3 4 1 
+1 0 2 2 1 
+1 1 1 1 1 
+Problem solved with the following steps:
+(2, LEFT)
+(4, DOWN)
+(3, RIGHT)
+(2, UP)
+(2, UP)
+433 calls of the method solved() were required.
+5 was the recursion tree's depth.
+216 was the number of nodes created.
+Rows: 4, Cols: 5
+1 2 2 1 1 
+1 0 0 3 1 
+1 0 0 4 1 
+1 1 1 1 1 
+
+BUILD SUCCESSFUL (total time: 0 seconds)
