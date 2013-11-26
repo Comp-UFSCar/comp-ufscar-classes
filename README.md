@@ -12,6 +12,7 @@ Data de criação: 04/12/2012
 #Lista de disciplinas abordadas#
 
  * Arquitetura e Organização de Computadores 2
+ * Compiladores
  * Banco de dados
  * Estruturas de Dados
  * Linguagens Formais e Autômatos
