@@ -1,0 +1,5 @@
+./res/cachorro.jpg cachorro
+./res/iguana.jpg iguana
+./res/peixe.jpg peixe
+./res/vaca.jpg vaca
+
