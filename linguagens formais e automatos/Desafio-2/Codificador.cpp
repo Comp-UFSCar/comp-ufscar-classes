@@ -30,12 +30,11 @@ Codificador::~Codificador()
 */
 void Codificador::ExibirCadeia(bool pOriginal)
 {
-	if(pOriginal)
-		cout << CadeiaOriginal << endl;
-	else
-		cout << CadeiaAtual << endl;
-
-	return;
+	cout <<
+		( pOriginal
+		? CadeiaOriginal
+		: CadeiaAtual )
+		<< endl;
 }
 
 /*

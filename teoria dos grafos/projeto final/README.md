@@ -1,10 +1,10 @@
 Grafos
 ======
 
-Data de criação: 20/11/2012
-Data de apresentação: 01/02/2013
+Data de criacao: 20/11/2012
+Data de apresentacao: 01/02/2013
 
-Projeto final da disciplina Teoria dos Grafos, aplicado pela Universidade Federal de São Carlos.
+Projeto final da disciplina Teoria dos Grafos - 2012/2, aplicado pela Universidade Federal de Sao Carlos.
 Implementação dos seguintes algoritmos:
 
 * Minimal Spanning Tree
@@ -18,7 +18,7 @@ Implementação dos seguintes algoritmos:
 * Árvore de caminhos mínimos
   * Dijkstra
   
-* Coloração de vértices
+* Coloração de vertices
   * Welch e Powell
 
 Grupo
