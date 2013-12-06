@@ -12,12 +12,10 @@ public class Test {
             OthelloState state = new OthelloState(8);
 
             OthelloPlayer players[] = {
-                new PlayerLikeAMonteCarlo()
-                .maximize(true)
-                .iteraction(1000),
                 new PlayerLikeAMonteCarloInATournament()
-                .maximize(false)
-                .time(2000),
+                    .time(5000),                
+                new PlayerLikeAMonteCarlo()
+                    .iteraction(100000),
             };
 
             do {

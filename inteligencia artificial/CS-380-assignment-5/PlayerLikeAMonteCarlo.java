@@ -119,13 +119,9 @@ final class PlayerLikeAMonteCarlo extends OthelloPlayer {
         return this;
     }
 
-    public PlayerLikeAMonteCarlo maximize(boolean _maximize) {
-        maximize = _maximize;
-        return this;
-    }
-
     @Override
     public OthelloMove getMove(OthelloState _state) {
+        maximize = _state.nextPlayerToMove == OthelloState.PLAYER1;
         return MonteCarloTreeSearch(_state);
     }
 
