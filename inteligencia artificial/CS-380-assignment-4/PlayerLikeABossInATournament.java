@@ -10,20 +10,7 @@ import java.util.List;
 public class PlayerLikeABossInATournament extends OthelloPlayer {
 
     boolean maximize;
-    int depth;
     long initialExecutionTime, maximumExecutionTime;
-
-    public PlayerLikeABossInATournament depth(int _depth) {
-        depth = _depth > 0
-                ? _depth
-                : 5;
-        return this;
-    }
-
-    public PlayerLikeABossInATournament maximize(boolean _maximize) {
-        maximize = _maximize;
-        return this;
-    }
 
     public PlayerLikeABossInATournament maximumExecutionTime(long _maximumExecutionTime) {
         // convert milliseconds to nanoseconds
@@ -38,6 +25,8 @@ public class PlayerLikeABossInATournament extends OthelloPlayer {
 
     @Override
     public OthelloMove getMove(OthelloState _state) {
+        maximize = _state.nextPlayerToMove == OthelloState.PLAYER1;
+        
         OthelloMove best = null;
 
         // reseting settings for further analyses
@@ -49,7 +38,7 @@ public class PlayerLikeABossInATournament extends OthelloPlayer {
 
         // setting params for this movement
         AlphaBetaThread.root = _state;
-        AlphaBetaThread.depth = depth - 1;
+        AlphaBetaThread.depth = 0;
         AlphaBetaThread.maximize = maximize;
         AlphaBetaThread.interrupted = false;
 
@@ -80,7 +69,7 @@ public class PlayerLikeABossInATournament extends OthelloPlayer {
                 }
 
                 // catches the last response which was not interrupted
-                if (!AlphaBetaThread.interrupted) {
+                if (!AlphaBetaThread.interrupted || best == null) {
                     best = AlphaBetaThread.best;
                 }
             }

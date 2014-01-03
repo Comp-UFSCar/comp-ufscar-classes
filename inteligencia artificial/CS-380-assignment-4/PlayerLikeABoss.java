@@ -11,30 +11,8 @@ public class PlayerLikeABoss extends OthelloPlayer {
     int depth = 5;
     boolean maximize = true;
 
-    public PlayerLikeABoss() {
-    }
-
-    public PlayerLikeABoss(int _depth) {
-        depth(_depth);
-    }
-
-    public PlayerLikeABoss(int _depth, boolean _maximize) {
-        depth(_depth);
-        maximize(_maximize);
-    }
-
     public int depth() {
         return depth;
-    }
-
-    public final PlayerLikeABoss maximize(boolean _maximize) {
-        maximize = _maximize;
-
-        return this;
-    }
-
-    public boolean maximize() {
-        return maximize;
     }
 
     public final PlayerLikeABoss depth(int _depth) {
@@ -51,6 +29,8 @@ public class PlayerLikeABoss extends OthelloPlayer {
 
     @Override
     public OthelloMove getMove(OthelloState _state) {
+        maximize = _state.nextPlayerToMove == OthelloState.PLAYER1;
+
         OthelloMove bestMove = null;
         int bestCost = maximize ? Integer.MIN_VALUE : Integer.MAX_VALUE;
 

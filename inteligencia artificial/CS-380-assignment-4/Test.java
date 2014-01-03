@@ -11,25 +11,23 @@ public class Test {
         OthelloState state = new OthelloState(8);
 
         OthelloPlayer players[] = {
-            new PlayerLikeABossInATournament()
-            .maximumExecutionTime(10000)
-            .maximize(true)
-            .depth(5),
             new PlayerLikeAlphaBeta()
-            .depth(6)
-            .maximize(false)
+            .depth(3),
+            new PlayerLikeABossInATournament()
+            .maximumExecutionTime(1000),
         };
+        
+        System.out.println("Assignment - 4");
 
         long deltaTotal[] = {0, 0};
 
         do {
-            long deltaMove = System.nanoTime();
             OthelloMove move = players[state.nextPlayerToMove].getMove(state);
-            deltaTotal[state.nextPlayerToMove] += System.nanoTime() - deltaMove;
-
-            System.out.println(state.nextPlayerToMove + ": " + (System.nanoTime() - deltaMove) / 1000000);
-            state = state.applyMoveCloning(move);
-
+            
+            System.out.print(players[state.nextPlayerToMove] + " : " + move + " : ");
+            
+            state.applyMove(move);
+            System.out.println(state.score());
         } while (!state.gameOver());
 
         // Show the result of the game:

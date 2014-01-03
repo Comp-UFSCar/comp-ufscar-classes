@@ -10,6 +10,8 @@ public class PlayerLikeAlphaBeta extends PlayerLikeABoss {
 
     @Override
     public OthelloMove getMove(OthelloState _state) {
+        maximize = _state.nextPlayerToMove == OthelloState.PLAYER1;
+        
         OthelloMove best = null;
         int bestCost = maximize ? Integer.MIN_VALUE : Integer.MAX_VALUE;
 
@@ -58,7 +60,8 @@ public class PlayerLikeAlphaBeta extends PlayerLikeABoss {
         }
 
         return _maximize
-                ? _a
-                : _b;
+               ? _a
+               : _b
+               ;
     }
 }
