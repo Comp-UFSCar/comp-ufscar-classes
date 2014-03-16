@@ -36,9 +36,9 @@ public final class GeneticAlgorithm {
             throw new RuntimeException("illegal attributes for current GeneticAlgorithm instance");
         }
 
-        long execution = System.currentTimeMillis();
-
         iteractions = 0;
+
+        long execution = System.currentTimeMillis();
 
         while (execution + timeConstraint > System.currentTimeMillis()) {
             evolve();
@@ -129,12 +129,13 @@ public final class GeneticAlgorithm {
     }
 
     public GeneticAlgorithm time(long _timeConstraint) {
+        System.out.println("GeneticAlgorithm@time : " + _timeConstraint);
+
         timeConstraint = _timeConstraint;
         return this;
     }
 
     public GeneticAlgorithm mutation(float _mutation) {
-
         System.out.println("GeneticAlgorithm@mutation : " + _mutation);
 
         mutation = _mutation;
@@ -142,7 +143,6 @@ public final class GeneticAlgorithm {
     }
 
     public GeneticAlgorithm maximize(boolean _maximize) {
-
         System.out.println("GeneticAlgorithm@maximize : " + _maximize);
 
         maximize = _maximize;
@@ -180,10 +180,6 @@ public final class GeneticAlgorithm {
 
     public int iteractions() {
         return iteractions;
-    }
-
-    public Evaluable evaluation() {
-        return evaluation;
     }
 
 }
