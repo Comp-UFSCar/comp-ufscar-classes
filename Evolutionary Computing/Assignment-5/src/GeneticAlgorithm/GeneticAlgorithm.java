@@ -91,7 +91,7 @@ public final class GeneticAlgorithm {
         population = new ArrayList<>();
 
         fittest = null;
-        fitness = Integer.MAX_VALUE;
+        fitness = 0;
 
         for (int i = 0; i < _population; i++) {
             int[] individual = new int[_genes];
@@ -110,7 +110,9 @@ public final class GeneticAlgorithm {
 
             // check if child is the strongest individual in the population
             int current = evaluation.f(individual);
-            if (maximize && current > fitness || !maximize && current < fitness) {
+            if (fittest == null
+                    || maximize && current > fitness
+                    || !maximize && current < fitness) {
                 fittest = individual;
                 fitness = current;
             }
