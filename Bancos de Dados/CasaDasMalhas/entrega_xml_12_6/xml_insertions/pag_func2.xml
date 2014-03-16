@@ -1,0 +1,10 @@
+<?xml version="1.0"?>
+<pagamento_funcionario
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:noNamespaceSchemaLocation="http://bogus">
+
+	<data>
+		fn:dateTime((xs:date("2011-04-15")), (xs:time("11:00:29")))
+	</data>
+	<valor>1500</valor>
+</pagamento_funcionario>

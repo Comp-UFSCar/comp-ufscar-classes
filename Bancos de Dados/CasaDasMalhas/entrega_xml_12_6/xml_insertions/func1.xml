@@ -1,0 +1,22 @@
+<?xml version="1.0"?>
+<funcionario
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:noNamespaceSchemaLocation="http://bogus">
+
+	<nome>Kriskoff</nome>
+	<endereco>
+		<rua>Alameda das Orquídeas</rua>
+		<bairro>Cidade Jardim</bairro>
+		<numero>45</numero>
+		<cidade>São Carlos</cidade>
+		<estado>SP</estado>
+		<cep>13566-450</cep>
+	</endereco>
+
+	<cpf>497.023.123-5</cpf>
+	<data_inicio>04/08/2005</data_inicio>
+	<num_tel>(34)3321-5122</num_tel>
+	<salario_base>1000</salario_base>
+	<comissao>0</comissao>
+
+</funcionario>

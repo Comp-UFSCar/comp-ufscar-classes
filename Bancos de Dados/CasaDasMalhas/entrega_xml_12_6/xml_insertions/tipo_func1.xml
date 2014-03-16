@@ -1,0 +1,8 @@
+<?xml version="1.0"?>
+<tipo_funcionario
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:noNamespaceSchemaLocation="http://bogus">
+
+	<cargo>Vendedor</cargo>
+	<descricao>Vende itens de roupas na loja central</descricao>
+</tipo_funcionario>
