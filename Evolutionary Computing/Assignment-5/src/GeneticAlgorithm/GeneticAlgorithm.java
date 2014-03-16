@@ -8,7 +8,7 @@ import java.util.ArrayList;
  */
 public final class GeneticAlgorithm {
 
-    public static final int INITIAL_POPULATION = 320;
+    public static final int INITIAL_POPULATION = 200;
     public static final int NUMBER_OF_GENES = 128;
     public static final float MUTATION_FACTOR = .1f;
     public static final long TIME_CONSTRAINT = 2000;
@@ -53,19 +53,12 @@ public final class GeneticAlgorithm {
 
         // for each pair of individuals, cross them
         for (int[] parent : population) {
+            // cross parents
             int[] child = evaluation.cross(parent, null);
 
+            // mutate child
             if (mutation > 0) {
-                for (int gene = 0; gene < child.length; gene++) {
-                    // if mutation occurs, gene is exchanged with a random gene
-                    if (Math.random() < mutation) {
-                        int randomIndex = (int) (Math.random() * child.length);
-
-                        int temp = child[gene];
-                        child[gene] = child[randomIndex];
-                        child[randomIndex] = temp;
-                    }
-                }
+                child = evaluation.mutate(child, mutation);
             }
 
             // kill weakest in the family
