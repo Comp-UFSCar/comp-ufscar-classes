@@ -1,8 +1,0 @@
-<?xml version="1.0"?>
-<tipo_funcionario
-	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-	xsi:noNamespaceSchemaLocation="http://bogus">
-
-	<cargo>Gerente</cargo>
-	<descricao>Administra a loja central e todos seus funcionários</descricao>
-</tipo_funcionario>
