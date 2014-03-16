@@ -13,7 +13,7 @@ public class GeneticAnalyzer {
 
     public GeneticAnalyzer run() throws Exception {
 
-        System.out.println("GeneticAnalyzer@run() method called.");
+        System.out.println("GeneticAnalyzer@run()");
 
         FileHandler file = new FileHandler("30cities.txt");
         matrix = file.read();
@@ -39,26 +39,28 @@ public class GeneticAnalyzer {
 
                         return child;
                     }
-//                    /**
-//                     * Crossover with reversion of items between cutoffs.
-//                     */
-//                    @Override
-//                    public int[] cross(int[] _parentA, int[] _parentB) {
-//                        int[] child = _parentA.clone();
-//
-//                        int start, end;
-//
-//                        start = (int) (Math.random() * child.length);
-//                        end = (int) (Math.random() * (child.length - start) + start);
-//
-//                        for (int i = 0; i <= (end - start) / 2; i++) {
-//                            int temp = child[start + i];
-//                            child[start + i] = child[end - i];
-//                            child[end - i] = temp;
-//                        }
-//
-//                        return child;
-//                    }
+                    
+                    /**
+                     * Crossover with reversion of items between cutoffs.
+                     * /
+                    @Override
+                    public int[] cross(int[] _parentA, int[] _parentB) {
+                        int[] child = _parentA.clone();
+
+                        int start, end;
+
+                        start = (int) (Math.random() * child.length);
+                        end = (int) (Math.random() * (child.length - start) + start);
+
+                        for (int i = 0; i <= (end - start) / 2; i++) {
+                            int temp = child[start + i];
+                            child[start + i] = child[end - i];
+                            child[end - i] = temp;
+                        }
+
+                        return child;
+                    }
+                    */
 
                     /**
                      * Evaluate the cost of a Hamiltonian circuit _indvididual.
@@ -109,10 +111,10 @@ public class GeneticAnalyzer {
                         return _individual;
                     }
                 })
-                .populate(20, matrix.length)
-                .showIndividuals()
-                .time(10000)
-                .mutation(0)
+                .populate(100, matrix.length)//.showIndividuals()
+                .time(5000)
+                .mutation(0.1f)
+                .maximize(false)
                 .run();
 
         System.out.println("The following solution was found after " + algorithm.iteractions() + " interactions: ");
@@ -122,7 +124,7 @@ public class GeneticAnalyzer {
             System.out.print(fittest[i] + " ");
         }
 
-        System.out.println("\nWith fitness factor " + algorithm.fitness() + "\n");
+        System.out.println("\nWith fitness factor of " + algorithm.fitness() + ".\n");
 
         return this;
     }

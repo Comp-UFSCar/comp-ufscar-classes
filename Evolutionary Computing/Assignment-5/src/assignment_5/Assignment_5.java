@@ -11,7 +11,7 @@ public class Assignment_5 {
      * @throws java.lang.Exception
      */
     public static void main(String[] args) throws Exception {
-        System.out.println("TSP analyses started...");
+        System.out.println("TSP analyses started...\n");
 
         new GeneticAnalyzer().run();
     }

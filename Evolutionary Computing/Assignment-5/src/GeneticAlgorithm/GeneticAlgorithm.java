@@ -21,6 +21,7 @@ public final class GeneticAlgorithm {
 
     long timeConstraint;
     float mutation;
+    boolean maximize;
     Evaluable evaluation;
 
     public GeneticAlgorithm() {
@@ -67,12 +68,13 @@ public final class GeneticAlgorithm {
             evalParent = evaluation.f(parent);
             evalChild = evaluation.f(child);
 
-            if (evalParent > evalChild) {
+            // if child is stronger than parent, kill parent
+            if (maximize && evalParent > evalChild || !maximize && evalParent < evalChild) {
                 population.set(index, child);
             }
 
             // check if child is the strongest individual in the population
-            if (evalChild > fitness) {
+            if (maximize && evalChild > fitness || !maximize && evalChild < fitness) {
                 fittest = child;
                 fitness = evalChild;
             }
@@ -89,7 +91,7 @@ public final class GeneticAlgorithm {
         population = new ArrayList<>();
 
         fittest = null;
-        fitness = -1;
+        fitness = Integer.MAX_VALUE;
 
         for (int i = 0; i < _population; i++) {
             int[] individual = new int[_genes];
@@ -106,8 +108,9 @@ public final class GeneticAlgorithm {
                 individual[randomIndex] = temp;
             }
 
+            // check if child is the strongest individual in the population
             int current = evaluation.f(individual);
-            if (current > fitness) {
+            if (maximize && current > fitness || !maximize && current < fitness) {
                 fittest = individual;
                 fitness = current;
             }
@@ -130,9 +133,17 @@ public final class GeneticAlgorithm {
 
     public GeneticAlgorithm mutation(float _mutation) {
 
-        System.out.println("\nGeneticAlgorithm@mutation : " + _mutation);
+        System.out.println("GeneticAlgorithm@mutation : " + _mutation);
 
         mutation = _mutation;
+        return this;
+    }
+
+    public GeneticAlgorithm maximize(boolean _maximize) {
+
+        System.out.println("GeneticAlgorithm@maximize : " + _maximize);
+
+        maximize = _maximize;
         return this;
     }
 
@@ -141,7 +152,7 @@ public final class GeneticAlgorithm {
             throw new RuntimeException("GeneticAlgorithm@showIndividuals requires an instantiated population");
         }
 
-        System.out.println("\nGeneticAlgorithm@showIndividuals()");
+        System.out.println("GeneticAlgorithm@showIndividuals()");
 
         for (int[] individual : population) {
             for (int gene : individual) {
