@@ -22,11 +22,11 @@ The code-source contained in this repository was develop in different periods of
 
  - /
   -  *course name* 
-   - aulas
-   - projetos
-     - *project name*
-     - (README.md)?
-   - provas
+    - aulas
+    - projetos
+      - *project name*
+      - (README.md)?
+    - provas
 
 ### Inner strucut
 
