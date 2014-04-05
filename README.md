@@ -21,12 +21,12 @@ The code-source contained in this repository was develop in different periods of
 ### Main directory structure
 
  - /
- --  * course name * 
- --- aulas
- --- projetos
- ---- * project name *
- ----- (README.md)?
- --- provas
+  -  * course name * 
+   - aulas
+   - projetos
+    - * project name *
+    - (README.md)?
+   - provas
 
 ### Inner strucut
 
