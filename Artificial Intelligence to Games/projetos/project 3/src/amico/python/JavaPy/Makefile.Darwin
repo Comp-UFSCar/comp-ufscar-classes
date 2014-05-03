@@ -1,0 +1,24 @@
+CC = g++
+MKDIR = mkdir
+
+SRCDIR = src
+BUILDDIR = build
+CFLAGS = -shared -fPIC -dynamiclib
+INCLUDES = -I/System/Library/Frameworks/JavaVM.framework/Versions/Current/Headers -I/Library/Frameworks/Python.framework/Versions/Current/Headers -I/System/Library/Frameworks/CoreServices.framework/Versions/A/Frameworks/CarbonCore.framework/Versions/A/Headers -I/Library/Frameworks/Python.framework/Versions/6.2/include/python2.6 -I/Library/Frameworks/Python.framework/Versions/6.2/include/python2.6 -fno-strict-aliasing -fno-common -dynamic -DNDEBUG -g -O3 -arch i386 -isysroot /Developer/SDKs/MacOSX10.5.sdk -I/Library/Frameworks/Python.framework/Versions/6.2/include
+LFLAGS = 
+LIBS = -framework JavaVM -framework Python -framework CoreFoundation -L/Library/Frameworks/Python.framework/Versions/6.2/lib/python2.6/config -ldl -framework CoreFoundation -lpython2.6
+MAIN = $(BUILDDIR)/libAmiCoJavaPy.dylib
+
+all: $(MAIN)
+
+$(MAIN):
+	${MKDIR} -p $(BUILDDIR)
+	$(CC) $(CFLAGS) $(INCLUDES) $(LFLAGS) $(LIBS) -o $(MAIN) $(SRCDIR)/ch_idsia_tools_amico_AmiCoJavaPy.cc
+
+.PHONY: clean
+
+clean:
+	rm -f $(MAIN)
+
+# DO NOT DELETE THIS LINE
+

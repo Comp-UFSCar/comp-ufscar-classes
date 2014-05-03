@@ -1,0 +1,14 @@
+
+	/**
+	 * Returns the value of the <<<parameterName>>>
+	 * parameter as a String.
+	 *
+	 * @return <<<parameterName>>> as String
+	 */
+	public String getString<<<casedParameterName>>>() {
+
+		if(_<<<parameterName>>> == null)
+			return null;
+		return ActionParameterType.<<<parameterType>>>.toString(_<<<parameterName>>>);
+
+	} // get<<<casedParameterName>>>

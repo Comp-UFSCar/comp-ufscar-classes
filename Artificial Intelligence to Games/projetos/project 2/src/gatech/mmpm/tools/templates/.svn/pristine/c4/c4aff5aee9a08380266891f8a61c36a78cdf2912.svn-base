@@ -1,0 +1,20 @@
+	/**
+	 * Does some assignments needed before calling the first time to
+	 * check<<<CondType>>>Condition() method. This method should be overwritten in
+	 * some child action classes.
+	 * 
+	 * @param cycle The cycle.
+	 * @param gameState The game state.
+	 * @param player Player who checks the condition. 
+	 * @param parameters The context to evaluate the condition. 
+	 */
+	protected void on<<<CondType>>>Condition(int cycle, gatech.mmpm.GameState gameState, String player, Context parameters) {
+
+		_<<<targetValue>>> = (<<<IdentifierType>>>) _on<<<CondType>>>Condition.evaluate(cycle, gameState, player, parameters);
+
+	} // on<<<CondType>>>Condition
+
+	/**
+	 * Sensor to be evaluated in the on<<<CondType>>>Condition() method.
+	 */
+	static protected Sensor _on<<<CondType>>>Condition = <<<Value>>>;

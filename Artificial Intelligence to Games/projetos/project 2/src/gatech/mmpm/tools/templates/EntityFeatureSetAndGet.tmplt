@@ -1,0 +1,16 @@
+
+	//- - - - - - - - - - - - - - - - - - - - - - - -
+	//        <<<featureName>>> feature 
+	//- - - - - - - - - - - - - - - - - - - - - - - - 
+
+	public <<<dataType>>> get<<<casedFeatureName>>>() {
+
+		return _<<<featureName>>>;
+
+	} // get<<<casedFeatureName>>>
+
+	public void set<<<casedFeatureName>>>(<<<dataType>>> rhs) {
+
+		_<<<featureName>>> = rhs;
+
+	} // set<<<casedFeatureName>>>

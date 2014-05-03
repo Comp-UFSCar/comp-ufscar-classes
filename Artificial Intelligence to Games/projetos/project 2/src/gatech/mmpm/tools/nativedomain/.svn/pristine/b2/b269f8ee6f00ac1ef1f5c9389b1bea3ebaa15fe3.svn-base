@@ -1,0 +1,263 @@
+<!--      Define the "native" domain provided by MMPM      -->
+<!--     This is NOT used to generate Java code at all     -->
+<!-- If you change anything, you must update the java code -->
+<!--                                                       -->
+<!-- Authors:                                              -->
+<!--    Pedro Pablo Gomez Martin                           -->
+<!--    David Llanso                                       -->
+
+<Domain package="gatech.mmpm">
+
+  <SensorSet packate="gatech.mmpm.sensor.builtin">
+    
+    <!-- Test whether two entities collide. Both parameters
+         must be specified. -->
+    <Sensor name="Collision" type="BOOLEAN">
+      <Parameter name="entity1" type="ENTITY_ID"/>
+      <Parameter name="entity2" type="ENTITY_ID"/>
+    </Sensor>
+    
+    <!-- Test whether there is an entity with the specified
+         ID in the specified coordinates. Only 'coor' parameter
+         must be specified. -->
+    <Sensor name="EntityAt" type="BOOLEAN">
+      <Parameter name="entity" type="ENTITY_ID"/>
+      <Parameter name="coor" type="COORDINATE"/>
+    </Sensor>
+    
+    <!-- Test whether there is an entity with the specified 
+         ID in the specified coordinates. Both parameters may
+         be specified or may not. -->
+    <Sensor name="EntityExists" type="BOOLEAN">
+      <Parameter name="entity" type="ENTITY_ID"/>
+    </Sensor>
+
+    <!-- Tests whether there is an entity of the specified 
+         type in the specified coordinates. Only 'coor' parameter
+         must be specified. -->
+    <Sensor name="EntityTypeAt" type="BOOLEAN">
+      <Parameter name="type" type="ENTITY_TYPE"/>
+      <Parameter name="coor" type="COORDINATE"/>
+      <Parameter name="owner" type="PLAYER"/>
+    </Sensor>
+
+    <!-- Tests whether there is an entity with the specified 
+         ID in the specified coordinates. Both parameters may
+         be specified or may not. -->
+    <Sensor name="EntityTypeExists" type="BOOLEAN">
+      <Parameter name="type" type="ENTITY_TYPE"/>
+      <Parameter name="owner" type="PLAYER"/>
+    </Sensor>
+
+    <!-- Tests whether an specific entity has an attribute. Both 
+         parameters must be specified. -->
+    <Sensor name="HasAttribute" type="BOOLEAN">
+      <Parameter name="entity" type="ENTITY_ID"/>
+      <Parameter name="attribute" type="STRING"/>
+    </Sensor>
+
+    <!-- Tests whether the game clock has exceeds the 'waitTime'.
+         'waitTime' parameter must be specified. -->
+    <Sensor name="Timer" type="BOOLEAN">
+      <Parameter name="waitTime" type="INTEGER"/>
+    </Sensor>
+
+    <!-- Tests whether a cell with the specified coordinate is 
+         empty. 'coor' parameter must be specified. -->
+    <Sensor name="IsCellEmpty" type="BOOLEAN">
+      <Parameter name="coor" type="COORDINATE"/>
+    </Sensor>
+
+    <!-- Tests whether two entities are neighbors. Both parameters 
+         must be specified. -->
+    <Sensor name="InNeighborsCells" type="BOOLEAN">
+      <Parameter name="entity1" type="ENTITY_ID"/>
+      <Parameter name="entity2" type="ENTITY_ID"/>
+    </Sensor>
+
+    <!-- Returns a default Entity of the specified type. This sensor 
+         can be used to consult default attributes of an entity type
+         with XXXAtributte sensors. The type parameter must be 
+         specified. -->
+    <Sensor name="DefaultEntity" type="ENTITY_ID">
+      <Parameter name="type" type="ENTITY_TYPE"/>
+    </Sensor>
+
+    <!-- Gets an Integer attribute from an entity. Both parameters 
+         must be specified. -->
+    <Sensor name="IntAttribute" type="INTEGER">
+      <Parameter name="entity" type="ENTITY_ID"/>
+      <Parameter name="attribute" type="STRING"/>
+    </Sensor>
+
+    <!-- Gets a String attribute from an entity. Both parameters 
+         must be specified. -->
+    <Sensor name="StringAttribute" type="STRING">
+      <Parameter name="entity" type="ENTITY_ID"/>
+      <Parameter name="attribute" type="STRING"/>
+    </Sensor>
+
+    <!-- Gets a Boolean attribute from an entity. Both parameters 
+         must be specified. -->
+    <Sensor name="BoolAttribute" type="BOOLEAN">
+      <Parameter name="entity" type="ENTITY_ID"/>
+      <Parameter name="attribute" type="STRING"/>
+    </Sensor>
+
+    <!-- Gets a COORDINATE attribute from an entity. Both parameters 
+         must be specified. -->
+    <Sensor name="CoordinateAttribute" type="COORDINATE">
+      <Parameter name="entity" type="ENTITY_ID"/>
+      <Parameter name="attribute" type="STRING"/>
+    </Sensor>
+
+    <!-- Gets a Float attribute from an entity. Both parameters 
+         must be specified. -->
+    <Sensor name="FloatAttribute" type="FLOAT">
+      <Parameter name="entity" type="ENTITY_ID"/>
+      <Parameter name="attribute" type="STRING"/>
+    </Sensor>
+
+    <!-- Gets a Player attribute from an entity. Both parameters 
+         must be specified. -->
+    <Sensor name="PlayerAttribute" type="PLAYER">
+      <Parameter name="entity" type="ENTITY_ID"/>
+      <Parameter name="attribute" type="STRING"/>
+    </Sensor>
+
+    <!-- Gets the map number of cells. -->
+    <Sensor name="NumberOfCells" type="INTEGER">
+    </Sensor>
+
+    <!-- Returns the closest entity to a given coordinate. The 
+         type and the owner of the requested entity may be given
+         or not. -->
+    <Sensor name="ClosestEntity" type="ENTITY_ID">
+      <Parameter name="coor" type="COORDINATE"/>
+      <Parameter name="type" type="ENTITY_TYPE"/>
+      <Parameter name="owner" type="PLAYER"/>
+    </Sensor>
+
+    <!-- Distance between two coordinates. Both parameters must 
+         be specified. -->
+    <Sensor name="DistanceCC" type="FLOAT">
+      <Parameter name="coor1" type="COORDINATE"/>
+      <Parameter name="coor2" type="COORDINATE"/>
+    </Sensor>
+
+    <!-- Distance between two entities. Both parameters must be 
+         specified. -->
+    <Sensor name="DistanceEE" type="FLOAT">
+      <Parameter name="entity1" type="ENTITY_ID"/>
+      <Parameter name="entity2" type="ENTITY_ID"/>
+    </Sensor>
+
+    <!-- Distance between a coordinate and an entity. Both 
+         parameters must be specified. -->
+    <Sensor name="DistanceEC" type="FLOAT">
+      <Parameter name="entity" type="ENTITY_ID"/>
+      <Parameter name="coor" type="COORDINATE"/>
+    </Sensor>
+
+    <!-- Returns the number of entities of one type, one player,
+         one type and one player or the total number of entities 
+         depending on the specified parameters. The type and the 
+         owner of the requested entity may be given or not. -->
+    <Sensor name="NumberOfEntities" type="INTEGER">
+      <Parameter name="type" type="ENTITY_TYPE"/>
+      <Parameter name="owner" type="PLAYER"/>
+    </Sensor>
+
+    <!-- Returns the first instance of entity with the specified 
+         type, owner and entityid. However, the type, owner and
+         entityid of the requested entity may be given or not. -->
+    <Sensor name="Entity" type="ENTITY_ID">
+      <Parameter name="type" type="ENTITY_TYPE"/>
+      <Parameter name="owner" type="PLAYER"/>
+      <Parameter name="entityid" type="STRING"/>
+    </Sensor>
+
+    <!-- Turn a string into a Type. The 'type' parameter must be 
+         specified. -->
+    <Sensor name="Type" type="ENTITY_TYPE">
+      <Parameter name="type" type="STRING"/>
+    </Sensor>
+
+    <!-- Get the type of an entity. The 'entity' parameter must be
+         specified. -->
+    <Sensor name="EntityType" type="ENTITY_TYPE">
+      <Parameter name="entity" type="ENTITY_ID"/>
+    </Sensor>
+
+    <!-- Turn a string into a Player. The 'player' parameter must be 
+         specified. -->
+    <Sensor name="Player" type="PLAYER">
+      <Parameter name="player" type="STRING"/>
+    </Sensor>
+
+    <!-- Turns an Integer into a Float. -->
+    <Sensor name="FLOAT" type="FLOAT">
+      <Parameter name="value" type="INTEGER"/>
+    </Sensor>
+
+    <!-- Turns an Float into a Integer (using round). -->
+    <Sensor name="INTEGER" type="INTEGER">
+      <Parameter name="value" type="FLOAT"/>
+    </Sensor>
+
+  </SensorSet>
+
+  <EntitySet package="gatech.mmpm">
+
+    <Entity>
+			<Name>Entity</Name>
+			<Features>
+				<Feature>
+					<Name>owner</Name>
+					<DataType>String</DataType>
+				</Feature>
+				<Feature>
+					<Name>entityID</Name>
+					<DataType>String</DataType>
+				</Feature>
+				<Feature>
+					<Name>shortName</Name>
+					<DataType>char</DataType>
+				</Feature>
+			</Features>
+		</Entity>
+		
+		<Entity>
+			<Name>PhysicalEntity</Name>
+			<Super>Entity</Super>
+			<Features>
+				<Feature>
+					<Name>x</Name>
+					<DataType>int</DataType>
+				</Feature>
+				<Feature>
+					<Name>y</Name>
+					<DataType>int</DataType>
+				</Feature>
+				<Feature>
+					<Name>z</Name>
+					<DataType>int</DataType>
+				</Feature>
+				<Feature>
+					<Name>width</Name>
+					<DataType>int</DataType>
+				</Feature>
+				<Feature>
+					<Name>height</Name>
+					<DataType>int</DataType>
+				</Feature>
+				<Feature>
+					<Name>length</Name>
+					<DataType>int</DataType>
+				</Feature>
+			</Features>
+		</Entity>
+    
+	</EntitySet>
+  
+</Domain>

@@ -1,0 +1,152 @@
+<<<Disclaimer>>>
+
+<<<optional package name>>>
+
+import <<<ActionBaseClass>>>;
+<<<optional import actions>>>
+
+import java.util.List;
+
+/**
+ * Class that represents a particular entity type
+ * of the game. It contains machine generate code.
+ * Go to gatech.mmpm.Entity for more information.
+ */
+public class <<<entityName>>> extends <<<superclass>>> {
+
+	public <<<entityName>>>(String entityID, String owner) {
+	
+		super(entityID, owner);
+<<<default values assignments>>>		
+	} // Constructor
+
+	//---------------------------------------------------------------
+
+	public <<<entityName>>>(<<<entityName>>> rhs) {
+
+		super(rhs);
+<<<copy declared features>>>
+	} // Copy constructor 
+	
+	//---------------------------------------------------------------
+
+	public Object clone() {
+
+		<<<entityName>>> e = new <<<entityName>>>(this);
+		return e;
+
+	} // clone
+
+	//---------------------------------------------------------------
+
+	public char instanceShortName() {
+	
+		return '<<<shortName>>>';
+	
+	} // instanceShortName
+
+	//---------------------------------------------------------------
+	
+	public List<String> listOfFeatures() {
+	
+		// Overwritten in each entity class to return the
+		// class static attribute. 
+		return _listOfFeatures;
+
+	} // listOfFeatures
+	
+	//---------------------------------------------------------------
+	
+	public List<<<<ActionBaseClass>>>> listOfActions() {
+	
+		// Overwritten in each entity class to return the
+		// class static attribute. 
+		return _listOfActions;
+
+	} // listOfActions
+
+	//---------------------------------------------------------------
+
+	public boolean isActive() {
+
+		return <<<isActive>>>;
+
+	} // isActive
+
+	//---------------------------------------------------------------
+	//                       Getter & setter
+	//---------------------------------------------------------------
+
+<<<getters and setters>>>
+
+	//---------------------------------------------------------------
+	//                 Generic getter and setter
+	//---------------------------------------------------------------
+
+	public Object featureValue(String feature) {
+
+<<<genericGetter>>>			return super.featureValue(feature);
+	
+	} // featureValue
+
+	//---------------------------------------------------------------
+
+	public void setFeatureValue(String feature, String value) {
+
+<<<genericSetter>>>			super.setFeatureValue(feature, value);
+	
+	} // setFeatureValue
+
+	//---------------------------------------------------------------
+	//                       Static methods
+	//---------------------------------------------------------------
+	
+	public static char shortName() {
+
+		return '<<<shortName>>>';
+
+	} // shortName
+
+	//---------------------------------------------------------------
+
+	public static List<String> staticListOfFeatures() {
+
+		return _listOfFeatures;
+
+	}
+
+	//---------------------------------------------------------------
+
+	public static List<<<<ActionBaseClass>>>> staticListOfActions() {
+
+		return _listOfActions;
+
+	}
+
+	//---------------------------------------------------------------
+	//                       Protected fields
+	//---------------------------------------------------------------
+	
+<<<Declared fields>>>
+
+	static java.util.List<String> _listOfFeatures;
+
+	static java.util.List<Action> _listOfActions;
+
+	//---------------------------------------------------------------
+	//                       Static initializers
+	//---------------------------------------------------------------
+
+	static {
+
+		// Add features to _listOfFeatures.
+		_listOfFeatures = new java.util.LinkedList<String>(<<<superclass>>>.staticListOfFeatures());
+<<<initialize list of features>>>
+		// Add valid actions to _listOfActions.
+		_listOfActions = new java.util.LinkedList<Action>(<<<superclass>>>.staticListOfActions());
+<<<initialize list of actions>>>
+	} // static initializer
+
+} // class <<<entityName>>>
+
+<<<Disclaimer>>>

@@ -1,0 +1,306 @@
+/*­­­­Sección de declaraciones package e imports­­­­­­­­­*/
+import java_cup.runtime.*;
+
+/*­­­­ Sección componentes de código de usuario ­­­­*/
+
+parser code {:
+
+	public ExpressionNode buildArithmeticBinaryExpression(ExpressionNode lhs, OperatorToken op, ExpressionNode rhs) {
+		try {
+			return ExpressionBuilder.buildArithmeticBinaryExpression(lhs, op, rhs);
+		}
+		catch (ExpressionBuilderException ex) {
+			report_error(ex.getMessage(), null);
+			return null;
+		}
+	}
+
+	public ExpressionNode buildRelationalExpression(ExpressionNode lhs, OperatorToken op, ExpressionNode rhs) {
+		try {
+			return ExpressionBuilder.buildRelationalExpression(lhs, op, rhs);
+		}
+		catch (ExpressionBuilderException ex) {
+			report_error(ex.getMessage(), null);
+			return null;
+		}
+	}
+
+	public ExpressionNode buildEqualityExpression(ExpressionNode lhs, OperatorToken op, ExpressionNode rhs) {
+		try {
+			return ExpressionBuilder.buildEqualityExpression(lhs, op, rhs);
+		}
+		catch (ExpressionBuilderException ex) {
+			report_error(ex.getMessage(), null);
+			return null;
+		}
+	}
+	
+	public ExpressionNode buildLogicalExpression(ExpressionNode lhs, OperatorToken op, ExpressionNode rhs) {
+		try {
+			return ExpressionBuilder.buildLogicalExpression(lhs, op, rhs);
+		}
+		catch (ExpressionBuilderException ex) {
+			report_error(ex.getMessage(), null);
+			return null;
+		}
+	}
+	
+	public ExpressionNode buildMethodInvocationExpression(String name, java.util.List<ExpressionNode> params) {
+		try {
+			return ExpressionBuilder.buildMethodInvocationExpression(name, params);
+		}
+		catch (ExpressionBuilderException ex) {
+			report_error(ex.getMessage(), null);
+			return null;
+		}
+	}
+
+	public ExpressionNode buildIdentificatorExpression(String name) {
+		try {
+			return ExpressionBuilder.buildIdentificatorExpression(name);
+		}
+		catch (ExpressionBuilderException ex) {
+			report_error(ex.getMessage(), null);
+			return null;
+		}
+	}
+
+
+	public ExpressionNode buildConditionalExpression(ExpressionNode condition, ExpressionNode yesCase, ExpressionNode noCase) {
+		try {
+			return ExpressionBuilder.buildConditionalExpression(condition, yesCase, noCase);
+		}
+		catch (ExpressionBuilderException ex) {
+			report_error(ex.getMessage(), null);
+			return null;
+		}
+	}
+
+	public ExpressionNode buildAssignment(String id, ExpressionNode expr) {
+		try {
+			return ExpressionBuilder.buildAssignment(id, expr);
+		}
+		catch (ExpressionBuilderException ex) {
+			report_error(ex.getMessage(), null);
+			return null;
+		}
+	}
+
+:};
+
+/*­­­ Declaración de la lista de símbolos de la gramática ­­­­­*/
+ 
+/* Produciones de flujo normal */
+
+/* Terminals (tokens returned by the lexer) */
+
+terminal COMMA, LPAR, RPAR, QUESTION, COLON, EQUAL;
+
+/* Operators. They have attached a OperatorToken */
+
+/* ADD_OP is used for '+' and '-'. MULT_OP for '*' and '/' */
+terminal OperatorToken ADD_OP, MULT_OP;
+
+terminal OperatorToken OR_OP, AND_OP;
+
+/* EQ_OP is used for == and != */
+terminal OperatorToken EQ_OP;
+
+/* RELATIONAL_OP is used for < <= > and >= */
+terminal OperatorToken RELATIONAL_OP;
+
+terminal OperatorToken NOT_OP; // !
+
+/* Literal or unary tokens */
+terminal String IDENTIFIER;
+
+terminal Integer INTEGER_LITERAL;
+
+terminal String STRING_LITERAL;
+
+terminal Boolean BOOLEAN_LITERAL;
+
+terminal Float FLOAT_LITERAL;
+
+/*non terminal Object expression, rightExpression;
+non terminal Object term, rightTerm;
+non terminal Object factor;*/
+
+non terminal ExpressionNode assignment;                    /* v = expression */
+// Used for OnXXXXCondition 
+
+non terminal ExpressionNode expression;
+non terminal ExpressionNode conditional_expression;        /* ... ? ... : ... */
+non terminal ExpressionNode logical_or_expression;         /* ... || ... */
+non terminal ExpressionNode logical_and_expression;        /* ... && ... */
+non terminal ExpressionNode equality_expression;           /* ... == ... or ... != ... */
+non terminal ExpressionNode relational_expression;           /* ... < ... or ... <= ... etc. */
+non terminal ExpressionNode multiplicative_expression;     /* ... * ... or ... / ... or ... % ... */
+non terminal ExpressionNode additive_expression;           /* ... + ... or ... - ... */
+non terminal ExpressionNode unary_expression;              /* + <expr> or - <expr> */
+non terminal ExpressionNode unary_expression_not_plus_minus; /* ! <expr> */
+non terminal ExpressionNode postfix_expression;            /* identifier or primary */
+non terminal ExpressionNode primary;                       /* literal or ( <expr> ) or method(params) */
+non terminal ExpressionNode literal;                       /* integer, float, boolean, char, string */
+non terminal ExpressionNode method_invocation;
+non terminal java.util.List<ExpressionNode> argument_list;                 /* expr, expr, ... , */
+non terminal java.util.List<ExpressionNode> argument_list_noEndingComma;   /* expr, expr, ... */
+
+/* ­­­­­­­­­­­­­­ Grammar definition ­­­­­­­­­­­ */
+
+/* TODO: Coordinate constructor */
+
+assignment
+    ::= IDENTIFIER:id EQUAL expression:expr {:
+          RESULT = parser.buildAssignment(id, expr);
+        :}
+    |   expression:expr {:
+          RESULT = expr;
+        :};
+
+expression
+    ::= conditional_expression:expr {:
+          RESULT = expr;
+        :};
+
+conditional_expression
+    ::= logical_or_expression:expr {:
+          RESULT = expr;
+        :}    
+    |   logical_or_expression:cond QUESTION expression:yesCase COLON expression:noCase {:
+          RESULT = parser.buildConditionalExpression(cond, yesCase, noCase);
+        :};
+
+
+/* <expr> || <expr> */
+logical_or_expression
+    ::= logical_and_expression:expr {:
+          RESULT = expr;
+        :}
+    |   logical_or_expression:left OR_OP:op logical_and_expression:right {:
+          RESULT = parser.buildLogicalExpression(left, op, right);
+        :};
+      
+
+/* <expr> && <expr> */
+logical_and_expression
+    ::= equality_expression:expr {:
+          RESULT = expr;
+        :}
+    |   logical_and_expression:left AND_OP:op equality_expression:right {:
+          RESULT = parser.buildLogicalExpression(left, op, right);
+        :};
+
+/* <expr> == <expr> or <expr> != <expr> */
+equality_expression
+    ::= relational_expression:expr {:
+          RESULT = expr;
+        :}
+    |   equality_expression:left EQ_OP:op relational_expression:right {:
+          RESULT = parser.buildEqualityExpression(left, op, right);
+        :};
+
+/* < <= > >= */
+relational_expression
+    ::= additive_expression:expr {:
+          RESULT = expr;
+        :}
+    |   relational_expression:left RELATIONAL_OP:op additive_expression:right {:
+          RESULT = parser.buildRelationalExpression(left, op, right);
+        :};
+
+/* If we had shift expressions for integers (<< and >>) they would be here */
+
+additive_expression
+    ::= multiplicative_expression:expr {:
+          RESULT = expr;
+        :}
+    |   additive_expression:left ADD_OP:op multiplicative_expression:right {:
+          RESULT = parser.buildArithmeticBinaryExpression(left, op, right);
+        :};
+
+multiplicative_expression
+    ::= unary_expression_not_plus_minus:expr {:
+          RESULT = expr;
+        :}
+    |   multiplicative_expression:left MULT_OP:op unary_expression:right {:
+          RESULT = parser.buildArithmeticBinaryExpression(left, op, right);
+        :};
+
+unary_expression
+    ::= ADD_OP:op unary_expression:right {:
+        :} 
+    |   unary_expression_not_plus_minus:expr {:
+          RESULT = expr;
+        :};
+
+unary_expression_not_plus_minus
+    ::= NOT_OP:op unary_expression {:
+        :}
+    |   postfix_expression:expr {:
+          RESULT = expr;
+        :};
+
+postfix_expression
+    ::= primary:expr {:
+          RESULT = expr;
+        :}
+    |   IDENTIFIER:id {:
+          RESULT = parser.buildIdentificatorExpression(id);
+        :};
+
+primary
+    ::= literal:expr {:
+          RESULT = expr;
+        :}
+    |   LPAR expression:expr RPAR {:  
+          RESULT = expr;
+        :}
+    |   method_invocation:expr {:
+          RESULT = expr;
+        :};
+
+method_invocation
+    ::= IDENTIFIER:id LPAR RPAR {:
+          RESULT = parser.buildMethodInvocationExpression(id, new java.util.LinkedList<ExpressionNode>());
+        :}
+    |   IDENTIFIER:id LPAR argument_list:args RPAR {:
+          RESULT = parser.buildMethodInvocationExpression(id, args);
+        :};
+
+/* We allow default parameters that will be
+   assumed to be "null", but invocation cannot
+   end with default parameters.
+ */
+argument_list
+    ::= expression:expr {:
+    		java.util.LinkedList<ExpressionNode> aux;
+    		aux = new java.util.LinkedList<ExpressionNode>();
+    		aux.add(expr);
+    		RESULT = aux;
+        :}
+    |   expression:head COMMA argument_list:tail {:
+    		tail.add(0,head);
+    		RESULT = tail;
+        :}
+    |   COMMA argument_list:tail {:
+    		tail.add(0,null);
+    		RESULT = tail;
+        :};
+
+
+literal
+    ::= INTEGER_LITERAL:n {:
+			RESULT = new IntegerLiteralNode(n);    
+        :}
+     |  FLOAT_LITERAL:f {:
+			RESULT = new FloatLiteralNode(f);    
+        :}
+     |  BOOLEAN_LITERAL:b {:
+			RESULT = new BooleanLiteralNode(b);    
+        :}
+     |  STRING_LITERAL:str {:
+			RESULT = new StringLiteralNode(str);
+        :};
+// TODO: rest of literals.
+

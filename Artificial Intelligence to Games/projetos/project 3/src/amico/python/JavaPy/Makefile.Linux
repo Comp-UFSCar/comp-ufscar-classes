@@ -1,0 +1,24 @@
+CC = g++
+MKDIR = mkdir
+
+SRCDIR = src
+BUILDDIR = build
+CFLAGS = -shared -Wl,-soname,libAmiCoJavaPy.so.1 -fPIC -Xlinker -export-dynamic -Wl,-O1 -Wl,-Bsymbolic-functions
+INCLUDES = -I/usr/include/python2.6 -I/usr/lib/jvm/java/include -I/usr/lib/jvm/java/include/linux
+LFLAGS = -L/usr/lib/jvm/java/jre/lib -L/usr/lib/jvm/java/jre/lib/i386/server -L/opt/epd/lib
+LIBS = -ljvm -lpthread -lz -lutil -lpython2.6
+MAIN = $(BUILDDIR)/libAmiCoJavaPy.so
+
+all: $(MAIN)
+
+$(MAIN):
+	${MKDIR} -p $(BUILDDIR)
+	$(CC) $(CFLAGS) $(INCLUDES) $(LFLAGS) $(LIBS) -o $(MAIN) $(SRCDIR)/ch_idsia_tools_amico_AmiCoJavaPy.cc
+
+.PHONY: clean
+
+clean:
+	rm -f $(MAIN)
+
+# DO NOT DELETE THIS LINE
+

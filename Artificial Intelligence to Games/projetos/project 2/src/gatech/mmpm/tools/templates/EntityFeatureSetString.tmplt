@@ -1,0 +1,6 @@
+
+	public void set<<<casedFeatureName>>>(String rhs) {
+
+		_<<<featureName>>> = <<<parser>>>rhs<<<postParser>>>;
+
+	} // set<<<casedFeatureName>>>(String)

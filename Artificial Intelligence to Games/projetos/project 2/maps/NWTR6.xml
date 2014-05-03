@@ -1,0 +1,96 @@
+<gamestate>
+	<entity id="0">
+		<type>map</type>
+		<width>32</width>
+		<height>32</height>
+	    <background>
+		  <row>wwwwwwwwwwwwwwwwwwwwwwwwwwwwwwww</row>
+          <row>wwwwwwwwwwwwwwwwwwwwwwwwwwwwwwww</row>
+          <row>wwwwwwwwwwwwwwwwwwwwwwwwwwwwwwww</row>
+          <row>wwwwwwwwwwwwwwwwwwwwwwwwwwwwwwww</row>
+          <row>wwwwwwwwwwwwwwwwwwwwwwwwwwwwwwww</row>
+          <row>wwwwwwwwwwwwwwwwwwwwwwwwwwwwwwww</row>
+          <row>wwwwwwwwwwwwwwwwwwwwwwwwwwwwwwww</row>
+          <row>wwwwwwwwwwwwwwwwwwwwwwwwwwwwwwww</row>
+          <row>...............ttt..............</row>
+          <row>...............ttt..............</row>
+          <row>...............ttt..............</row>
+          <row>...............ttt..............</row>
+          <row>...............ttt..............</row>
+          <row>...............ttt..............</row>
+          <row>...............ttt..............</row>
+          <row>...............ttt..............</row>
+          <row>...............ttt..............</row>
+          <row>...............ttt..............</row>
+          <row>...............ttt..............</row>
+          <row>...............ttt..............</row>
+          <row>...............ttt..............</row>
+          <row>...............ttt..............</row>
+          <row>...............ttt..............</row>
+          <row>...............ttt..............</row>
+		  <row>wwwwwwwwwwwwwwwwwwwwwwwwwwwwwwww</row>
+          <row>wwwwwwwwwwwwwwwwwwwwwwwwwwwwwwww</row>
+          <row>wwwwwwwwwwwwwwwwwwwwwwwwwwwwwwww</row>
+          <row>wwwwwwwwwwwwwwwwwwwwwwwwwwwwwwww</row>
+          <row>wwwwwwwwwwwwwwwwwwwwwwwwwwwwwwww</row>
+          <row>wwwwwwwwwwwwwwwwwwwwwwwwwwwwwwww</row>
+          <row>wwwwwwwwwwwwwwwwwwwwwwwwwwwwwwww</row>
+          <row>wwwwwwwwwwwwwwwwwwwwwwwwwwwwwwww</row>
+	    </background>	    
+	</entity>
+	<entity id="14">
+		<type>WPlayer</type>
+		<gold>2000</gold>
+		<wood>1500</wood>
+		<owner>player1</owner>
+	</entity>
+	<entity id="15">
+		<type>WPlayer</type>
+		<gold>2000</gold>
+		<wood>1500</wood>
+		<owner>player2</owner>
+	</entity>
+
+    <entity id="4">
+		<type>WGoldMine</type>
+        <x>0</x>
+        <y>21</y>
+		<remaining_gold>100000</remaining_gold>
+		<current_hitpoints>25500</current_hitpoints>
+	</entity>
+	<entity id="5">
+		<type>WGoldMine</type>
+        <x>29</x>
+        <y>21</y>
+		<remaining_gold>100000</remaining_gold>
+		<current_hitpoints>25500</current_hitpoints>
+	</entity>
+	<entity id="2">
+		<type>WPeasant</type>
+        <x>4</x>
+        <y>20</y>
+		<owner>player1</owner>
+		<current_hitpoints>30</current_hitpoints>
+	</entity>
+	<entity id="3">
+		<type>WTownhall</type>
+              <x>6</x>
+              <y>14</y>
+		<owner>player1</owner>
+		<current_hitpoints>2400</current_hitpoints>
+	</entity>
+	<entity id="7">
+		<type>WPeasant</type>
+        <x>26</x>
+        <y>20</y>
+		<owner>player2</owner>
+		<current_hitpoints>30</current_hitpoints>
+	</entity>
+	<entity id="8">
+		<type>WTownhall</type>
+              <x>23</x>
+              <y>14</y>
+		<owner>player2</owner>
+		<current_hitpoints>2400</current_hitpoints>
+	</entity>
+</gamestate>

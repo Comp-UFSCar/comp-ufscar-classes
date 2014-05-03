@@ -1,0 +1,16 @@
+
+	//- - - - - - - - - - - - - - - - - - - - - - - -
+	//        <<<parameterName>>> parameter
+	//- - - - - - - - - - - - - - - - - - - - - - - - 
+
+	public <<<dataType>>> get<<<casedParameterName>>>() {
+
+		return _<<<parameterName>>>;
+
+	} // get<<<casedParameterName>>>
+
+	public void set<<<casedParameterName>>>(<<<dataType>>> rhs) {
+
+		_<<<parameterName>>> = rhs;
+
+	} // set<<<casedParameterName>>>

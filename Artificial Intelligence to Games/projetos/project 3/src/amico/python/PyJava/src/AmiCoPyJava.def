@@ -1,0 +1,13 @@
+EXPORTS
+	amicoInitialize
+	destroyEnvironment
+	initMarioAIBenchmark
+	createMarioEnvironment
+	reset
+	isLevelFinished
+	tick
+	getEvaluationInfo
+	buildPythonTuple
+	getEntireObservation
+	performAction
+	getReceptiveFieldInfo

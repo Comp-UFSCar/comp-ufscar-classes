@@ -1,0 +1,1323 @@
+<Domain name="S3" classname="S3Domain" package="s3.mmpm">
+	<ActionSet package="s3.mmpm.actions">
+     
+    <Action name="Attack">
+      <Parameter name="preFailureTime" type="INTEGER"/>
+      <Parameter name="target" type="ENTITY_ID"/>
+      <ValidCondition>
+        <!--Check if the target is an entity of other player-->
+        StringAttribute(target,"owner") != player
+      </ValidCondition>
+      <PreCondition>
+        true
+      </PreCondition>
+      <FailureCondition>
+        UnitKilled(Entity(,player,entityID))
+      </FailureCondition>
+      <SuccessCondition>
+        Status(Entity(,player,entityID),1)
+      </SuccessCondition>
+      <OnPreFailureCondition>
+        preFailureTime = 800 + cycle
+      </OnPreFailureCondition>
+      <PreFailureCondition>
+        Timer(preFailureTime)
+      </PreFailureCondition>
+    </Action>
+
+    <Action name="AttackLocation">
+      <Parameter name="preFailureTime" type="INTEGER"/>
+      <Parameter name="target" type="ENTITY_ID"/>
+      <PreCondition>
+        true
+      </PreCondition>
+      <FailureCondition>
+        UnitKilled(Entity(,player,entityID))
+      </FailureCondition>
+      <SuccessCondition>
+        Status(Entity(,player,entityID),1)
+      </SuccessCondition>
+      <OnPreFailureCondition>
+        preFailureTime = 800 + cycle
+      </OnPreFailureCondition>
+      <PreFailureCondition>
+        Timer(preFailureTime)
+      </PreFailureCondition>
+    </Action>
+    
+    <Action  name="Build">
+      <Parameter name="preFailureTime" type="INTEGER"/>
+      <Parameter name="failureTime" type="INTEGER"/>
+      <Parameter name="type" type="ENTITY_TYPE"/>
+      <Parameter name="coor" type="COORDINATE"/>
+      <Parameter name="executionCycle" type="INTEGER"/>
+      <PreCondition>
+        <![CDATA[
+        GoldCondition(IntAttribute(DefaultEntity(type), "cost_gold")) && 
+        WoodCondition(IntAttribute(DefaultEntity(type), "cost_wood")) && 
+        EntityTypeExists(Type("s3.mmpm.entities.WPeasant"),player)
+        ]]>
+      </PreCondition>
+      <OnPreFailureCondition>
+        preFailureTime = 2000 + cycle
+      </OnPreFailureCondition>
+      <PreFailureCondition>
+        <!--cycle >= preFailureTime-->
+        Timer(preFailureTime)
+      </PreFailureCondition>
+      <OnSuccessCondition>
+        executionCycle = cycle
+      </OnSuccessCondition>
+      <OnFailureCondition>
+        failureTime = cycle + 1000 + IntAttribute(DefaultEntity(type), "cost_gold")
+      </OnFailureCondition>
+      <FailureCondition>
+        UnitKilled(Entity(,player,entityID)) || Timer(failureTime)
+      </FailureCondition>
+      <SuccessCondition>
+        NewUnitBy(type,Entity(,player,entityID),executionCycle)
+      </SuccessCondition>
+      <ValidCondition>
+        <![CDATA[
+        Reachable(Entity(,player,entityID),coor) && BuildingSpace(type,coor)
+        ]]>
+      </ValidCondition>
+    </Action>
+
+    <Action  name="Move">
+      <Parameter name="coor" type="COORDINATE"/>
+      <ValidCondition>
+        Reachable(Entity(,player,entityID),coor)
+      </ValidCondition>
+      <PreCondition>
+        EntityExists(Entity(,player,entityID))
+      </PreCondition>
+      <FailureCondition>
+        UnitKilled(Entity(,player,entityID))
+      </FailureCondition>
+      <SuccessCondition>
+        EntityAt(Entity(,player,entityID),coor)
+      </SuccessCondition>
+    </Action>
+
+    <Action  name="Repair">
+      <Parameter name="target" type="ENTITY_ID"/>
+      <PreCondition>
+        EntityExists(Entity(,player,entityID))
+      </PreCondition>
+      <FailureCondition>
+        UnitKilled(Entity(,player,entityID))
+      </FailureCondition>
+      <SuccessCondition>
+        <!-- status ACTION_REPAIR = 4 -->
+        Status(Entity(,player,entityID),4)
+      </SuccessCondition>
+    </Action>
+
+    <Action  name="ResourceLocation">
+      <Parameter name="coor" type="COORDINATE"/>
+      <Parameter name="preFailureTime" type="INTEGER"/>
+      <ValidCondition>
+        ResourceReachable(Entity(,player,entityID),coor)
+      </ValidCondition>
+      <OnPreFailureCondition>
+        preFailureTime = 800 + cycle
+      </OnPreFailureCondition>
+      <PreFailureCondition>
+        Timer(preFailureTime)
+      </PreFailureCondition>
+      <PostCondition>
+        <!-- if EntityInCoor(coor) instanceof WGoldMine GoldCondition(100) 
+             else if EntityInCoor(coor) instanceof WOTree WoodCondition(100) 
+             We assume if it is not a gold mine it is a tree -->
+        (StringAttribute(ClosestEntity(coor),"type") == "WGoldMine")? GoldCondition(100) : WoodCondition(100)
+      </PostCondition>
+      <PreCondition>
+        EntityTypeExists(Type("s3.mmpm.entities.WPeasant"),player)
+      </PreCondition>
+      <FailureCondition>
+        UnitKilled(Entity(,player,entityID))
+      </FailureCondition>
+      <SuccessCondition>
+        <!-- status ACTION_HARVEST = 3 -->
+        Status(Entity(,player,entityID),2)
+      </SuccessCondition>
+    </Action>
+
+    <Action  name="Stop">
+      <PreCondition>
+        EntityExists(Entity(,player,entityID))
+      </PreCondition>
+      <FailureCondition>
+        false
+      </FailureCondition>
+      <SuccessCondition>
+        true
+      </SuccessCondition>
+    </Action>
+
+    <Action  name="Train">
+      <Parameter name="preFailureTime" type="INTEGER"/>
+      <Parameter name="type" type="ENTITY_TYPE"/>
+      <Parameter name="executionCycle" type="INTEGER"/>
+      <PreCondition>
+        <![CDATA[
+        GoldCondition(IntAttribute(DefaultEntity(type), "cost_gold")) && 
+        WoodCondition(IntAttribute(DefaultEntity(type), "cost_wood")) && 
+        EntitiesNeededToBuildType(type,player)
+        ]]>
+      </PreCondition>
+      <OnPreFailureCondition>
+        preFailureTime = 800 + cycle
+      </OnPreFailureCondition>
+      <PreFailureCondition>
+        <!--cycle >= preFailureTime-->
+        Timer(preFailureTime)
+      </PreFailureCondition>
+      <FailureCondition>
+        UnitKilled(Entity(,player,entityID))
+      </FailureCondition>
+      <OnSuccessCondition>
+        executionCycle = cycle
+      </OnSuccessCondition>
+      <SuccessCondition>
+        NewUnitBy(type,Entity(,player,entityID),executionCycle)
+      </SuccessCondition>
+    </Action>
+
+  </ActionSet>
+
+  <SensorSet package="s3.mmpm.sensors">
+
+    <Sensor name="EntitiesNeededToBuildType" type="BOOLEAN">
+      <Parameter name="type" type="ENTITY_TYPE"/>
+      <Code>
+        <!-- Depending on the entity type we want to train we would need different entities exist..-->
+        <![CDATA[
+        (Type("s3.mmpm.entities.WPeasant") == type) ? EntityTypeExists(Type("s3.mmpm.entities.WTownhall"),player) :
+        (Type("s3.mmpm.entities.WFootman") == type) ? EntityTypeExists(Type("s3.mmpm.entities.WBarracks"),player) :
+        (Type("s3.mmpm.entities.WArcher")  == type) ? EntityTypeExists(Type("s3.mmpm.entities.WBarracks"),player) && EntityTypeExists(Type("s3.mmpm.entities.WLumberMill"),player) :
+        (Type("s3.mmpm.entities.WCatapult")  == type) ? EntityTypeExists(Type("s3.mmpm.entities.WBarracks"),player) && EntityTypeExists(Type("s3.mmpm.entities.WLumberMill"),player) && EntityTypeExists(Type("s3.mmpm.entities.WBlacksmith"),player) :
+        EntityTypeExists(Type("s3.mmpm.entities.WBarracks"),player) && EntityTypeExists(Type("s3.mmpm.entities.WLumberMill"),player) && EntityTypeExists(Type("s3.mmpm.entities.WBlacksmith"),player) && EntityTypeExists(Type("s3.mmpm.entities.WFortress"),player)
+        ]]>
+      </Code>
+    </Sensor>
+
+    <Sensor name="BuildingSpace" type="BOOLEAN">
+      <Parameter name="type" type="ENTITY_TYPE"/>
+      <Parameter name="coor" type="COORDINATE"/>
+      <Code language="java">
+        <!-- Building space depending on the entity Type.
+        For implementing that please see BuildingSpaceCondition.java
+        and Build.java becouse it should be a mix of them.-->
+        <![CDATA[
+        int size = 0;
+        Class<? extends gatech.mmpm.Entity> typeClass = getTypeParam(parameters,"type");
+        String type = typeClass.getSimpleName();
+        
+        if(type.toString().equals("WTower"))
+          size = 2;
+        else if(type.equals("WBlacksmith") ||
+                type.equals("WLumberMill") ||
+                type.equals("WStable") ||
+                type.equals("WBarracks"))
+          size = 3;
+        else if(type.equals("WTownhall") ||
+                type.equals("WFortress"))
+          size = 4;
+        
+        // We supposse that the parameter 'coor' is a cell coordinates.
+        int cellCoor[] = gs.getMap().toCellCoords(getCoorParam(parameters,"coor"));
+        int x = cellCoor[0];
+        int y = cellCoor[1];
+        
+        for(int i=0;i<size;i++) {
+			    for(int j=0;j<size;j++) {
+				    if (x+j<0 || y+i<0 || 
+                x+j>=((gatech.mmpm.TwoDMap)gs.getMap()).getSizeInDimension(0) || 
+                y+i>=((gatech.mmpm.TwoDMap)gs.getMap()).getSizeInDimension(1)) 
+              return 0.0f;
+				    gatech.mmpm.PhysicalEntity pe = gs.getEntityAt(new float[]{x+j,y+i,0});
+				    if (pe!=null && !(pe instanceof s3.mmpm.entities.WOGrass)) 
+              return 0.0f;
+			    }			
+		    }
+		    return 1.0f;
+        ]]>
+      </Code>
+    </Sensor>
+
+    <Sensor name="GoldCondition" type="BOOLEAN">
+      <Parameter name="minimum" type="INTEGER"/>
+      <Code>
+        GoldSensor() >= minimum
+      </Code>
+    </Sensor>
+
+    <Sensor name="GoldSensor" type="INTEGER">
+      <Code>
+        IntAttribute(Entity(Type("s3.mmpm.entities.WPlayer"), player), "gold")
+      </Code>
+    </Sensor>
+
+    <Sensor name="WoodCondition" type="BOOLEAN">
+      <Parameter name="minimum" type="INTEGER"/>
+      <Code>
+        WoodSensor() >= minimum
+      </Code>
+    </Sensor>
+    
+    <Sensor name="WoodSensor" type="INTEGER">
+      <Code>
+        IntAttribute(Entity(Type("s3.mmpm.entities.WPlayer"), player), "wood")
+      </Code>
+    </Sensor>
+
+    <Sensor name="NewUnitBy" type="BOOLEAN">
+      <Parameter name="type" type="ENTITY_TYPE"/>
+      <Parameter name="id" type="ENTITY_ID"/>
+      <Parameter name="executionCycle" type="INTEGER"/>
+      <Code language="java">
+        <!-- Iterating over the Entities, if it is a WUnit checks the type, creator 
+        (entity who create it) and cycle of creation. In case it fits -> true. -->
+        <![CDATA[
+		for(gatech.mmpm.Entity e:gs.getAllEntities()) {
+            if (e instanceof s3.mmpm.entities.WUnit) {
+                s3.mmpm.entities.WUnit u = (s3.mmpm.entities.WUnit)e;
+                gatech.mmpm.Entity e2 = getEntityParam(parameters,"id");
+                if (e2!=null &&
+                    u.getClass().equals(getTypeParam(parameters,"type")) &&
+                    u.getCreator().equals(e2.getentityID()) &&
+                    u.getCycle_created()>=getIntParam(parameters,"executionCycle")) {
+                    return 1.0f;
+                }
+            }
+        }
+        return 0.0f;
+        ]]>
+      </Code>
+    </Sensor>
+
+    <Sensor name="Reachable" type="BOOLEAN">
+      <Parameter name="entity" type="ENTITY_ID"/>
+      <Parameter name="coor" type="COORDINATE"/>
+      <Code language="java">
+        <![CDATA[
+		gatech.mmpm.PhysicalEntity peasant = (gatech.mmpm.PhysicalEntity)getEntityParam(parameters,"entity");
+	      float validCoordinates[] = (float [])gs.getMetaData("ReachableCondition" + peasant.getentityID());
+  		
+	      if (validCoordinates==null) {
+		      // Create the metadata
+
+		      gatech.mmpm.TwoDMap map = (gatech.mmpm.TwoDMap)gs.getMap();
+
+		      validCoordinates = new float[map.size()];
+		      for(int i = 0;i<map.size();i++) 
+           validCoordinates[i]=0.0f;
+  			
+		      gs.addMetaData("ReachableCondition" + peasant.getentityID(),validCoordinates);
+  			
+		      {
+			      java.util.List<int[]> open = new java.util.LinkedList<int[]>();
+			      java.util.HashSet<int[]> visited = new java.util.HashSet<int[]>();
+  				
+			      open.add(map.toCellCoords(peasant));
+			      visited.add(open.get(0));
+  				
+			      while(!open.isEmpty()) {
+				      int[] current = open.remove(0);
+  					
+				      gatech.mmpm.PhysicalEntity pe = gs.getEntityAt(map.toCoords(current));
+  					
+				      if (pe == peasant || pe == null ||
+					      pe instanceof s3.mmpm.entities.WOGrass) {
+  						
+					      if (current[0]>0) {
+						      int[] n = new int[]{current[0]-1,current[1],0};
+							  boolean contained = false;
+					    	  for(int []c:visited) if (java.util.Arrays.equals(c, n)) {contained = true;break;}
+						      if (!contained) {
+								  open.add(n);
+							      visited.add(n);
+							  }
+					      }
+					      if (current[1]>0) {
+						      int[] n = new int[]{current[0],current[1]-1,0};
+							  boolean contained = false;
+					    	  for(int []c:visited) if (java.util.Arrays.equals(c, n)) {contained = true;break;}
+						      if (!contained) {
+								  open.add(n);
+							      visited.add(n);
+							  }
+					      }
+					      if (current[0]<map.getSizeInDimension(0)-1) {
+						      int[] n = new int[]{current[0]+1,current[1],0};
+							  boolean contained = false;
+					    	  for(int []c:visited) if (java.util.Arrays.equals(c, n)) {contained = true;break;}
+						      if (!contained) {
+								  open.add(n);
+							      visited.add(n);
+							  }
+					      }
+					      if (current[1]<map.getSizeInDimension(1)-1) {
+						      int[] n = new int[]{current[0],current[1]+1,0};
+							  boolean contained = false;
+					    	  for(int []c:visited) if (java.util.Arrays.equals(c, n)) {contained = true;break;}
+						      if (!contained) {
+								  open.add(n);
+							      visited.add(n);
+							  }
+					      }
+					      validCoordinates[map.toCell(current)]=1.0f;				
+                    
+				      } // if (pe == peasant || pe instanceof s3.mmpm.entities.WOGrass)
+			      } // while(!open.isEmpty())
+		      } 
+	      } // if (validCoordinates==null)
+  		
+	      return validCoordinates[gs.getMap().toCell(getCoorParam(parameters,"coor"))];	
+        ]]>
+      </Code>
+    </Sensor>
+
+    <Sensor name="ResourceReachable" type="BOOLEAN">
+      <Parameter name="entity" type="ENTITY_ID"/>
+      <Parameter name="coor" type="COORDINATE"/>
+      <Code language="java">
+        <![CDATA[
+		gatech.mmpm.PhysicalEntity peasant = (gatech.mmpm.PhysicalEntity)getEntityParam(parameters,"entity");
+	      float validCoordinates[] = (float [])gs.getMetaData("ResourceReachableCondition" + peasant.getentityID());
+  		
+	      if (validCoordinates==null) {
+		      // Create the metadata
+
+		      gatech.mmpm.TwoDMap map = (gatech.mmpm.TwoDMap)gs.getMap();
+
+		      validCoordinates = new float[map.size()];
+		      for(int i = 0;i<map.size();i++) 
+           validCoordinates[i]=0.0f;
+  			
+		      gs.addMetaData("ResourceReachableCondition" + peasant.getentityID(),validCoordinates);
+  			
+		      {
+			      java.util.List<int[]> open = new java.util.LinkedList<int[]>();
+			      java.util.List<int[]> closed = new java.util.LinkedList<int[]>();
+  				
+			      open.add(map.toCellCoords(peasant));
+  				
+			      while(!open.isEmpty()) {
+				      int[] current = open.remove(0);
+  					
+				      gatech.mmpm.PhysicalEntity pe = gs.getEntityAt(map.toCoords(current));
+  			
+				      if (pe == peasant || pe == null ||
+					      pe instanceof s3.mmpm.entities.WOGrass) {
+					      closed.add(current);
+  						
+					      if (current[0]>0) {
+						      int[] n = new int[]{current[0]-1,current[1],0};
+					    	  boolean contained1 = false, contained2 = false;;
+					    	  for(int []c:closed) if (java.util.Arrays.equals(c, n)) {contained1 = true;break;}
+					    	  if (!contained1) for(int []c:open) if (java.util.Arrays.equals(c, n)) {contained2 = true;break;}
+						      if (!contained1 && !contained2) open.add(n);
+					      }
+					      if (current[1]>0) {
+						      int[] n = new int[]{current[0],current[1]-1,0};
+					    	  boolean contained1 = false, contained2 = false;;
+					    	  for(int []c:closed) if (java.util.Arrays.equals(c, n)) {contained1 = true;break;}
+					    	  if (!contained1) for(int []c:open) if (java.util.Arrays.equals(c, n)) {contained2 = true;break;}
+						      if (!contained1 && !contained2) open.add(n);
+					      }
+					      if (current[0]<map.getSizeInDimension(0)-1) {
+						      int[] n = new int[]{current[0]+1,current[1],0};
+					    	  boolean contained1 = false, contained2 = false;;
+					    	  for(int []c:closed) if (java.util.Arrays.equals(c, n)) {contained1 = true;break;}
+					    	  if (!contained1) for(int []c:open) if (java.util.Arrays.equals(c, n)) {contained2 = true;break;}
+						      if (!contained1 && !contained2) open.add(n);
+					      }
+					      if (current[1]<map.getSizeInDimension(1)-1) {
+						      int[] n = new int[]{current[0],current[1]+1,0};
+					    	  boolean contained1 = false, contained2 = false;;
+					    	  for(int []c:closed) if (java.util.Arrays.equals(c, n)) {contained1 = true;break;}
+					    	  if (!contained1) for(int []c:open) if (java.util.Arrays.equals(c, n)) {contained2 = true;break;}
+						      if (!contained1 && !contained2) open.add(n);
+					      }
+				      } 
+            else if (pe instanceof s3.mmpm.entities.WOTree) 
+            {
+					      validCoordinates[map.toCell(current)]=1.0f;						
+				      } 
+            else if (pe instanceof s3.mmpm.entities.WGoldMine) 
+            {
+					      for(int i=0;i<3;i++) 
+              {
+						      for(int j=0;j<3;j++) 
+                {
+							      validCoordinates[map.toCell(new float[]{(pe.getx())+j,(pe.gety())+i,0})] = 1.0f;								
+						      }
+					      }
+				      }
+			      } // while(!open.isEmpty())
+		      }
+	      } // if (validCoordinates==null)
+  		
+	      return validCoordinates[gs.getMap().toCell(getCoorParam(parameters,"coor"))];	
+        ]]>
+      </Code>
+    </Sensor>
+
+    <Sensor name="Status" type="BOOLEAN">
+      <Parameter name="entity" type="ENTITY_ID"/>
+      <Parameter name="status" type="INTEGER"/>
+      <Code>
+        IntAttribute(entity, "status") == status
+      </Code>
+    </Sensor>
+
+    <Sensor name="Attacked" type="BOOLEAN">
+      <Parameter name="id" type="ENTITY_ID"/>
+      <Code>
+        IntAttribute(id, "cycle_last_attacked") > cycle-50
+      </Code>
+    </Sensor>
+
+    <Sensor name="BuildingComplete" type="BOOLEAN">
+      <Parameter name="type" type="ENTITY_TYPE"/>
+      <Parameter name="coor" type="COORDINATE"/>
+      <Code>
+        EntityTypeExists(type,player) ?
+        DistanceEC(ClosestEntity(coor,type,player), coor) == 0 :
+        false
+      </Code>
+    </Sensor>
+
+    <Sensor name="UnitKilled" type="BOOLEAN">
+      <Parameter name="id" type="ENTITY_ID"/>
+      <Code>
+        EntityExists(id) == false
+      </Code>
+    </Sensor>
+
+    <Sensor name="HaveUnit" type="BOOLEAN">
+      <Parameter name="type" type="ENTITY_TYPE"/>
+      <Code>
+        EntityTypeExists(type,player)
+      </Code>
+    </Sensor>
+
+    <Sensor name="NumberOfUnitsOfType" type="BOOLEAN">
+      <Parameter name="type" type="ENTITY_TYPE"/>
+      <Parameter name="owner" type="PLAYER"/>
+      <Parameter name="minimum" type="INTEGER"/>
+      <Code>
+        (NumberOfEntities(type,owner) >= minimum) ? 1.0 : FLOAT(minimum) / FLOAT(NumberOfEntities(type,owner))
+      </Code>
+    </Sensor>
+
+    <Sensor name="NumberOfNonNeutralEntities" type="INTEGER">
+      <Parameter name="type" type="ENTITY_TYPE"/>
+      <Parameter name="owner" type="PLAYER"/>
+      <Code language="java">
+        <![CDATA[
+		Class<? extends gatech.mmpm.Entity> type = getTypeParam(parameters,"type");
+		String owner = getStringParam(parameters,"owner");
+
+		int count = 0;
+
+		for(gatech.mmpm.Entity e:gs.getAllEntities())
+		{
+			if (e.getowner()!=null && !(e instanceof s3.mmpm.entities.WPlayer)) {
+				if( (type == null || type == e.getClass()) &&
+					(owner == null || owner.equals(e.getowner())) )
+				{
+					count++;
+				}
+			}
+		}
+		return count;
+		]]>
+      </Code>
+    </Sensor>
+
+    <Sensor name="PlayerExists" type="BOOLEAN">
+      <Parameter name="owner" type="PLAYER"/>
+      <Code>
+        EntityTypeExists(Type("s3.mmpm.entities.WPlayer"),owner)
+      </Code>
+    </Sensor>
+    
+	</SensorSet>
+
+	<GoalSet package="s3.mmpm.goals">
+    <WinGoal name="WinGoal">
+      <Code>
+        NumberOfNonNeutralEntities()==0 ? 0.5 : FLOAT(NumberOfNonNeutralEntities(,player))/FLOAT(NumberOfNonNeutralEntities())
+      </Code>
+    </WinGoal>
+
+    <Goal name="HaveWArcher">
+      <Code>
+        HaveUnit(Type("s3.mmpm.entities.WArcher"))
+      </Code>
+    </Goal>
+
+    <Goal name="HaveWCatapult">
+      <Code>
+        HaveUnit(Type("s3.mmpm.entities.WCatapult"))
+      </Code>
+    </Goal>
+
+    <Goal name="HaveWLumberMill">
+      <Code>
+        HaveUnit(Type("s3.mmpm.entities.WLumberMill"))
+      </Code>
+    </Goal>
+
+    <Goal name="HaveWFootman">
+      <Code>
+        HaveUnit(Type("s3.mmpm.entities.WFootman"))
+      </Code>
+    </Goal>
+
+    <Goal name="HaveWFortress">
+      <Code>
+        HaveUnit(Type("s3.mmpm.entities.WFortress"))
+      </Code>
+    </Goal>
+
+    <Goal name="HaveWBarracks">
+      <Code>
+        HaveUnit(Type("s3.mmpm.entities.WBarracks"))
+      </Code>
+    </Goal>
+
+    <Goal name="HaveWKnight">
+      <Code>
+        HaveUnit(Type("s3.mmpm.entities.WKnight"))
+      </Code>
+    </Goal>
+
+    <Goal name="HaveWPeasant">
+      <Code>
+        HaveUnit(Type("s3.mmpm.entities.WPeasant"))
+      </Code>
+    </Goal>
+
+    <Goal name="HaveWStable">
+      <Code>
+        HaveUnit(Type("s3.mmpm.entities.WStable"))
+      </Code>
+    </Goal>
+
+    <Goal name="HaveWTownhall">
+      <Code>
+        HaveUnit(Type("s3.mmpm.entities.WTownhall"))
+      </Code>
+    </Goal>
+
+    <Goal name="HaveWTower">
+      <Code>
+        HaveUnit(Type("s3.mmpm.entities.WTower"))
+      </Code>
+    </Goal>
+    
+    <Goal name="HaveWBlacksmith">
+      <Code>
+        HaveUnit(Type("s3.mmpm.entities.WBlacksmith"))
+      </Code>
+    </Goal>
+	</GoalSet>
+
+	<EntitySet package="s3.mmpm.entities">
+     
+		<Entity>
+			<Name>WUnit</Name>
+			<Super>PhysicalEntity</Super>
+			<Features>
+				<Feature>
+					<Name>max_hitpoints</Name>
+					<cardinality>single</cardinality>
+					<DataType>int</DataType>
+				</Feature>
+				<Feature>
+					<Name>current_hitpoints</Name>
+					<cardinality>single</cardinality>
+					<DataType>int</DataType>
+				</Feature>
+				<Feature>
+					<Name>status</Name>
+					<cardinality>single</cardinality>
+					<DataType>String</DataType>
+				</Feature>
+				<Feature>
+					<Name>cost_gold</Name>
+					<cardinality>single</cardinality>
+					<DataType>int</DataType>
+				</Feature>
+				<Feature>
+					<Name>cost_wood</Name>
+					<cardinality>single</cardinality>
+					<DataType>int</DataType>
+				</Feature>
+				<Feature>
+					<Name>cost_oil</Name>
+					<cardinality>single</cardinality>
+					<DataType>int</DataType>
+				</Feature>
+				<Feature>
+					<Name>attack</Name>
+					<cardinality>single</cardinality>
+					<DataType>int</DataType>
+				</Feature>
+				<Feature>
+					<Name>range</Name>
+					<cardinality>single</cardinality>
+					<DataType>int</DataType>
+				</Feature>
+				<Feature>
+					<Name>cycle_created</Name>
+					<cardinality>single</cardinality>
+					<DataType>int</DataType>
+					<DefaultValue>0</DefaultValue>
+				</Feature>
+				<Feature>
+					<Name>cycle_last_attacked</Name>
+					<cardinality>single</cardinality>
+					<DataType>int</DataType>
+					<DefaultValue>-1</DefaultValue>
+				</Feature>
+				<Feature>
+					<Name>creator</Name>
+					<cardinality>single</cardinality>
+					<DataType>String</DataType>
+					<DefaultValue></DefaultValue>
+				</Feature>
+			</Features>
+		</Entity>
+
+		<Entity>
+			<Name>WPlayer</Name>
+			<Features>
+				<Feature>
+					<Name>race</Name>
+					<cardinality>single</cardinality>
+					<DataType>String</DataType>
+				</Feature>
+				<Feature>
+					<Name>gold</Name>
+					<cardinality>single</cardinality>
+					<DataType>int</DataType>
+				</Feature>
+				<Feature>
+					<Name>wood</Name>
+					<cardinality>single</cardinality>
+					<DataType>int</DataType>
+				</Feature>
+				<Feature>
+					<Name>oil</Name>
+					<cardinality>single</cardinality>
+					<DataType>int</DataType>
+				</Feature>
+				<Feature>
+					<Name>research</Name>
+					<cardinality>list</cardinality>
+					<DataType>String</DataType>
+				</Feature>
+			</Features>
+		</Entity>
+
+		<Entity>
+			<Name>WTroop</Name>
+			<Super>WUnit</Super>
+			<Features>
+				<Feature>
+					<Name>speed</Name>
+					<cardinality>single</cardinality>
+					<DataType>int</DataType>
+				</Feature>
+				<Feature>
+					<Name>width</Name>
+					<DefaultValue>1</DefaultValue>
+				</Feature>
+				<Feature>
+					<Name>length</Name>
+					<DefaultValue>1</DefaultValue>
+				</Feature>
+			</Features>
+		</Entity>
+
+		<Entity>
+			<Name>WBuilding</Name>
+			<Super>WUnit</Super>
+			<Features>
+			</Features>
+		</Entity>
+		
+		<Entity>
+			<Name>WWall</Name>
+			<Super>WBuilding</Super>
+			<Features>
+				<Feature>
+					<Name>max_hitpoints</Name>
+					<DefaultValue>100</DefaultValue>
+				</Feature>
+				<Feature>
+					<Name>width</Name>
+					<DefaultValue>1</DefaultValue>
+				</Feature>
+				<Feature>
+					<Name>length</Name>
+					<DefaultValue>1</DefaultValue>
+				</Feature>
+			</Features>
+		</Entity>
+		
+		<Entity>
+			<Name>WGoldMine</Name>
+			<Super>WBuilding</Super>
+			<Features>
+				<Feature>
+					<Name>max_hitpoints</Name>
+					<DefaultValue>25500</DefaultValue>
+				</Feature>
+				<Feature>
+					<Name>remaining_gold</Name>
+					<cardinality>single</cardinality>
+					<DataType>int</DataType>
+				</Feature>
+				<Feature>
+					<Name>width</Name>
+					<DefaultValue>3</DefaultValue>
+				</Feature>
+				<Feature>
+					<Name>length</Name>
+					<DefaultValue>3</DefaultValue>
+				</Feature>
+
+			</Features>
+		</Entity>
+
+		<Entity>
+			<Name>WTower</Name>
+			<Super>WBuilding</Super>
+			<Features>
+				<Feature>
+					<Name>max_hitpoints</Name>
+					<DefaultValue>110</DefaultValue>
+				</Feature>
+				<Feature>
+					<Name>width</Name>
+					<DefaultValue>2</DefaultValue>
+				</Feature>
+				<Feature>
+					<Name>length</Name>
+					<DefaultValue>2</DefaultValue>
+				</Feature>
+				<Feature>
+					<Name>cost_gold</Name>
+					<DefaultValue>900</DefaultValue>
+				</Feature>
+				<Feature>
+					<Name>cost_wood</Name>
+					<DefaultValue>300</DefaultValue>
+				</Feature>
+				<Feature>
+					<Name>cost_oil</Name>
+					<DefaultValue>0</DefaultValue>
+				</Feature>
+			</Features>
+		</Entity>
+
+		<Entity>
+			<Name>WFootman</Name>
+			<Super>WTroop</Super>
+			<Features>
+				<Feature>
+					<Name>max_hitpoints</Name>
+					<DefaultValue>60</DefaultValue>
+				</Feature>
+				<Feature>
+					<Name>width</Name>
+					<DefaultValue>1</DefaultValue>
+				</Feature>
+				<Feature>
+					<Name>length</Name>
+					<DefaultValue>1</DefaultValue>
+				</Feature>
+				<Feature>
+					<Name>cost_gold</Name>
+					<DefaultValue>600</DefaultValue>
+				</Feature>
+				<Feature>
+					<Name>cost_wood</Name>
+					<DefaultValue>0</DefaultValue>
+				</Feature>
+				<Feature>
+					<Name>cost_oil</Name>
+					<DefaultValue>0</DefaultValue>
+				</Feature>
+			</Features>
+			<Actions>
+					<Action name="Move"/>
+					<Action name="Attack"/>
+					<Action name="AttackLocation"/>
+					<Action name="Stop"/>
+			</Actions>	
+		</Entity>
+    
+		<Entity>
+			<Name>WPeasant</Name>
+			<Super>WTroop</Super>
+			<Anims>
+				<Anim>peasant</Anim>
+			</Anims>
+			<Features>
+				<Feature>
+					<Name>max_hitpoints</Name>
+					<DefaultValue>30</DefaultValue>
+				</Feature>
+				<Feature>
+					<Name>width</Name>
+					<DefaultValue>1</DefaultValue>
+				</Feature>
+				<Feature>
+					<Name>length</Name>
+					<DefaultValue>1</DefaultValue>
+				</Feature>
+				<Feature>
+					<Name>cost_gold</Name>
+					<DefaultValue>400</DefaultValue>
+				</Feature>
+				<Feature>
+					<Name>cost_wood</Name>
+					<DefaultValue>0</DefaultValue>
+				</Feature>
+				<Feature>
+					<Name>cost_oil</Name>
+					<DefaultValue>0</DefaultValue>
+				</Feature>
+				<Feature>
+					<Name>carriedGold</Name>
+					<cardinality>single</cardinality>
+					<DataType>int</DataType>
+				</Feature>
+				<Feature>
+					<Name>carriedWood</Name>
+					<cardinality>single</cardinality>
+					<DataType>int</DataType>
+				</Feature>
+			</Features>
+			<Actions>
+					<Action name="Move"/>
+					<Action name="Attack"/>
+					<Action name="AttackLocation"/>
+					<Action name="Stop"/>
+					<Action name="Build"/>
+					<Action name="Repair"/>
+					<Action name="ResourceLocation"/>
+			</Actions>	
+		</Entity>
+    
+		<Entity>
+			<Name>WCatapult</Name>
+			<Super>WTroop</Super>
+			<Features>
+				<Feature>
+					<Name>max_hitpoints</Name>
+					<DefaultValue>110</DefaultValue>
+				</Feature>
+				<Feature>
+					<Name>width</Name>
+					<DefaultValue>1</DefaultValue>
+				</Feature>
+				<Feature>
+					<Name>length</Name>
+					<DefaultValue>1</DefaultValue>
+				</Feature>
+				<Feature>
+					<Name>cost_gold</Name>
+					<DefaultValue>900</DefaultValue>
+				</Feature>
+				<Feature>
+					<Name>cost_wood</Name>
+					<DefaultValue>300</DefaultValue>
+				</Feature>
+				<Feature>
+					<Name>cost_oil</Name>
+					<DefaultValue>0</DefaultValue>
+				</Feature>
+			</Features>
+			<Actions>
+					<Action name="Move"/>
+					<Action name="Attack"/>
+					<Action name="AttackLocation"/>
+					<Action name="Stop"/>
+			</Actions>	
+		</Entity>
+    
+		<Entity>
+			<Name>WKnight</Name>
+			<Super>WTroop</Super>
+			<Features>
+				<Feature>
+					<Name>max_hitpoints</Name>
+					<DefaultValue>90</DefaultValue>
+				</Feature>
+				<Feature>
+					<Name>width</Name>
+					<DefaultValue>1</DefaultValue>
+				</Feature>
+				<Feature>
+					<Name>length</Name>
+					<DefaultValue>1</DefaultValue>
+				</Feature>
+				<Feature>
+					<Name>cost_gold</Name>
+					<DefaultValue>800</DefaultValue>
+				</Feature>
+				<Feature>
+					<Name>cost_wood</Name>
+					<DefaultValue>100</DefaultValue>
+				</Feature>
+				<Feature>
+					<Name>cost_oil</Name>
+					<DefaultValue>0</DefaultValue>
+				</Feature>
+			</Features>
+			<Actions>
+					<Action name="Move"/>
+					<Action name="Attack"/>
+					<Action name="AttackLocation"/>
+					<Action name="Stop"/>
+			</Actions>	
+		</Entity>
+    
+		<Entity>
+			<Name>WArcher</Name>
+			<Super>WTroop</Super>
+			<Features>
+				<Feature>
+					<Name>max_hitpoints</Name>
+					<DefaultValue>50</DefaultValue>
+				</Feature>
+				<Feature>
+					<Name>width</Name>
+					<DefaultValue>1</DefaultValue>
+				</Feature>
+				<Feature>
+					<Name>length</Name>
+					<DefaultValue>1</DefaultValue>
+				</Feature>
+				<Feature>
+					<Name>cost_gold</Name>
+					<DefaultValue>500</DefaultValue>
+				</Feature>
+				<Feature>
+					<Name>cost_wood</Name>
+					<DefaultValue>50</DefaultValue>
+				</Feature>
+				<Feature>
+					<Name>cost_oil</Name>
+					<DefaultValue>0</DefaultValue>
+				</Feature>
+			</Features>
+			<Actions>
+					<Action name="Move"/>
+					<Action name="Attack"/>
+					<Action name="AttackLocation"/>
+					<Action name="Stop"/>
+			</Actions>	
+		</Entity>
+    
+		<Entity>
+			<Name>WFarm</Name>
+			<Super>WBuilding</Super>
+			<Features>
+				<Feature>
+					<Name>max_hitpoints</Name>
+					<DefaultValue>400</DefaultValue>
+				</Feature>
+				<Feature>
+					<Name>width</Name>
+					<DefaultValue>2</DefaultValue>
+				</Feature>
+				<Feature>
+					<Name>length</Name>
+					<DefaultValue>2</DefaultValue>
+				</Feature>
+				<Feature>
+					<Name>cost_gold</Name>
+					<DefaultValue>500</DefaultValue>
+				</Feature>
+				<Feature>
+					<Name>cost_wood</Name>
+					<DefaultValue>250</DefaultValue>
+				</Feature>
+				<Feature>
+					<Name>cost_oil</Name>
+					<DefaultValue>0</DefaultValue>
+				</Feature>
+			</Features>
+		</Entity>
+    
+		<Entity>
+			<Name>WBarracks</Name>
+			<Super>WBuilding</Super>
+			<Features>
+				<Feature>
+					<Name>max_hitpoints</Name>
+					<DefaultValue>800</DefaultValue>
+				</Feature>
+				<Feature>
+					<Name>width</Name>
+					<DefaultValue>3</DefaultValue>
+				</Feature>
+				<Feature>
+					<Name>length</Name>
+					<DefaultValue>3</DefaultValue>
+				</Feature>
+				<Feature>
+					<Name>cost_gold</Name>
+					<DefaultValue>700</DefaultValue>
+				</Feature>
+				<Feature>
+					<Name>cost_wood</Name>
+					<DefaultValue>450</DefaultValue>
+				</Feature>
+				<Feature>
+					<Name>cost_oil</Name>
+					<DefaultValue>0</DefaultValue>
+				</Feature>
+			</Features>
+			<Actions>
+				<Action name="Train">
+					<Parameter name="type" value="s3.mmpm.entities.WFootman"/>
+				</Action>
+				<Action name="Train">
+					<Parameter name="type" value="s3.mmpm.entities.WArcher"/>
+				</Action>
+				<Action name="Train">
+					<Parameter name="type" value="s3.mmpm.entities.WKnight"/>
+				</Action>
+				<Action name="Train">
+					<Parameter name="type" value="s3.mmpm.entities.WCatapult"/>
+				</Action>
+			</Actions>	
+		</Entity>
+    
+		<Entity>
+			<Name>WStable</Name>
+			<Super>WBuilding</Super>
+			<Features>
+				<Feature>
+					<Name>max_hitpoints</Name>
+					<DefaultValue>500</DefaultValue>
+				</Feature>
+				<Feature>
+					<Name>width</Name>
+					<DefaultValue>3</DefaultValue>
+				</Feature>
+				<Feature>
+					<Name>length</Name>
+					<DefaultValue>3</DefaultValue>
+				</Feature>
+				<Feature>
+					<Name>cost_gold</Name>
+					<DefaultValue>1000</DefaultValue>
+				</Feature>
+				<Feature>
+					<Name>cost_wood</Name>
+					<DefaultValue>300</DefaultValue>
+				</Feature>
+				<Feature>
+					<Name>cost_oil</Name>
+					<DefaultValue>0</DefaultValue>
+				</Feature>
+			</Features>
+		</Entity>
+    
+		<Entity>
+			<Name>WTownhall</Name>
+			<Super>WBuilding</Super>
+			<Features>
+				<Feature>
+					<Name>max_hitpoints</Name>
+					<DefaultValue>1200</DefaultValue>
+				</Feature>
+				<Feature>
+					<Name>width</Name>
+					<DefaultValue>4</DefaultValue>
+				</Feature>
+				<Feature>
+					<Name>length</Name>
+					<DefaultValue>4</DefaultValue>
+				</Feature>
+				<Feature>
+					<Name>cost_gold</Name>
+					<DefaultValue>1200</DefaultValue>
+				</Feature>
+				<Feature>
+					<Name>cost_wood</Name>
+					<DefaultValue>800</DefaultValue>
+				</Feature>
+				<Feature>
+					<Name>cost_oil</Name>
+					<DefaultValue>0</DefaultValue>
+				</Feature>
+			</Features>
+			<Actions>
+				<Action name="Train">
+					<Parameter name="type" value="s3.mmpm.entities.WPeasant"/>
+				</Action>
+			</Actions>	
+		</Entity>
+    
+		<Entity>
+			<Name>WLumberMill</Name>
+			<Super>WBuilding</Super>
+			<Features>
+				<Feature>
+					<Name>max_hitpoints</Name>
+					<DefaultValue>600</DefaultValue>
+				</Feature>
+				<Feature>
+					<Name>width</Name>
+					<DefaultValue>3</DefaultValue>
+				</Feature>
+				<Feature>
+					<Name>length</Name>
+					<DefaultValue>3</DefaultValue>
+				</Feature>
+				<Feature>
+					<Name>cost_gold</Name>
+					<DefaultValue>600</DefaultValue>
+				</Feature>
+				<Feature>
+					<Name>cost_wood</Name>
+					<DefaultValue>450</DefaultValue>
+				</Feature>
+				<Feature>
+					<Name>cost_oil</Name>
+					<DefaultValue>0</DefaultValue>
+				</Feature>
+			</Features>
+		</Entity>
+    
+		<Entity>
+			<Name>WBlacksmith</Name>
+			<Super>WBuilding</Super>
+			<Features>
+				<Feature>
+					<Name>max_hitpoints</Name>
+					<DefaultValue>775</DefaultValue>
+				</Feature>
+				<Feature>
+					<Name>width</Name>
+					<DefaultValue>3</DefaultValue>
+				</Feature>
+				<Feature>
+					<Name>length</Name>
+					<DefaultValue>3</DefaultValue>
+				</Feature>
+				<Feature>
+					<Name>cost_gold</Name>
+					<DefaultValue>800</DefaultValue>
+				</Feature>
+				<Feature>
+					<Name>cost_wood</Name>
+					<DefaultValue>450</DefaultValue>
+				</Feature>
+				<Feature>
+					<Name>cost_oil</Name>
+					<DefaultValue>100</DefaultValue>
+				</Feature>
+			</Features>
+		</Entity>
+    
+		<Entity>
+			<Name>WFortress</Name>
+			<Super>WBuilding</Super>
+			<Features>
+				<Feature>
+					<Name>max_hitpoints</Name>
+					<DefaultValue>1600</DefaultValue>
+				</Feature>
+				<Feature>
+					<Name>width</Name>
+					<DefaultValue>4</DefaultValue>
+				</Feature>
+				<Feature>
+					<Name>length</Name>
+					<DefaultValue>4</DefaultValue>
+				</Feature>
+				<Feature>
+					<Name>cost_gold</Name>
+					<DefaultValue>2500</DefaultValue>
+				</Feature>
+				<Feature>
+					<Name>cost_wood</Name>
+					<DefaultValue>1200</DefaultValue>
+				</Feature>
+				<Feature>
+					<Name>cost_oil</Name>
+					<DefaultValue>500</DefaultValue>
+				</Feature>
+			</Features>
+		</Entity>
+
+		<Entity>
+			<Name>WOMapEntity</Name>
+			<Super>PhysicalEntity</Super>
+			<Features>
+			</Features>
+		</Entity>
+
+		<Entity>
+			<Name>WOGrass</Name>
+			<Super>WOMapEntity</Super>
+			<Anims>
+				<Anim>grass</Anim>
+			</Anims>
+			<ShortName>.</ShortName>			
+			<Features>
+			</Features>
+		</Entity>
+
+		<Entity>
+			<Name>WOWater</Name>
+			<Anims>
+				<Anim>water</Anim>
+			</Anims>
+			<ShortName>w</ShortName>			
+			<Super>WOMapEntity</Super>
+			<Features>
+			</Features>
+		</Entity>
+
+		<Entity>
+			<Name>WOWall</Name>
+			<Super>WOMapEntity</Super>
+			<Features>
+			</Features>
+		</Entity>
+
+		<Entity>
+			<Name>WOTree</Name>
+			<Anims>
+				<Anim>tree</Anim>
+			</Anims>
+			<ShortName>t</ShortName>
+			<Super>WOMapEntity</Super>
+			<Features>
+			</Features>
+		</Entity>
+
+		<Entity>
+			<Name>WOConstruction</Name>
+			<Super>WOMapEntity</Super>
+			<Features>
+			</Features>
+		</Entity>
+
+    </EntitySet>
+</Domain>

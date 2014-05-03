@@ -1,0 +1,147 @@
+<gamestate>
+	<entity id="0">
+		<type>map</type>
+		<width>128</width>
+		<height>64</height>
+	    <background>
+          <row>......................ttt........tttt..ttt.............................................................tt........tttttttttt.....</row>
+          <row>......ttt.............ttt........ttttttttttt...............tttt........................................tt........tttttttttttt...</row>
+          <row>....ttttttt.......................ttttttttttt.............ttttt.....ttt.........................................ttttttttttttttt.</row>
+          <row>..tttttttttttt.....................tttttttttttt...........ttttt...ttttt.......................................tttttttttttttttttt</row>
+          <row>tttttttttttttt.......................tttttttttt.........tttttt...ttttt........................................tttttttttttttttttt</row>
+          <row>tttttttt.ttttt........................ttttttttttt......tttttt....tttt........................................tttttttt.......tttt</row>
+          <row>ttttt.....tttttt.......................tt.ttttttttt....ttttt.....ttttt......................................tttttttt............</row>
+          <row>tt.........ttttt............................ttttttt....ttttt......tttt....................................tttttttt..............</row>
+          <row>.............ttt...................tt.........ttttttt...ttttt.....tttt..............................ttt...tttttt................</row>
+          <row>.............ttt...................tt...........tttttt...tttt......ttttt............................ttt...ttttt.................</row>
+          <row>..............ttt....ttt................ttt.......tttt...ttttt.....ttttttt................tttt.tt.ttttt.........................</row>
+          <row>..tt..........ttt....tttt...............ttttt......ttt....tttt......tttttt................ttttttttttttt..................tttt...</row>
+          <row>.ttttt...............tttt................tttttt...........ttttt.......tttt..........ttt...tttttttttttt..................ttttttt.</row>
+          <row>tttttttt..............ttttt...tt..........ttttttt........tttttt......tttt........tttttt...ttttttttt...................tttttttttt</row>
+          <row>tttttttt...............ttttttttt............ttttttt......tttttt....tttttt.......ttttttt...............................tttttttttt</row>
+          <row>ttttttt.................tttttttt...ttt........tttttt....tttttt.....ttttt.......ttttttt................................tttttttttt</row>
+          <row>ttt.......................ttttt....ttt........tttttt....ttttttt...ttttt.......tttttttt.......................................ttt</row>
+          <row>ttt................................tttt........tttttt..tttttttttttttttt......tttttttt........................................ttt</row>
+          <row>t..................ttttt............tttt.......tttttttttttttttttttttttt.....ttttttttt...............ttttttttt.................tt</row>
+          <row>.................ttttttttt...........ttttt......tttttttttttttttttttttt.....tttttttt................tttttttttttttt.............tt</row>
+          <row>tt.............ttttttttttt...........ttttt.......tttttttttttttttttttt.....tttttttt................tttttttttttttttttttttttttt.ttt</row>
+          <row>tttttt....ttttttttttttttttttttt........tttt........tttttttttttttttt.......ttttttt..............ttttttttttttttttttttttttttttttttt</row>
+          <row>ttttttttttttttttttttttttttttttttt......tttttt.......ttttt.....ttt.........ttttttt............ttttttttttttttttttttttttttttttttttt</row>
+          <row>ttttttttttttttttt.ttt.ttttttttttt.......tttttt......tttt................tttttttt...........ttttttttttttt....tttttttttt.ttttttttt</row>
+          <row>ttttttttttttttt..........ttttttttttt.....ttttt......ttt................ttttttttt.........tttttttttttt.......................tttt</row>
+          <row>ttttttt.ttt................ttttttttt......ttttt........................ttttttttt.........tttttttttt..........................ttt</row>
+          <row>tttt.......................ttttttttttt....tttttt.......................tttttttt..........tttttttt.............................tt</row>
+          <row>ttt..........................tt.tttttt.....ttttt..........................................ttttt.................................</row>
+          <row>ttt...........tttttt............ttttt.....................................................................tttttttt..............</row>
+          <row>tt.......ttttttttttt............ttt...................................................................tttttttttttttttt..........</row>
+          <row>......tttttttttttttttttttt.......................................................tt................tttttttttttttttttttttttt.....</row>
+          <row>......tttttttttttttttttttt.............tt........................................ttttttttt.........tttttttttttttttttttttttt.....</row>
+          <row>.......ttttttttttttttttttt.......tttttttt..................................ttttttttttttttt.........ttttttttttttttttttttt........</row>
+          <row>..........tttttttttttttttt.......tttttttttttt..............................ttttttttttttttt.........ttttttttttttttt..............</row>
+          <row>...............ttttttttt.........tttttttttttt............................tttttttttttttttt...............ttttttt.................</row>
+          <row>.................tttt............ttttttttttttttt........................ttttttttttttttttt.......................................</row>
+          <row>...................................ttttttttttttt.......................tttttttttttt.............................................</row>
+          <row>tt.......................................ttttttttt...................tttttttttttt...............................................</row>
+          <row>tttt...tt.tttt....tttt....................tttttttt..................ttttttttttt.......................tttt.......tttttttt.......</row>
+          <row>tttttttttttttt..tttttt....tt...............tttttttt.................tttttttt......................tttttttttt..ttttttttttttttttt.</row>
+          <row>ttttttttttttttttttttttttttttttttt..........tttttttt.................tttttttt...............ttttttttttttttttttttttttttttttttttttt</row>
+          <row>ttttttttttttttttttttttttttttttttt..........tttttttt..................tttttt..........ttttttttttttttttttttttttttttttttttttttttttt</row>
+          <row>tttttttttttttttttttttttttttttttt...........tttttttt..................ttttt...........ttttttttttttttttttttttttttttttttttttttttttt</row>
+          <row>tttttttttttttttttt..tttttttt..............tttt..tt...................ttttttt..........tttttttttttttttttttttttttttttttttttttttttt</row>
+          <row>...........ttttttt........................tttt.......ttt..............tttttt................tttttttttttttttttttttttttttttttttt..</row>
+          <row>.............ttt.........................ttttt.......ttttttt....ttt....tttttt.........................tttttttt..................</row>
+          <row>........................................tttttt.......tttttttttttttt......ttttt..........................tttt....................</row>
+          <row>.....................................tttttttt........tttttttttttttt......ttttt..................................................</row>
+          <row>...................................tttttttttt.......ttttttttttttttttt......tttt................................................t</row>
+          <row>......tttttt...................ttttttttttttt........ttttt.ttttttttttt......tttt...............................tttttt...........t</row>
+          <row>.....tttttttttt..ttt...........tttttttttttt........ttttt..ttttt..tttt.......tttttt.....ttttttttttttttttttttttttttttttt.........t</row>
+          <row>.....tttttttttttttttt.tt......ttttttttttt.........tttttt..tttt....tt........ttttttt....tttttttttttttttttttttttttttttttt........t</row>
+          <row>.....ttttttttttttttttttttt...tttttttt............tttttt..ttttt....tttt......ttttttttt..tttttttttttttttttttttttttttttttt.........</row>
+          <row>.......tttt.tttttttttttttt...ttttt..............ttttt....tttt.....tttt.......tttttttt....tttttttttttttttttttttttttttt...........</row>
+          <row>...............tttttttt.......ttt...............tt.......tt........ttt.........tttttt.....ttttttttttttttttttttttttttt...........</row>
+          <row>.................tttt..............................................tttt..............................tttttttttttttttt...........</row>
+          <row>...........tt.......................................................ttt..........................................ttt............</row>
+          <row>..........ttt.......................................ttt......tttt................................................ttttt..........</row>
+          <row>........ttttt....................................tttttt....tttttttt..............................................tttttt........t</row>
+          <row>t.....tttttt..................................tttttttt.....tttttttttt.............................................tttttt.......t</row>
+          <row>t....tttttt.................ttt....ttt.......tttttttt....tttttttttttttt............................................ttttttt....tt</row>
+          <row>tt..ttttt..................ttttttttttt......ttttttt....tttttttttttttttt.............................................tttttttt..tt</row>
+          <row>tt..ttttt................ttttttttttttt......ttttt.....ttttttt.ttt...ttt..............................................ttttttttttt</row>
+          <row>tttttttt...............tttttttttttttt.......ttttt.....tttttt..ttt...tt............................................tttttttttttttt</row>
+          <row>tttttttt...............tttttttttttt.........tttt......tttttt......................................................tttttttttttttt</row>
+       </background>
+	</entity>
+	<entity id="14">
+		<type>WPlayer</type>
+		<gold>2000</gold>
+		<wood>1000</wood>
+		<owner>player1</owner>
+	</entity>
+	<entity id="15">
+		<type>WPlayer</type>
+		<gold>2000</gold>
+		<wood>1000</wood>
+		<owner>player2</owner>
+	</entity>
+
+    <entity id="3">
+		<type>WGoldMine</type>
+        <x>122</x>
+        <y>16</y>
+		<remaining_gold>100000</remaining_gold>
+		<current_hitpoints>25500</current_hitpoints>
+	</entity>
+
+    <entity id="7">
+		<type>WGoldMine</type>
+            <x>57</x>
+            <y>22</y>
+		<remaining_gold>100000</remaining_gold>
+		<current_hitpoints>25500</current_hitpoints>
+	</entity>
+	
+    <entity id="8">
+		<type>WGoldMine</type>
+            <x>60</x>
+            <y>43</y>
+		<remaining_gold>100000</remaining_gold>
+		<current_hitpoints>25500</current_hitpoints>
+	</entity>
+            
+    <entity id="9">
+		<type>WGoldMine</type>
+            <x>3</x>
+            <y>16</y>
+		<remaining_gold>100000</remaining_gold>
+		<current_hitpoints>25500</current_hitpoints>
+	</entity>
+            
+    <entity id="1">
+		<type>WTownhall</type>
+              <x>9</x>
+              <y>9</y>
+		<owner>player1</owner>
+		<current_hitpoints>2400</current_hitpoints>
+	</entity>
+    <entity id="2">
+		<type>WPeasant</type>
+              <x>9</x>
+              <y>16</y>
+		<owner>player1</owner>
+		<current_hitpoints>30</current_hitpoints>
+	</entity>
+    <entity id="5">
+		<type>WTownhall</type>
+              <x>115</x>
+              <y>9</y>
+		<owner>player2</owner>
+		<current_hitpoints>2400</current_hitpoints>
+	</entity>
+    <entity id="6">
+		<type>WPeasant</type>
+              <x>120</x>
+              <y>16</y>
+		<owner>player2</owner>
+		<current_hitpoints>30</current_hitpoints>
+	</entity>
+</gamestate>

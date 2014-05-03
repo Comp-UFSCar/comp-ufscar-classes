@@ -1,0 +1,3 @@
+		if (parameter.compareTo("<<<parameterName>>>") == 0)
+			set<<<casedParameterName>>>(value);
+		else 

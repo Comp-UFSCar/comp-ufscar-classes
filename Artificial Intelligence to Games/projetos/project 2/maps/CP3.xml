@@ -1,0 +1,82 @@
+<gamestate>
+	<entity id="0">
+		<type>map</type>
+		<width>40</width>
+		<height>32</height>
+	    <background>
+		  <row>.....ttttt..........tttttttttttttttttttt</row>
+		  <row>.....t................tttttttttttttttttt</row>
+		  <row>.........................ttttttttttttttt</row>
+		  <row>............................tttttttttttt</row>
+		  <row>t.............................tttttttttt</row>
+		  <row>t.............................tttttttttt</row>
+		  <row>t..............................ttttttttt</row>
+		  <row>t.................................tttttt</row>
+          <row>......................................tt</row>
+          <row>ttttttttt..............ttt..............</row>
+          <row>wtttttttttttttt.....tttttt.....tt.......</row>
+          <row>wwwwwwwwwwttttttttttttwwwww....www.....w</row>
+          <row>twwwwwwwwwwwwttttttwwwww.ww...wwwt....ww</row>
+          <row>tttttt..wwwwwwwwwwwww.........twww....ww</row>
+          <row>tt..........................ttwwwwww...w</row>
+          <row>tttt.............wwwwwwwwwwwwwwwwwww...w</row>
+          <row>tt........wwwwwwwwwwwww....twwwttt....ww</row>
+          <row>ttt..........................tww.....www</row>
+          <row>tttttt........................ww...wwwww</row>
+          <row>wwwwwwwwwww...wwwwwwwwww.....ww....wwwww</row>
+          <row>wwwwwtttttwwwwwtttttwwwwww...www.....www</row>
+          <row>tttttttttttttttttttttttt......wwww....ww</row>
+          <row>ttttt..tt...t...t....ttttt.....tt......w</row>
+          <row>........................................</row>
+		  <row>....................................tttt</row>
+		  <row>t..............................ttttttttt</row>
+		  <row>t.............................tttttttttt</row>
+		  <row>t.............................tttttttttt</row>
+		  <row>t...........................tttttttttttt</row>
+		  <row>.........................ttttttttttttttt</row>
+		  <row>.......t................tttttttttttttttt</row>
+		  <row>......tttttt........tttttttttttttttttttt</row>
+	    </background>	    
+	</entity>
+	<entity id="14">
+		<type>WPlayer</type>
+		<gold>2000</gold>
+		<wood>1500</wood>
+		<owner>player1</owner>
+	</entity>
+	<entity id="15">
+		<type>WPlayer</type>
+		<gold>2000</gold>
+		<wood>1500</wood>
+		<owner>player2</owner>
+	</entity>
+
+    <entity id="4">
+		<type>WGoldMine</type>
+        <x>0</x>
+        <y>0</y>
+		<remaining_gold>100000</remaining_gold>
+		<current_hitpoints>25500</current_hitpoints>
+	</entity>
+	<entity id="5">
+		<type>WGoldMine</type>
+        <x>0</x>
+        <y>28</y>
+		<remaining_gold>100000</remaining_gold>
+		<current_hitpoints>25500</current_hitpoints>
+	</entity>
+	<entity id="2">
+		<type>WPeasant</type>
+        <x>6</x>
+        <y>6</y>
+		<owner>player1</owner>
+		<current_hitpoints>30</current_hitpoints>
+	</entity>
+	<entity id="7">
+		<type>WPeasant</type>
+        <x>6</x>
+        <y>25</y>
+		<owner>player2</owner>
+		<current_hitpoints>30</current_hitpoints>
+	</entity>
+</gamestate>

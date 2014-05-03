@@ -1,0 +1,24 @@
+CC = g++
+MKDIR = mkdir
+
+SRCDIR = src
+BUILDDIR = build
+CFLAGS = -shared -Wl,-soname,libAmiCoPyJava.so.1 -fPIC
+INCLUDES = -I/usr/include/python2.6 -I/usr/lib/jvm/java/include -I/usr/lib/jvm/java/include/linux
+LFLAGS = -L/usr/lib/jvm/java/jre/lib -L/usr/lib/jvm/java/jre/lib/i386/server
+LIBS = -ljvm -lpthread -lz -lutil
+MAIN = $(BUILDDIR)/libAmiCoPyJava.so
+
+all: $(MAIN)
+
+$(MAIN):
+	${MKDIR} -p $(BUILDDIR)
+	$(CC) $(CFLAGS) $(INCLUDES) $(LFLAGS) $(LIBS) -o $(MAIN) $(SRCDIR)/PythonCallsJava.cc
+
+.PHONY: clean
+
+clean:
+	rm -f $(MAIN)
+
+# DO NOT DELETE THIS LINE
+

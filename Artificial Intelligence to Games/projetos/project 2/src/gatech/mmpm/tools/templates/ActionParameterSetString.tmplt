@@ -1,0 +1,7 @@
+
+	public void set<<<casedParameterName>>>(String rhs) {
+
+		_<<<parameterName>>> = (<<<parameterTypeClass>>>) 
+		          ActionParameterType.<<<parameterType>>>.fromString(rhs);
+
+	} // set<<<casedParameterName>>>(String)
