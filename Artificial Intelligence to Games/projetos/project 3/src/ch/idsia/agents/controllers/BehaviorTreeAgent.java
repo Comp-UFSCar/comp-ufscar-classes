@@ -56,6 +56,7 @@ public final class BehaviorTreeAgent extends BasicMarioAIAgent implements Agent 
                                                 .add(new NearFloatingPlatform())
                                                 .add(new IsGrounded())
                                                 .add(new Jump())
+                                                .add(new ValidJump())
                                         )
                                         // execute highest jump possible
                                         .add(new Sequence("Long jumper")

@@ -24,17 +24,29 @@ public class NearEnemy extends Task {
             case Sprite.KIND_GREEN_KOOPA:
                 return true;
         }
+
         return false;
     }
 
     @Override
     public boolean run(boolean[] _action, BehaviorTreeAgent _agent) {
-        int x = _agent.marioEgoRow();
-        int y = _agent.marioEgoCol();
+        int x, y;
 
-        return isCreature(_agent.enemies()[x][y + 1]) || isCreature(_agent.enemies()[x][y + 2])
-                || isCreature(_agent.enemies()[x - 1][y + 1]) || isCreature(_agent.enemies()[x - 2][y + 1])
-                || isCreature(_agent.enemies()[x + 1][y + 1]) || isCreature(_agent.enemies()[x + 2][y + 1]);
+        x = _agent.marioEgoRow() - 2;
+        while (x < _agent.marioEgoRow() + 3) {
+            y = _agent.marioEgoCol() - 2;
+            
+            while (y < _agent.marioEgoCol() + 3) {
+                if (isCreature(_agent.enemies()[x][y])) {
+                    return true;
+                }
+
+                y++;
+            }
+            x++;
+        }
+
+        return false;
     }
 
 }
