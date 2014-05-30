@@ -1,0 +1,21 @@
+<Characters>
+	<CharacterClass class="Warrior" super="PlayerCharacter" name="Warrior" >
+		<animation name="idle-left" dx="1" dy="1" period="8" looping="true" file="graphics.png">16,17</animation>
+		<animation name="idle-up" dx="1" dy="1" period="8" looping="true" file="graphics.png">16,17</animation>
+		<animation name="idle-right" dx="1" dy="1" period="8" looping="true" file="graphics.png">16,17</animation>
+		<animation name="idle-down" dx="1" dy="1" period="8" looping="true" file="graphics.png">16,17</animation>
+
+		<attribute name="gold" value="100"/>
+		<attribute name="hp" value="20"/>
+		<attribute name="mp" value="0"/>
+		<attribute name="attack" value="4"/>
+		<attribute name="defense" value="0"/>
+		<attribute name="attack_modifier" value="1.0"/>
+		<attribute name="defense_modifier" value="1.0"/>
+		<attribute name="canSwim" value="false"/>
+		<attribute name="walk_speed" value="16"/>
+
+		<onStart>
+		</onStart>		
+	</CharacterClass>
+</Characters>
