@@ -1,3 +1,0 @@
-Escopo: fact
-   n(parametro)
-Escopo: global
