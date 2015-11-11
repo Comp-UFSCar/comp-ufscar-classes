@@ -1,3 +1,0 @@
-		if (parameter.compareTo("<<<parameterName>>>") == 0)
-			return get<<<optionalString>>><<<casedParameterName>>>();
-		else 

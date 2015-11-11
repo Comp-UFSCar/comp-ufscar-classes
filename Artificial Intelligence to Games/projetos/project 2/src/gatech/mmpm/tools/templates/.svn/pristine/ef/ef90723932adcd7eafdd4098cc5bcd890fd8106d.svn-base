@@ -1,3 +1,0 @@
-		if (feature.compareTo("<<<featureName>>>") == 0)
-			return get<<<casedFeatureName>>>();
-		else 

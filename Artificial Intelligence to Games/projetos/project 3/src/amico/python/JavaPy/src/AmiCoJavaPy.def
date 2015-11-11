@@ -1,9 +1,0 @@
-EXPORTS
-	Java_ch_idsia_tools_amico_AmiCoJavaPy_initModule
-    Java_ch_idsia_tools_amico_AmiCoJavaPy_getName
-    Java_ch_idsia_tools_amico_AmiCoJavaPy_integrateObservation
-    Java_ch_idsia_tools_amico_AmiCoJavaPy_getAction
-    Java_ch_idsia_tools_amico_AmiCoJavaPy_giveIntermediateReward
-    Java_ch_idsia_tools_amico_AmiCoJavaPy_reset
-    Java_ch_idsia_tools_amico_AmiCoJavaPy_setObservationDetails
-    Java_ch_idsia_tools_amico_AmiCoJavaPy_finalizePythonEnvironment
