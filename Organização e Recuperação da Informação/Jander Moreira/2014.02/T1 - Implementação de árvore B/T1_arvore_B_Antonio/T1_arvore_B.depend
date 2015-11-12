@@ -1,0 +1,127 @@
+# depslib dependency file v1.0
+1410398507 source:g:\dropbox\faculdade\2014_fall\ori\t1 - implementa��o de �rvore b\t1_arvore_b\main.c
+	<stdio.h>
+	<stdlib.h>
+	"arvoreb.h"
+
+1410393701 "
+
+1410398524 g:\dropbox\faculdade\2014_fall\ori\t1 - implementa��o de �rvore b\t1_arvore_b\arvoreb.h
+	"no.h"
+
+1410398529 g:\dropbox\faculdade\2014_fall\ori\t1 - implementa��o de �rvore b\t1_arvore_b\no.h
+	"dado.h"
+	"config.h"
+
+1410393693 
+
+1410398533 g:\dropbox\faculdade\2014_fall\ori\t1 - implementa��o de �rvore b\t1_arvore_b\dado.h
+
+1410398515 source:g:\dropbox\faculdade\2014_fall\ori\t1 - implementa��o de �rvore b\t1_arvore_b\no.c
+	"no.h"
+
+1410398537 g:\dropbox\faculdade\2014_fall\ori\t1 - implementa��o de �rvore b\t1_arvore_b\config.h
+
+1410398519 source:g:\dropbox\faculdade\2014_fall\ori\t1 - implementa��o de �rvore b\t1_arvore_b\dado.c
+	"dado.h"
+
+1410398519 source:/media/thales/InternalData/Dropbox/Faculdade/2014_Fall/ORI/T1 - Implementação de árvore B/T1_arvore_B/dado.c
+	"dado.h"
+	"dado.h"
+
+1410398533 /media/thales/InternalData/Dropbox/Faculdade/2014_Fall/ORI/T1 - Implementação de árvore B/T1_arvore_B/dado.h
+
+1410391402 source:/media/thales/InternalData/Dropbox/Faculdade/2014_Fall/ORI/T1 - Implementação de árvore B/T1_arvore_B/main.c
+	<stdio.h>
+	<stdlib.h>
+	"arvoreb.h"
+
+1410118803 /media/thales/InternalData/Dropbox/Faculdade/2014_Fall/ORI/T1 - Implementação de árvore B/T1_arvore_B/arvoreb.h
+	"no.h"
+
+1410398529 /media/thales/InternalData/Dropbox/Faculdade/2014_Fall/ORI/T1 - Implementação de árvore B/T1_arvore_B/no.h
+	"dado.h"
+	"config.h"
+	"dado.h"
+	"config.h"
+
+1410398537 /media/thales/InternalData/Dropbox/Faculdade/2014_Fall/ORI/T1 - Implementação de árvore B/T1_arvore_B/config.h
+
+1410398515 source:/media/thales/InternalData/Dropbox/Faculdade/2014_Fall/ORI/T1 - Implementação de árvore B/T1_arvore_B/no.c
+	"no.h"
+	"no.h"
+
+1410484543 source:/home/thales/Documents/T1_arvore_B/dado.c
+	"dado.h"
+	"dado.h"
+
+1410458355 /home/thales/Documents/T1_arvore_B/dado.h
+
+1410489404 source:/home/thales/Documents/T1_arvore_B/main.c
+	<stdio.h>
+	<stdlib.h>
+	"arvoreb.h"
+	<stdio.h>
+	<stdlib.h>
+	"arvoreb.h"
+
+1410458343 /home/thales/Documents/T1_arvore_B/arvoreb.h
+	"no.h"
+	"no.h"
+
+1410458347 /home/thales/Documents/T1_arvore_B/no.h
+	"dado.h"
+	"config.h"
+	"dado.h"
+	"config.h"
+
+1410458361 /home/thales/Documents/T1_arvore_B/config.h
+
+1410489432 source:/home/thales/Documents/T1_arvore_B/no.c
+	"no.h"
+	"no.h"
+
+1410393693 source:/media/thales/InternalData/Dropbox/Faculdade/2014_Fall/ORI/T1 - Implementação de árvore B/T1_arvore_B_v2/dado.c
+	"dado.h"
+
+1410393662 /media/thales/InternalData/Dropbox/Faculdade/2014_Fall/ORI/T1 - Implementação de árvore B/T1_arvore_B_v2/dado.h
+
+1410393701 source:/media/thales/InternalData/Dropbox/Faculdade/2014_Fall/ORI/T1 - Implementação de árvore B/T1_arvore_B_v2/main.c
+	<stdio.h>
+	<stdlib.h>
+	"arvoreb.h"
+
+1410393686 /media/thales/InternalData/Dropbox/Faculdade/2014_Fall/ORI/T1 - Implementação de árvore B/T1_arvore_B_v2/arvoreb.h
+	"no.h"
+
+1410393679 /media/thales/InternalData/Dropbox/Faculdade/2014_Fall/ORI/T1 - Implementação de árvore B/T1_arvore_B_v2/no.h
+	"dado.h"
+	"config.h"
+
+1410393644 /media/thales/InternalData/Dropbox/Faculdade/2014_Fall/ORI/T1 - Implementação de árvore B/T1_arvore_B_v2/config.h
+
+1410393698 source:/media/thales/InternalData/Dropbox/Faculdade/2014_Fall/ORI/T1 - Implementação de árvore B/T1_arvore_B_v2/no.c
+	"no.h"
+
+1410495342 source:c:\users\a pedro\documents\ufscar\ori\2014\t1_arvore_b\t1_arvore_b\dado.c
+	"dado.h"
+
+1410469154 c:\users\a pedro\documents\ufscar\ori\2014\t1_arvore_b\t1_arvore_b\dado.h
+
+1410500204 source:c:\users\a pedro\documents\ufscar\ori\2014\t1_arvore_b\t1_arvore_b\main.c
+	<stdio.h>
+	<stdlib.h>
+	"arvoreb.h"
+
+1410469142 c:\users\a pedro\documents\ufscar\ori\2014\t1_arvore_b\t1_arvore_b\arvoreb.h
+	"no.h"
+
+1410469146 c:\users\a pedro\documents\ufscar\ori\2014\t1_arvore_b\t1_arvore_b\no.h
+	"dado.h"
+	"config.h"
+
+1410469160 c:\users\a pedro\documents\ufscar\ori\2014\t1_arvore_b\t1_arvore_b\config.h
+
+1410730979 source:c:\users\a pedro\documents\ufscar\ori\2014\t1_arvore_b\t1_arvore_b\no.c
+	"no.h"
+

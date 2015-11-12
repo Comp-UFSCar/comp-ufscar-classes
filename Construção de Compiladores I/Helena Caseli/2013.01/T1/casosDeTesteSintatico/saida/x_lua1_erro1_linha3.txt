@@ -1,0 +1,2 @@
+Erro: linha 3:3 mismatched input 'if' expecting {',', ')'}
+Fim da analise. Com erros sintaticos.

@@ -1,0 +1,7 @@
+Árvore é montada em um vetor. Pra saber os filhos de determinada posição:
+
+(i-2)/2 -->	i
+	      /   \
+	   2i+1   2i+2
+
+	

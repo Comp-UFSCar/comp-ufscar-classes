@@ -1,0 +1,3 @@
+Erro: linha 4:35 extraneous input ')' expecting {'local', 'while', 'if', 'break', 'do', 'function', 'for', 'return', 'repeat', 'end', NOME}
+Erro: linha 18:0 extraneous input 'end' expecting {<EOF>, 'local', 'while', 'if', 'break', 'do', 'function', 'for', 'return', 'repeat', NOME}
+Fim da analise. Com erros sintaticos.

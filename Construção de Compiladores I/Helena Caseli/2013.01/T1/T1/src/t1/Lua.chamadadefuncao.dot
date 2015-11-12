@@ -1,0 +1,27 @@
+digraph ATN {
+rankdir=LR;
+s25[fontsize=11, label="25", shape=doublecircle, fixedsize=true, width=.6];
+s275[fontsize=11,label="275", shape=circle, fixedsize=true, width=.55, peripheries=1];
+s274[fontsize=11,label="274", shape=circle, fixedsize=true, width=.55, peripheries=1];
+s273[fontsize=11,label="273", shape=circle, fixedsize=true, width=.55, peripheries=1];
+s272[fontsize=11,label="272", shape=circle, fixedsize=true, width=.55, peripheries=1];
+s279[fontsize=11,label="{&rarr;\n279\nd=18|{<p0>|<p1>}}", shape=record, fixedsize=false, peripheries=1];
+s278[fontsize=11,label="278", shape=circle, fixedsize=true, width=.55, peripheries=1];
+s277[fontsize=11,label="277", shape=circle, fixedsize=true, width=.55, peripheries=1];
+s276[fontsize=11,label="276", shape=circle, fixedsize=true, width=.55, peripheries=1];
+s24[fontsize=11,label="24", shape=circle, fixedsize=true, width=.55, peripheries=1];
+s280[fontsize=11,label="&larr;\n280", shape=circle, fixedsize=true, width=.55, peripheries=1];
+s271[fontsize=11,label="271", shape=circle, fixedsize=true, width=.55, peripheries=1];
+s24 -> s279 [fontname="Times-Italic", label="&epsilon;"];
+s279:p0 -> s271 [fontname="Times-Italic", label="&epsilon;"];
+s279:p1 -> s274 [fontname="Times-Italic", label="&epsilon;"];
+s271 -> s272 [fontsize=11, fontname="Courier", arrowsize=.7, label = "<expprefixo>", arrowhead = normal];
+s274 -> s275 [fontsize=11, fontname="Courier", arrowsize=.7, label = "<expprefixo>", arrowhead = normal];
+s272 -> s273 [fontsize=11, fontname="Courier", arrowsize=.7, label = "<args>", arrowhead = normal];
+s275 -> s276 [fontsize=11, fontname="Courier", arrowsize=.7, label = "':'", arrowhead = normal];
+s273 -> s280 [fontname="Times-Italic", label="&epsilon;"];
+s276 -> s277 [fontsize=11, fontname="Courier", arrowsize=.7, label = "NOME", arrowhead = normal];
+s280 -> s25 [fontname="Times-Italic", label="&epsilon;"];
+s277 -> s278 [fontsize=11, fontname="Courier", arrowsize=.7, label = "<args>", arrowhead = normal];
+s278 -> s280 [fontname="Times-Italic", label="&epsilon;"];
+}

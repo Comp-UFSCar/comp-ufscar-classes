@@ -1,0 +1,159 @@
+===========================CRIANDO AS TABELAS ==========================
+
+
+CREATE TABLE CURSO(
+       NumCurso DECIMAL(9) NOT NULL,
+       Nome CHAR(30) NOT NULL,
+       TotalCreditos DECIMAL(4) NOT NULL,
+       CONSTRAINT CHAVECURSO 
+         PRIMARY KEY (NumCurso)
+);
+
+CREATE TABLE ALUNO(
+       NumAluno DECIMAL(9) NOT NULL,
+       Nome CHAR(70) NOT NULL,
+       Endereco CHAR(70) NOT NULL,
+       Cidade CHAR(25) NOT NULL,
+       Telefone CHAR(25),
+       NumCurso DECIMAL(9) NOT NULL,
+       CONSTRAINT CHAVEALUNO 
+         PRIMARY KEY (NumAluno),
+       CONSTRAINT ESTRANGEIRACURSO
+         FOREIGN KEY (NumCurso) REFERENCES CURSO
+);
+
+CREATE TABLE DISCIPLINA(
+       NumDisp DECIMAL(9) NOT NULL,
+       Nome CHAR(30) NOT NULL,
+       QuantCreditos DECIMAL(9) NOT NULL,
+       CONSTRAINT CHAVEDISCIPLINA 
+         PRIMARY KEY (NumDisp)
+);
+
+CREATE TABLE PROFESSOR(
+       NumFunc DECIMAL(9) NOT NULL,
+       Nome CHAR(70) NOT NULL,
+       Admissao DATE NOT NULL,
+       AreaPesquisa CHAR(30),
+       CONSTRAINT CHAVEPROFESSOR 
+         PRIMARY KEY (NumFunc)
+);
+
+CREATE TABLE AULA(
+       NumAluno DECIMAL(9) NOT NULL,
+       NumDisp DECIMAL(9) NOT NULL,
+       NumFunc DECIMAL(9) NOT NULL,
+       Semestre CHAR(10) NOT NULL,
+       Nota DECIMAL(5,2) NOT NULL,       
+       CONSTRAINT CHAVEAULA 
+         PRIMARY KEY (NumAluno, NumDisp, NumFunc, Semestre),
+       CONSTRAINT ESTRANGEIRAALUNO
+         FOREIGN KEY (NumAluno) REFERENCES ALUNO,
+       CONSTRAINT ESTRANGEIRADISCIPLINA
+         FOREIGN KEY (NumDisp) REFERENCES DISCIPLINA,
+       CONSTRAINT ESTRANGEIRAPROFESSOR
+         FOREIGN KEY (NumFunc) REFERENCES PROFESSOR
+);
+
+CREATE TABLE DISCIPLINACURSO(
+       NumDisp DECIMAL(9) NOT NULL,
+       NumCurso DECIMAL(9) NOT NULL,
+       CONSTRAINT CHAVEDISPCURSO 
+         PRIMARY KEY (NumDisp, NumCurso),
+       CONSTRAINT ESTRANGEIRADISP
+         FOREIGN KEY (NumDisp) REFERENCES DISCIPLINA,
+       CONSTRAINT ESTRANGEIRACURSO
+         FOREIGN KEY (NumCurso) REFERENCES CURSO
+);
+
+
+===========================Exemplo de Inser��o dos dados (use sua criatividade) ==========================
+
+
+
+INSERT INTO CURSO VALUES (11, 'COMPUTACAO', 1000);
+
+
+INSERT INTO ALUNO VALUES (2222, 'JO�OZINHO', 'R. TIRADENTES', 'S�O CARLOS - SP', '(012)3456-7890', 11);
+
+
+INSERT INTO DISCIPLINA VALUES (1, 'BANCO DE DADOS', 60);
+
+
+INSERT INTO PROFESSOR VALUES (5555, 'JOSE', '01/01/1980','BANCO DE DADOS');
+
+
+INSERT INTO AULA VALUES (2222, 1, 5555, '01/2010', 9);
+
+
+INSERT INTO DISCIPLINACURSO VALUES (1, 11);
+
+
+
+Exemplo de Inser��o dos dados (use sua criatividade)
+
+
+===========================SUGESTOES para algumas consultas ==========================
+
+
+b)
+SELECT Nome, Telefone
+FROM ALUNO
+WHERE Cidade = 'S�O CARLOS - SP'
+ORDER BY Nome DESC;
+
+
+f)
+SELECT ALUNO.Nome
+FROM DISCIPLINA, ALUNO, AULA 
+WHERE (DISCIPLINA.Nome = 'Programa��o de computadores') AND
+      (AULA.Semestre = '01/2009') AND
+      (AULA.Nota < 7) AND
+      (ALUNO.NumAluno = AULA.NumAluno) AND
+      (AULA.NumDisp = DISCIPLINA.NumDisp);
+
+
+
+
+g)
+SELECT DISTINCT(PROFESSOR.Nome)
+FROM PROFESSOR, DISCIPLINA, AULA
+WHERE (DISCIPLINA.Nome = 'BANCO DE DADOS') AND
+      (PROFESSOR.NumFunc = AULA.NumFunc) AND
+      (AULA.NumDisp = DISCIPLINA.NumDisp);
+
+
+
+
+I)
+SELECT ALUNO.Nome, AULA.Nota
+FROM AULA, DISCIPLINA, ALUNO
+WHERE (DISCIPLINA.Nome = 'ENGENHARIA DE SOFTWARE') AND
+      (AULA.Semestre = '01/2010') AND
+      (ALUNO.NumAluno = AULA.NumAluno) AND 
+      (AULA.NumDisp = DISCIPLINA.NumDisp) AND
+      AULA.Nota IN (SELECT MAX(AULA.NOTA) FROM AULA, DISCIPLINA
+		    WHERE (DISCIPLINA.Nome = 'ENGENHARIA DE SOFTWARE') AND
+		    (AULA.Semestre = '01/2010') AND
+		    (AULA.NumDisp = DISCIPLINA.NumDisp))
+
+
+
+m)
+SELECT PROFESSOR.Nome, AVG(AULA.Nota)
+FROM AULA, PROFESSOR 
+WHERE (AULA.NumFunc = PROFESSOR.NumFunc) 
+AND AULA.SEMESTRE = '01/2010' 
+GROUP BY (PROFESSOR.NOME);
+
+
+
+
+
+
+
+
+
+
+
+

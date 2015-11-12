@@ -1,0 +1,5 @@
+Fim da analise. Sem erros sintaticos.
+Tabela de simbolos:
+lexema=fact, tipo=FUNCAO
+lexema=n, tipo=VARIAVEL
+lexema=print, tipo=FUNCAO

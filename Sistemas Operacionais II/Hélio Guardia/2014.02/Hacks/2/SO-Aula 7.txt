@@ -1,0 +1,78 @@
+﻿Threads
+
+
+É uma linha de execução associada a um processo.
+
+
+Function decomposition: Executar cada função em uma thread (ou core).
+
+
+Domain or data decomposition: Executar a mesma operação sobre blocos de dados diferentes.
+
+
+Todas as threads apontam para uma mesma área de código.
+
+
+MEMÓRIA DO PROCESSO:
+
+
+	CÓDIGO
+
+	DADOS ESTÁTICOS
+
+	HEAP
+
+
+	|
+	V
+
+
+
+	^
+	|
+	STACK
+
+
+
+CONTEXTO DE HARDWARE:
+
+Registradores
+
+
+Thread 1:
+CS
+EIP
+ESP (Pilha)
+
+
+Thread 2:
+CS
+EIP
+ESP (Pilha)
+
+
+Os registradores das threads apontam para diferentes locais da área de código de um mesmo processo.
+
+
+Cada processo possui uma ou mais threads (há pelo menos 1 thread associada com a função main).
+
+
+Com o suporte de threads pelo kernell, cada thread passou a ser uma entidade escalonável independente. 
+(PTHREAD_SCOPE_SYSTEM)
+
+
+Cada Thread precisa ter uma pilha para ter controle do que foi empilhado e do que será desempilhado (por exemplo numa chamada de funcao).
+
+
+Quando a funcao main acaba (_exit), o processo acaba e com ele acabam as threads associadas. Por isso, na funcao main deve-se esperar pelas threads em execucao. A thread nao pode executar um _exit pois isso causaria o termino do processo, por isso devem terminar com pthread_exit.
+
+
+O kernell mantém filas separadas de threads para cada core, gerando uma melhor eficiencia do uso da memória cache.
+
+
+O Linux possui um PID e um PID effective... Cada PID é associado a uma thread, diferente do effective PID que é associado a cada processo.
+
+
+Leitura de arquivos normalmente é feita de maneira sequencial já que seria necessário ajustar o offset do arquivo usando lseek e esse procedimento é bloqueante, não compensando usar threads.
+
+

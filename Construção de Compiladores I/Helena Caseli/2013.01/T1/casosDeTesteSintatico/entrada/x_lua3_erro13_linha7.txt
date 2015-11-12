@@ -1,0 +1,7 @@
+-- funcao que devolve o maior de dois numeros
+function maior(a,b)
+   if a > b then return a end
+   return b
+end;
+
+print(maior 3,8))

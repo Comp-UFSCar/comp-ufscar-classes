@@ -1,0 +1,57 @@
+﻿INTERRUPÇÃO
+
+
+Carregamento de SO: bios, apos o power on self test POST (test de hardware), verifica a ordem da sequencia de boot e manda um comando para transferir um bloco de dados (512 bytes) desse dispositivo para a memoria e verifica se esse bloco tem uma assinatura de boot loader.  
+O boot loader carrega outros arquivos dando boot no SO.
+
+
+
+Interrupcao: é uma lógica de circuitos e nao um software.
+Cada core possui um Local APIC para tratar das interrupcoes que por sua vez sao ligadas na IO APIC que é ligada nos controladores de IO que disparam as interrupcoes. Entao a IO APIC define qual local APIC vai lidar com a interrupcao passando para qualquer Local APIC que nao está mascarada.
+
+No boot o SO coloca a rotina para tratar a INT e ajusta os respectivos enderecos no vetor de INT.
+
+
+
+Troca de Contexto:
+
+Salvar contexto: push dos flags e PC para a pilha (memoria apontada pela SP), ou seja, salvar registradores.
+
+Restauracao de contexto: o processador realiza um pop da pilha do PC e dos flags.
+ 
+
+
+Tabela de página:
+No boot o SO também ajusta a tabela de página. A MMU ajusta o endereco lógico para o endereco fisico.
+
+
+
+Anéis de execucao: níveis de privilégio para evitar que um processo possa interagir com o hardware ou outros processos diretamente. Quando isso acontece, ocorre uma exceção.
+boot no nivel 0 (direto), assim como carregamento do SO. Após carregamento, o SO ajusta o nivel de privilégio para o nível mais baixo (nível 3).
+Instrucoes de in e out nao sao possiveis no modo usuário (nível 3), assim como o pop flags (pois permitiria o usuario alterar o proprio nivel de privilegio).
+
+
+
+Instrucao de interrupcao: chamada de servico de SO (chamadas de sistemas) pois o programa nao sabe onde o SO está na memória e nao é interessante o endereço do SO ser fixo. 
+
+
+syscall/sysenter: instrucoes do processador para chamar alguma rotina do SO através de um registrador do processador.
+
+
+Timer: outra interrupcao externa para o SO retomar o controle periodicamente da máquina. É um modo de retomar o controle quando há um aplicativo executando e nao há nenhuma interrupcao. Uma aplicacao da interrupcao pelo timer é para verificar se o tempo para executar determinada aplicacao já se esgotou.
+
+
+
+COMPUTAÇÃO PARALELA
+
+: Processos em maquinas separadas se cooperam numa mesma maquina atraves de memoria compartilhada ou, em maquinas diferentes, através de arquiteturas cliente servidor ou peer-to-peer.
+
+Decomposicao funcional ou decomposicao de dominio: quando vc divide os dados por partes seria decomposicao por dominio (ex. dividir uma imagem em quatro partes) e a funcional é a decomposicao por unidade de funcionamento (ex. editor de texto que ao mesmo tempo que processa o texto sendo escrito, também faz o processamento do corretor ortográfico).
+
+
+SHUTDOWN ORDENADO: Para evitar que a maquina desligue com dados em buffer (memoria) que ainda nao foram escritas em disco.
+
+
+XServer: gerenciador grafico: trata a tela como uma matriz de pixel e trata entrada do mouse e teclado para criar ou fechar janelas, através de call back.
+
+Gerenciador de janela: gerencia janelas, trata com atalhos, menus ao clicar com o botao direito, etc. Ex.: Gnome, KDE.

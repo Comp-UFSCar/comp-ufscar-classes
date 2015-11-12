@@ -1,0 +1,62 @@
+Compare processos e threads. Em sua resposta, inclua aspectos sobre
+contexto, compartilhamento de informações, custo para criação e outros
+que achar relevantes.
+
+Faça uma comparação entre os diversos mecanismos disponíveis para
+comunicação, sincronização entre processos executados num mesmo
+computador (baseados em memória compartilhada): pipes, sinais,
+semáforos, filas de mensagens, memória compartilhada
+para cada mecanismo discuta: localização dos dados (user space x
+kernel space) e cópias em memória necessárias, estruturas de dados que
+precisam ser mantidas pelo SO, atrasos, etc.
+
+Considere 3 aplicações paralelas distintas: uma composta de múltiplos
+processos locais, uma composta de múltiplas threads e uma composta de
+diversos processos espalhados por diversos computadores interligados
+em rede. Compare essas aplicações em relação aos seguintes parâmentros
+(e outros que julgar relevantes):
+a. mecanismos, custos e tempo de criação da aplicação (processos ou threads)
+b. mecanismos disponíveis para comunicação e sincronização
+c. compartilhamento de dados
+d. tempos associados à operação dos mecanismos citados
+e. granulidade
+
+compare os trechos de códigos apresentados a seguir com relação a
+troca de contexto:
+a)
+...
+while(!cond);
+...
+
+b)
+...
+while(!cond);
+   sched_yield();
+...
+
+c)
+...
+sem_wait(&sem);
+...
+
+Descreva uma solução para a implementação de um servidor WWW usando
+threads. Em uma solução descreva possíveis mecanismos de comunicação e
+sincronização utilizados.
+
+
+
+
+
+SUB
+
+1) falar sobre pools de thread
+
+2) era algo sobre quantum de thread (não me recordo direito da pergunta)
+
+3) fazer um problema que venda 50 ingressos em 6 caixas
+
+4) comentar sobre o paralelismo no google chrome
+
+5) comparar paralelismo com thread
+
+6) falar sobre o projeto

@@ -1,0 +1,77 @@
+﻿ Makefile
+
+
+Programa auxilar pro make, programa usado para manter grupos de programas. Ajuda na hora de compilar quando há vários arquivos que compõem um programa.
+
+O makefile tem possíveis targets e em cada target tem regras para compilar.
+
+
+vmrcastro@l3m3:~/so2/src/proc$ export PATH=$PATH:.
+
+vmrcastro@l3m3:~/so2/src/proc$ echo "export PATH=$PATH:." >> .bashrc
+
+_exit(0) : chamada para o sistema terminar, inserido automaticamente pelo compilador
+
+
+
+Outra forma de acabar: aconteceu alguma coisa que enviou um sigill ou um sigsegv para acabar (ver man 7 signal).
+
+
+ver exit/ fim1.c e fim2.c
+
+
+Para todo processo o SO mantem um vetor de arquivos abertos... 
+Os processos filhos herdam dos processos pais.
+
+
+
+Chamada de sistema
+
+
+É realizada via instrução de interrupção pois o programa não sabe onde o SO está na memória! Após a int 0x80, o kernell irá saber qual é a syscall feita por uma tabela armazenada na memória... O índice da tabela correspondente a syscall que efetuou a chamada é o valor no eax!
+
+
+Processos
+
+
+fork: chamada de sist pra criar processos.. entao SO duplica o processo atual, copiando área de dados e area de código (variaveis, registradores, pilha...)
+
+result ==-1 -> fork falhou
+result == 0 para o processo filho
+ result == pid do filho para processo pai
+
+
+ver fork/p1.c
+
+
+
+Quando um processo filho termina antes que o pai, e o pai tem um wait que ainda nao executou, o processo filho fica em estado defunto nos processos. Se o pai terminar antes que o filho, o filho é terminado através do sinal signal hangup emitido pelo pai. É possível um filho ficar órfão, entao ele é adotado pelo processo init.
+
+
+waitpid -> espera um processo específico 
+terminar
+
+exec() -> sobrepoe o processo atual
+
+
+Quando o shell vai interpretar algum comando ele faz um fork() e depois um exec() no filho, dessa forma o shell preserva seu pid.
+
+
+vfork() -> fork() seguido de exec()
+
+
+copy and write -> nao precisa duplicar os dados do pai, a tabela de página aponta para o mesmo local do pai, mas marca que é read only para nao ser possível alterar (não faria sentido o filho alterar a área de memória do pai e não faria sentido o pai alterar a área de memória e depois o filho usar).
+
+
+system() -> ao inves de criar um novo processo, o system utiliza o shell para executar algumas instruções (sem uso do fork() exec()).
+
+
+Sinais
+
+
+rodar sinais/ ignore.c
+
+Para parar, somente abrindo novo terminal e enviando os sinais SIGSTOP (kill -9 PID) ou SIGKILL que nao podem ser capturados!
+
+
+O sinal logo depois de enviado, é mantido numa lista de pendentes e executado somente na próxima fatia de tempo.

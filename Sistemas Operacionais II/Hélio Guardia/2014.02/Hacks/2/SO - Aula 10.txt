@@ -1,0 +1,54 @@
+﻿http://www2.dc.ufscar.br/~helio/so2/
+
+Vantagens de Threads: Utilizar múltiplo escalonamento compartilhando recursos do processo.
+
+
+
+clone() : chamada de sistema do Linux que especifica o que vai ser compartilhado entre processos pai e filho. As threads utilizam essa chamada de sistema para implementar threads.
+
+
+
+OpenMP: conjunto de extensões de linguagem.
+
+
+
+Na prática, a main thread participa da execução de código paralelo dentro de um bloco com diretiva #pragma omp. O compilador gcc poe a main thread para trabalhar tbm. Após a execução, as threads nao deixam de existir... Elas ficam no aguardo (por meio de uma barreira) caso sejam requisitadas para outra execução. (ver control.c e control2.c)
+
+
+
+#pragma omp master só pode aparecer dentro de uma diretiva #pragma omp parallel
+
+A variável de ambiente. 
+OMP_NUM_THREADS seta o número de threads criados. Quando o gcc compila com o parametro -fopenmp ele consulta essas variáveis de ambiente.
+
+
+
+Paralelismo com deposicao de dominio (DO/FOR loop) ou com decomposicao por funcionalidade (SECTIONS) ou ainda por SINGLE (só a thread que executa primeiro executa).
+
+dynamic chunks: situacoes em que o volume de processamento depende do conjunto dados. Por ex, no processamento de um video em que há mais mudança de imagens somente no meio da tela haveria threads com pouco trabalho que acabariam rapidamente e outras que levariam mais tempo devido a área da imagem que foi atribuida a thread.
+
+
+
+unroll: for (i=0;i<N;i+=4)
+	
+	{
+		
+		a[i] = 2*a[i];
+
+		a[i+1] = 2*a[i+1];
+
+		a[i+2] = 2*a[i+2];
+
+		a[i+3] = 2*a[i+3];
+
+	}
+
+
+soma preferivel do que AB[i][j] pois nao é necessário calcular o end de AB[i][j] toda vez e soma estaria no cache do core.
+
+
+Normalmente, a paralelisação que dá mais desempenho em loops aninhados é no loop mais externo, pois evita o overhead da criação de muitas threads e cada thread possui um volume de processamento mais adequado. Portanto, é necessário considerar a granularidade (loop mais externo => maior granularidade).
+
+
+
+

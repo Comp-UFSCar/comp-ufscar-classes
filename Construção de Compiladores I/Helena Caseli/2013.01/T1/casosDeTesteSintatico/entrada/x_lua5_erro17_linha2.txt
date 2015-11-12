@@ -1,0 +1,6 @@
+-- nada
+y = -;
+a = 2.0+3;
+x = false;
+x = 4/2;
+print(x)

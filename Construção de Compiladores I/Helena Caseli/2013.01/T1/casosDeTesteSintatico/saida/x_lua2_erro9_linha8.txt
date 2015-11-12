@@ -1,0 +1,3 @@
+Erro: linha 8:14 mismatched input '(' expecting {',', '-', '*', 'or', '<', '<=', '~=', 'and', '%', '^', '+', '>', '/', '==', '>=', '..'}
+Erro: linha 8:18 extraneous input ')' expecting {',', '-', '*', 'or', '<', '<=', '~=', 'and', 'do', '%', '^', '+', '>', '/', '==', '>=', '..'}
+Fim da analise. Com erros sintaticos.

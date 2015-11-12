@@ -1,0 +1,32 @@
+digraph ATN {
+rankdir=LR;
+s39[fontsize=11, label="39", shape=doublecircle, fixedsize=true, width=.6];
+s356[fontsize=11,label="&larr;\n356", shape=circle, fixedsize=true, width=.55, peripheries=1];
+s352[fontsize=11,label="352", shape=circle, fixedsize=true, width=.55, peripheries=1];
+s38[fontsize=11,label="38", shape=circle, fixedsize=true, width=.55, peripheries=1];
+s353[fontsize=11,label="353", shape=circle, fixedsize=true, width=.55, peripheries=1];
+s354[fontsize=11,label="354", shape=circle, fixedsize=true, width=.55, peripheries=1];
+s355[fontsize=11,label="{&rarr;\n355\nd=26|{<p0>|<p1>|<p2>}}", shape=record, fixedsize=false, peripheries=1];
+s351[fontsize=11,label="351", shape=circle, fixedsize=true, width=.55, peripheries=1];
+s350[fontsize=11,label="350", shape=circle, fixedsize=true, width=.55, peripheries=1];
+s349[fontsize=11,label="349", shape=circle, fixedsize=true, width=.55, peripheries=1];
+s348[fontsize=11,label="348", shape=circle, fixedsize=true, width=.55, peripheries=1];
+s347[fontsize=11,label="347", shape=circle, fixedsize=true, width=.55, peripheries=1];
+s346[fontsize=11,label="346", shape=circle, fixedsize=true, width=.55, peripheries=1];
+s345[fontsize=11,label="345", shape=circle, fixedsize=true, width=.55, peripheries=1];
+s38 -> s355 [fontname="Times-Italic", label="&epsilon;"];
+s355:p0 -> s345 [fontname="Times-Italic", label="&epsilon;"];
+s355:p1 -> s351 [fontname="Times-Italic", label="&epsilon;"];
+s355:p2 -> s354 [fontname="Times-Italic", label="&epsilon;"];
+s345 -> s346 [fontsize=11, fontname="Courier", arrowsize=.7, label = "'['", arrowhead = normal];
+s351 -> s352 [fontsize=11, fontname="Courier", arrowsize=.7, label = "NOME", arrowhead = normal];
+s354 -> s356 [fontsize=11, fontname="Courier", arrowsize=.7, label = "<exp>", arrowhead = normal];
+s346 -> s347 [fontsize=11, fontname="Courier", arrowsize=.7, label = "<exp>", arrowhead = normal];
+s352 -> s353 [fontsize=11, fontname="Courier", arrowsize=.7, label = "'='", arrowhead = normal];
+s356 -> s39 [fontname="Times-Italic", label="&epsilon;"];
+s347 -> s348 [fontsize=11, fontname="Courier", arrowsize=.7, label = "']'", arrowhead = normal];
+s353 -> s356 [fontsize=11, fontname="Courier", arrowsize=.7, label = "<exp>", arrowhead = normal];
+s348 -> s349 [fontsize=11, fontname="Courier", arrowsize=.7, label = "'='", arrowhead = normal];
+s349 -> s350 [fontsize=11, fontname="Courier", arrowsize=.7, label = "<exp>", arrowhead = normal];
+s350 -> s356 [fontname="Times-Italic", label="&epsilon;"];
+}

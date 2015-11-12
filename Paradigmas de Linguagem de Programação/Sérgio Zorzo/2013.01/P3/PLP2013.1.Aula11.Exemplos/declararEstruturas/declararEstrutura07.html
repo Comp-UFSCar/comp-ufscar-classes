@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<title>Declarar Estrutura</title>
+		<meta charset="utf-8"/>
+		<script>
+			var x = prompt("Entre um número maior que zero e menor que 11","");
+			try {
+				if(x<=0) {
+					throw {
+						name: "Erro JavaScript",
+						message: "O número deve ser maior que zero."		
+					};
+				}
+			} catch(e) {
+				alert(e.name+"\n"+e.message);
+			}
+		</script>
+	</head>
+	<body>
+	</body>
+</html>

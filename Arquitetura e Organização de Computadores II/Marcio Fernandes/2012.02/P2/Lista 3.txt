@@ -1,0 +1,424 @@
+Exc 2
+
+TITLE Estudos     (Moves.asm)
+
+INCLUDE Irvine32.inc
+.data
+	
+	vetor1 DWORD 10, 20, 30
+
+.code
+main PROC
+	
+	mov eax, 0
+	mov esi, 0
+	mov ecx, 3
+L1:	add eax, vetor1[esi]
+	add esi, 4
+	loop L1
+
+	exit
+main ENDP
+
+END main
+
+
+Exc 3
+
+TITLE Estudos     (Moves.asm)
+
+INCLUDE Irvine32.inc
+.data
+	
+	vetor1 DWORD 10, 20, 30
+
+.code
+main PROC
+	
+	mov eax, 0
+	mov esi, 0
+	mov ecx, 3
+L1:	add eax, vetor1[esi]
+	add esi, TYPE vetor1
+	loop L1
+
+	exit
+main ENDP
+
+END main
+
+
+
+
+Exc 5
+
+TITLE Estudos     (Moves.asm)
+
+INCLUDE Irvine32.inc
+.data
+	
+	source BYTE "This is the source string",0
+	target BYTE SIZEOF source DUP(0)
+
+.code
+main PROC
+	
+	mov esi, OFFSET source		
+	mov edi, OFFSET target
+	mov ecx, SIZEOF source		
+L1:	mov al, [esi]				
+	mov [edi], al				
+	inc esi
+	inc edi						
+	loop L1						
+
+	exit
+main ENDP
+
+END main
+
+
+
+
+Exc 6
+
+TITLE Estudos     (Moves.asm)
+
+INCLUDE Irvine32.inc
+.data
+	
+	vetord DWORD 1, 2, 3, 4
+
+.code
+main PROC
+	
+	mov ecx, LENGTHOF vetord
+	mov esi, 0
+L1:	mov al, BYTE PTR vetord[esi]
+	add esi, 4
+	call WriteChar
+	mov al, 0
+	call WriteChar
+	loop L1				
+
+	exit
+main ENDP
+
+END main
+
+
+
+Exc 7
+
+TITLE Estudos     (Moves.asm)
+
+INCLUDE Irvine32.inc
+.data
+	
+	vetord DWORD 1, 2, 3, 4
+
+.code
+main PROC
+		
+	mov eax, 500
+	
+	mov ecx, LENGTHOF vetord
+	mov esi, 0
+L2:	mov al, BYTE PTR vetord[esi]
+	add esi, 4
+	call WriteChar
+	mov al, 0
+	call WriteChar
+	call Delay
+	loop L2		
+
+	exit
+main ENDP
+
+END main
+
+
+Exc 8
+
+TITLE Estudos     (Moves.asm)
+
+INCLUDE Irvine32.inc
+.data
+	
+	mensagem BYTE "Exemplo de mensagem numero 1!",0dh, 0ah,0
+
+.code
+main PROC
+		
+	mov esi, 0
+	mov ecx, LENGTHOF mensagem
+	
+L1:	mov al, mensagem[esi]
+	call WriteChar
+	mov eax, 500
+	call Delay
+	inc esi
+	loop L1
+	
+	exit
+main ENDP
+
+
+Exc 9
+
+TITLE Estudos     (Moves.asm)
+
+INCLUDE Irvine32.inc
+.data
+	
+	vetorDec BYTE 1d, 2d, 3d, 4d
+	vetorHex DWORD 00000001h, 00000002h, 00000003h, 00000004h
+	aux BYTE ",,,"
+
+.code
+main PROC
+		
+	mov esi, 0
+	mov ecx, LENGTHOF vetorDec
+	
+L1:	movzx eax, vetorDec[esi]
+	call WriteDec
+	mov al, aux[esi]
+	call WriteChar
+	inc esi
+	loop L1
+	
+	call Crlf
+	mov esi, 0
+	mov edi, 0
+	mov ecx, LENGTHOF vetorHex
+	
+L2:	mov eax, vetorHex[esi]
+	call WriteHex
+	mov al, aux[edi]
+	call WriteChar
+	add esi, 4
+	inc edi
+	loop L2
+	
+	exit
+main ENDP
+
+END main
+
+
+Exc 10
+
+TITLE Estudos     (Moves.asm)
+
+INCLUDE Irvine32.inc
+.data
+
+.code
+main PROC
+		
+	mov eax, 0FFFFFFFFh
+	call WriteHex
+	call Crlf
+	call WriteBin
+	call Crlf
+	call WriteDec
+	
+	exit
+main ENDP
+
+END main
+
+
+Exc 11
+
+TITLE Estudos     (Moves.asm)
+
+INCLUDE Irvine32.inc
+.data
+
+	mensagem BYTE "Digite um numero: "
+	myString DWORD 20 DUP(0)
+
+.code
+main PROC
+		
+	mov ecx, LENGTHOF myString
+L1:	push ecx	
+		
+	mov esi, 0
+	mov ecx, LENGTHOF mensagem
+	
+L2:	mov al, mensagem[esi]
+	call WriteChar
+	inc esi
+	loop L2
+	
+	pop ecx
+	call ReadInt
+	loop L1
+	
+	exit
+main ENDP
+
+END main
+
+
+Exc 12
+
+TITLE Estudos     (Moves.asm)
+
+INCLUDE Irvine32.inc
+.data
+
+	mensagem BYTE "Digite um numero: "
+	myString DWORD 20 DUP(0)
+
+.code
+main PROC
+	
+	mov edi, 0	
+	mov ecx, LENGTHOF myString
+
+L1:	push ecx	
+		
+	mov esi, 0
+	mov ecx, LENGTHOF mensagem
+	
+L2:	mov al, mensagem[esi]			;loop para escrever a mensagem
+	call WriteChar
+	inc esi
+	loop L2
+	
+	call ReadInt
+	mov myString[edi], eax
+	add edi, 4
+	
+	pop ecx
+	loop L1
+	
+	call Crlf
+	mov esi, OFFSET myString
+	mov ecx, LENGTHOF myString
+	mov ebx, TYPE myString
+	call DumpMem
+	
+	exit
+main ENDP
+
+END main
+
+
+Exc 13
+
+TITLE Estudos     (Moves.asm)
+
+INCLUDE Irvine32.inc
+.data
+
+
+.code
+main PROC
+	
+	mov ecx, 10
+	
+L1:	call Random32
+	call WriteHex
+	mov al, 0
+	call WriteChar
+	loop L1
+	
+	exit
+main ENDP
+
+END main
+
+
+Exc 22
+
+TITLE Estudos     (Moves.asm)
+
+INCLUDE Irvine32.inc
+.data
+
+	string BYTE "Cadeia aleatoria", 0
+	result BYTE LENGTHOF string DUP(0)
+	
+.code
+main PROC
+	
+	mov ecx, LENGTHOF string
+	mov esi, 0
+	
+L1:	movzx eax, string[esi]
+	inc esi
+	push eax
+	loop L1
+	
+	mov ecx, LENGTHOF string
+	mov esi, 0
+	
+L2:	pop eax
+	mov result[esi], al
+	inc esi
+	loop L2
+	
+	exit
+main ENDP
+
+END main
+
+
+Exc 23
+
+TITLE Estudos     (Moves.asm)
+
+INCLUDE Irvine32.inc
+.data
+
+	string DWORD 5 DUP(0)
+	result DWORD LENGTHOF string DUP(0)
+	soma DWORD 0
+	mensagem BYTE "Soma: "
+	
+.code
+main PROC
+	
+	mov ecx, LENGTHOF string
+	mov esi, 0
+	
+L1:	call ReadInt
+	mov string[esi], eax
+	add esi, 4
+	push eax
+	loop L1
+	
+	mov ecx, LENGTHOF string
+	mov esi, 0
+	call Crlf
+	
+L2:	pop eax
+	mov result[esi], eax
+	call WriteHex
+	add soma, eax
+	mov al, 0
+	call WriteChar
+	add esi, 4
+	loop L2
+	
+	mov esi, 0
+	mov ecx, LENGTHOF mensagem
+	call Crlf
+	
+L3:	mov al, mensagem[esi]
+	call WriteChar
+	inc esi
+	loop L3
+	
+	mov eax, soma
+	Call WriteHex
+	
+	exit
+main ENDP
+
+END main

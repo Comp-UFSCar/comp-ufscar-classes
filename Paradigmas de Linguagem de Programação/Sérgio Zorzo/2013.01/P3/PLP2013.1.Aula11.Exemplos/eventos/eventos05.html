@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<title>Eventos</title>
+		<meta charset="utf-8"/>
+		<script>
+			window.onload = function() {
+				var botao = document.getElementById("btn");
+				botao.onclick = function() {
+					alert("Botão clicado - um");
+				}
+				botao.onclick = function() {
+					alert("Botão clicado - dois");
+				}
+				botao.onclick = function() {
+					alert("Botão clicado - três");
+				}
+			}
+		</script>
+	</head>
+	<body>
+		<button name="btnTeste" id="btn">Executar</button>
+	</body>
+</html>

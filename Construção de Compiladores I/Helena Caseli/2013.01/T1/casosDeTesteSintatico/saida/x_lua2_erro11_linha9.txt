@@ -1,0 +1,2 @@
+Erro: linha 9:45 no viable alternative at input 'soma+;'
+Fim da analise. Com erros sintaticos.

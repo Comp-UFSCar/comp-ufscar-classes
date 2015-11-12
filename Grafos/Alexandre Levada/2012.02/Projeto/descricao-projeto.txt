@@ -1,0 +1,54 @@
+Projetos
+
+Cada grupo deverá desenvolver uma "biblioteca" de funções básicas para grafos que deve conter implementações de 4 projetos da lista a seguir, sendo os 3 primeiros obrigatórios a todos e um cujo tema pode ser qualquer um de 4 a 9:
+
+1) Obtenção de árvores spanning mínimas (algoritmos de Kruskal e Prim) (*)
+2) Caminhos em grafos não ponderados (Busca em Largura e Profundidade) (*)
+3) Caminhos em grafos ponderados (algoritmo de Djikstra para árvore de caminhos mínimos) (*)
+
+4) Codificação de árvores com o código de Prüfer
+5) O algoritmo de Floyd-Warshall
+6) Algoritmo 2-Otimal para obtenção de circuitos Hamiltonianos
+7) Algoritmos de Welsh & Powell para coloração de vértices
+8) Algoritmo Húngaro para emparelhamentos em grafos bipartidos
+9) Algoritmo Ford-Fulkerson para fluxo em redes
+10) Geração de redes complexas (Aleatórias, Pequeno mundo e Livres de escala)
+
+OBS: (*) projetos obrigatórios a todos os grupos
+
+Para a geração de resultados, cada grupo deverá escolher um conjunto de dados real (sendo um grafo sem pesos e outro com pesos) disponível nos diversos sites da internet a seguir:
+
+Datasets
+
+http://networkdata.ics.uci.edu/
+
+http://snap.stanford.edu/data/index.html
+
+http://wiki.gephi.org/index.php/Datasets
+
+http://netwiki.amath.unc.edu/SharedData/SharedData
+
+https://sites.google.com/a/brain-connectivity-toolbox.net/bct/datasets
+
+http://www-personal.umich.edu/~mejn/netdata/
+
+http://vlado.fmf.uni-lj.si/pub/networks/data/UciNet/UciData.htm
+
+http://vlado.fmf.uni-lj.si/pub/networks/pajek/data/gphs.htm
+
+http://www.nd.edu/~networks/resources.htm
+
+http://deim.urv.cat/~aarenas/data/welcome.htm
+
+http://sites.google.com/site/santofortunato/inthepress2
+
+http://www.trustlet.org/wiki/Trust_network_datasets
+
+
+Para auxiliar na manipulação, visualização e plotagem dos grafos e resultados (árvores,por exemplo), podem ser utilizados diversos softwares disponíveis para esse fim dentre os quais destacam-se:
+
+- NodeXL: plugin do Excel para visualização e extração de informações de grafos (Windows)
+- Gephi: aplicativo open-source multiplataforma para visualização de grafos
+- yEd Graph Editor: aplicativo para criação de representações gráficas e muito útil para conversão de formatos de arquivos de grafos (GML, GRAPHML, XGML, XLS)
+- GraphStream: a dynamic graph library
+- NetworkX: a Python language package for graph creation, manipulation and dynamics.

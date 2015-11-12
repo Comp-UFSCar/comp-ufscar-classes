@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<title>window.confirm</title>
+		<meta charset="utf-8"/>
+		<script>
+			function carregar() {
+				valor = confirm("Por favor, clique em qualquer botão!");
+				if (valor) {
+					alert("Clicou no botão OK!");
+				} else {
+					alert("Clicou no botão CANCEL!");					
+				}
+			}
+		</script>
+	</head>
+	<body onload="carregar();">
+	</body>
+</html>

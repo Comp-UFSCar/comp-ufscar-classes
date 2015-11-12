@@ -1,0 +1,10 @@
+Fim da analise. Sem erros sintaticos.
+Tabela de simbolos:
+lexema=perfeitos, tipo=FUNCAO
+lexema=n, tipo=VARIAVEL
+lexema=cont, tipo=VARIAVEL
+lexema=x, tipo=VARIAVEL
+lexema=print, tipo=FUNCAO
+lexema=soma, tipo=VARIAVEL
+lexema=i, tipo=VARIAVEL
+lexema=math.mod, tipo=FUNCAO

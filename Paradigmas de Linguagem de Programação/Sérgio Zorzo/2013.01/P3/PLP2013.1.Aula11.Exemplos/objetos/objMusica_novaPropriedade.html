@@ -1,0 +1,39 @@
+<!DOCTYPE html> 
+<head> 
+	<title>Música</title> 
+	<meta charset="utf-8"/>	
+	<script>
+		function Musica (musica, nomeBanda) { 
+			titulo = musica; 
+			banda = nomeBanda; 
+			this.concatenar = function() {
+				return titulo + "-" + banda;
+			}
+		}
+
+		window.onload=function() {
+
+			var listaMusica = new Musica("Putting on the Ritz", "Ella Fitzgerald");
+
+			Musica.prototype.adicionarCategoria = function(nomeCategoria) {
+				this.categoria = nomeCategoria;
+			}
+
+			listaMusica.adicionarCategoria("Swing");
+
+			var musica = "Título e banda: " + listaMusica.concatenar() +
+						" Categoria: " + listaMusica.categoria;
+			
+			var p = document.createElement("p");
+			var txt = document.createTextNode(musica);
+			p.appendChild(txt);
+			document.getElementById("musica").appendChild(p);
+		}
+	</script>
+</head>
+<body>
+	<h1>Melodia</h1>
+	<div id="musica">
+	</div>
+</body>
+</html>

@@ -1,0 +1,125 @@
+
+----
+ vi
+----
+
+2 modos de operação: modo de comando (ativado com Esc) e modo de inserção
+
+Edição de arquivo:
+-----------------
+$ vi arq     edita arquivo arq
+
+Movimentação do CURSOR em modo de comando:
+-----------------------------------------
+h  movimenta à esquerda
+j  vai para a linha de baixo
+k  vai para a linha de cima
+l  movimenta à direita
+b  vai para o começo da palavra anterior
+w  vai para o início da próxima palavra
+e  vai para o fim da palavra atual
+$  vai para o fim da linha
+0  vai para o começo da linha
+:n vai para linha n
+G    vai para o fim do arquivo
+:$	  vai para o fim do arquivo
+setas? funcionam em algumas versões do vi
+
+Movimentação da TELA em modo de comando:
+---------------------------------------
+^f	 move uma tela abaixo (forward)
+^b	 move uma tela acima (backward)
+^d	 move meia tela para baixo (down / forward)
+^u	 move meia tela para cima (up / back)
+^l	 redesenha a tela
+
+Inserção de texto:
+-----------------
+a  insere à direita do cursor
+A  insere no fim da linha
+i  insere à esquerda do cursor
+I  insere no começo da linha
+o  insere na linha de baixo
+O  insere na linha de cima
+
+Esc  retorna ao modo de comando
+
+Edição (alteração/replacement) de texto:
+---------------------------------------
+r     substitui (replaces) o caracter sob o cursor
+R	   substitui caracteres a partir do cursor, até que <Esc> seja pressionado
+cw    troca palavra à direita do cursor (change word)
+[n]cw troca n palavras à direita do cursor. Ex: 3cw
+C     substitui os caracteres até o final na linha
+cc    substitui a linha atual, a partir do início
+[n]cc substitui n linhas, começando da linha atual. Ex: 4cc
+
+Esc   retorna ao modo de comando
+
+Remoção de texto:
+----------------
+x     remove caracter sob o cursor
+[n]x  remove n caracteres à direita do cursor. Ex: 5x
+dd    remove a linha atual
+[n]dd remove n linhas a partir da atual. Ex: 3dd
+dw    remove uma palavra à direita do cursor
+[n]dw remove n palavras à direita do cursor. Ex: 2dw
+D     apaga até o fim da linha
+
+J     junta (joins) a linha de baixo com a linha atual
+
+Para localizar uma string:
+-------------------------
+Esc
+/string   busca próxima ocorrência da string
+?string   busca ocorrência anterior da string, voltando no arquivo
+n         repete busca anterior (para baixo ou para cima)
+
+Repetindo o último comando:
+---------------------------
+.        repete a última operação (inserção, remoção, substituição, etc.)
+
+Copiando dados para o buffer interno:
+------------------------------------
+Y     copia 1 linha para o buffer
+[n]Y  copia n linhas para o buffer. Ex: 5Y
+
+p     cola (paste) as informações do buffer na próxima linha
+P     cola (paste) as informações do buffer na linha anterior
+
+Inserindo (lendo/reading) um arquivo para a posição atual do cursor:
+-------------------------------------------------------------------
+:r arq
+
+Ajustando a aparência do editor:
+-------------------------------
+:set number     ativa exibição dos números de linha
+:set nonumber   desativa exibição dos números de linha
+
+:syntax on      ativa o reconhecimento da sintaxe do arquivo (.c, .html, etc.)
+:syntax off     desativa o reconhecimento da sintaxe do arquivo
+
+:set tabstop=x   controla o tamanho do espaço deixado pelo Tab
+
+:set all        consulta ajustes ativos
+
+OBS: configurações podem ser salvas em ~/.virc (ou ~/.vimrc, para vim)
+
+Alterando o arquivo sendo editado:
+---------------------------------
+:e novo_arq     fecha o arquivo atual (se não alterado) e abre novo_arq para edição
+
+Para sair do vi:
+---------------
+Esc
+:w           salva com o nome atual
+:w novo_nome salva como novo_nome
+:wq salva e sai
+:x salva e sai
+:q sai sem salvar (se não houve alterações)
+:q! sai sem salvar (mesmo se houve alterações)
+
+Pânico? 
+------
+Sai sem salvar: <Esc>:q! 
+

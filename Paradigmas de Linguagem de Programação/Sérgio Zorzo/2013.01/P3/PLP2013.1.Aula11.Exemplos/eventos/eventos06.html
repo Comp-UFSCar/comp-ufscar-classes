@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html>
+	<head>
+	<title>Eventos</title>
+	<meta charset="utf-8"/>
+	<script type="text/javascript">
+		var EventUtil = {		
+			addHandler: function(element, type, handler) {
+				if(element.addEventListener) {
+					element.addEventListener(type, handler, false);
+				} else if (element.attachEvent) {
+					element.attachEvent("on" + type, handler);
+				} else {
+					element["on" + type] = handler;
+				}
+			}, 
+			
+			removeHandler: function(element, type, handler) {
+				if(element.removeEventListener) {
+					element.removeEventListener(type, handler, false);
+				} else if (element.detachEvent) {
+					element.detachEvent("on" + type, handler);
+				} else {
+					element["on" + type] = null;
+				}
+			}
+	};	
+
+	window.onload = function() {	
+		var botao = document.getElementById("btn");	
+		var botaoClicado = function() {		
+			alert("Botão clicado");
+		};	
+
+		EventUtil.addHandler(botao, "click", botaoClicado);
+	}
+	</script>
+	</head>
+	<body>
+		<button name="btnTeste" id="btn">Executar</button>
+	</body>
+</html>

@@ -1,0 +1,17 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8"/>
+		<title>Função</title>
+		<script>
+			function calculaRetangulo(b,h) {
+				var area = (b*h);
+				var perimetro = (b+h)*2;
+				return [area,perimetro];
+			}
+		</script>
+	</head>
+	<body>
+	<button type="button" onclick=" var resultado = calculaRetangulo(5,10);alert('Área: '+resultado[0]);alert('Perímetro: '+resultado[1])">Executar função</button>
+	<body>
+</html>

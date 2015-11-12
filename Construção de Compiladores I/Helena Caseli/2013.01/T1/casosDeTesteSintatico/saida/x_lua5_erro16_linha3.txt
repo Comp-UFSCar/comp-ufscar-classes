@@ -1,0 +1,2 @@
+Erro: linha 3:6 extraneous input ',' expecting {'-', '(', 'not', 'false', 'nil', '...', '{', 'true', 'function', '#', NOME, CADEIA, NUMERO}
+Fim da analise. Com erros sintaticos.

@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<title>Campo email e data</title>
+		<meta charset="utf-8"/>
+	
+		<script>
+			function validarData() {
+				var campo = document.getElementById("data");
+				var msg01 = document.getElementById("msgErro01");
+				
+				var padrao = /\d{2}\/\d{2}\/(\d{2}|\d{4})/;
+				if (padrao.test(campo.value)) {
+					msg01.innerHTML = "Data válida";
+				} else {
+					msg01.innerHTML = "Data inválida";
+				}
+			}
+
+			function validarEmail() {
+				var campo = document.getElementById("email");
+				var msg02 = document.getElementById("msgErro02");
+				
+				var padrao = /^[\w\.-_\+]+@[\w-]+(\.\w{2,4})+$/;
+				if (padrao.test(campo.value)) {
+					msg02.innerHTML = "Email válida";
+				} else {
+					msg02.innerHTML = "Email inválida";
+				}
+			}
+
+		</script>
+
+	</head>
+	<body>
+		<p>
+			Data:
+			<input type="text" id="data" onchange="validarData();"/>
+			<button name="verificar" id="btnClicar" onclick="validarData();">Verificar</button>
+			<div style="color:red" id="msgErro01"></div>
+		</p>
+
+		<p>
+			Email:
+			<input type="text" id="email" onchange="validarEmail();"/>
+			<button name="verificar" id="btnClicar" onclick="validarEmail();">Email</button>
+			<div style="color:red" id="msgErro02"></div>
+		</p>
+
+	</body>
+</html>

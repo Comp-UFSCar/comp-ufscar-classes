@@ -1,0 +1,2 @@
+pertence(X, [X|Y]).
+pertence(X, [Z|Y]) :- pertence(X,Y).

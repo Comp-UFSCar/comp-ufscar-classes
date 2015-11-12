@@ -1,0 +1,8 @@
+Questao 1
+Parte 1: Montar tabelas em SQL (Create Table). Umas três tabelas, pelo menos uma com chave estrangeira.
+
+Parte 2: SELECT. Metade em álgebra linear (Merda. Esqueci de revisar isso pra prova.), metade em SQL.
+
+Questao 2: Dada uma relacao, encontrar as chaves candidatas, dizer em qual forma normal ela se encontra, e normalizar até Boyce-Codd. (Igual o exercício que nem no final dos slides "Norm2".
+
+Questao 3: Uma pergunta conceitual sobre Banco de Dados Distribuídos, pedindo definicao de selecao horizontal, vertical, mimimimi.

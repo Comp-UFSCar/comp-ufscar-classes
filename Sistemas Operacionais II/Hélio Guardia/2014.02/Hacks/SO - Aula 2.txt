@@ -1,0 +1,68 @@
+﻿b--- block mknod
+c--- character mknod
+
+--x execute
+se for diretorio, x permite fazer desse diretorio um diretorio comum (permite o comando cd, permite entrar no diretorio)
+se for arquivo, permite executar as instrucoes dentro de um arq (por ex. arquivo de texto com o comando echo oi! qnd for executado vai imprimir na tela oi!).
+
+
+Alterar permissoes do arquivo
+
+ chmod [u,g,o,a] [+,-,=] [w,x,s,t] arq_ou_dir
+
+chgrp [-r] group arqdir 
+muda o grupo (é possivel mudar somente para um grupo no qual o usuario faz parte)
+
+chown [-r] user arqdir
+change owner
+
+
+É possivel ter um s no lugar do x... Isso signigica set user id.. o programa roda com o privilégio de quem criou o arquivo
+
+ls -ld /tmp
+t sticky bit... cancela a heranca das propriedades do diretorio sobre o usuário.. 
+Por tratar-se de um diretorio de varios usuários, eles poderiam herdar a heranca do diretorio e ter direitos a arquivos que nao deveriam... para isso é utilizado o sticky bit
+
+
+
+Chamadas de Sistemas
+
+
+execucao em foreground: o shell trava o prompt enquanto o processo nao terminar.. oposto a execucao em background (&).
+
+
+$ps  :lista os processos em execucao
+
+$ps s
+
+
+
+Sinais
+
+
+Ao fechar uma janela, por ex, é enviado o sinal SIGHUP para terminar o processo.
+No caso do ctrl C no terminal, é enviado o sinal SIGINT.
+
+O comando kill não mata necessariamente um processo, ele somente envia um sinal ao processo. (ver man kill).
+
+
+ls -l /proc/20363/fd (20363 é o PID do processo)
+
+/proc fd indica as posicoes no vetor de arquivos abertos que um processo esta usando. As primeiras posicoes estao relacionadas a stdin, stdout e stderr nessa mesma ordem.
+
+
+sleep 300 > saida & (> é o comando de saida, do c mesmo... para entrada usar <) 
+redireciona a saida para o local especificado (executar comando e apos executar ls -l /proc/20363/fd novamente).
+
+
+A janela é indicada por /dev/pts/algum numero
+
+
+PIPE: mechanismo de comunicação de arquivos mantido na memoria, basicamente um FIFO.
+
+
+p1 > arq
+p2 < arq
+p1 | p2 (assim os arquivos podem ser acessados pelos dois processos ao mesmo tempo, já que no sistema de arquivos a leitura ou a escrita é bloqueante)
+
+nohup : executa o processo ignorando o sinal de hangup

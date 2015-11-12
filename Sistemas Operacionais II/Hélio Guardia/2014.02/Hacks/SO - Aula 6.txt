@@ -1,0 +1,20 @@
+﻿COMUNICAÇÃO ENTRE PROCESSOS
+
+
+Semaforos POSIX -> somente quando vermos threads.
+
+
+PROVA: Descreva o que está presente na memória.
+
+
+Cada processo possui uma tabela de página e a MMU aponta para a tabela de pag do processo corrente.
+
+
+Memória compartilhada 
+
+shmget : solicita a alocação de memória compartilhada 
+shmat : associa um ponteiro para uma area de memória compartilhada previamente alocada. 
+Essa página antes desse comando nao estava presente na memória.
+
+
+shmget(IPC_PRIVATE,TAM_MAX,0644) : IPC_PRIVATE -> cria e usa uma nova chave

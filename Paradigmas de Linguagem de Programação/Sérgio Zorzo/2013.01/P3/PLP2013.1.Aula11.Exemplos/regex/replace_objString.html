@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<title>REPLACE</title>
+		<meta charset="utf-8"/>
+	
+		<script>
+			function modificar() {
+			  function adicionarHifen(match) {
+			    return '-' + match.toLowerCase();
+			  }
+			  
+			  propriedade = "borderTop";
+
+			  resultado = propriedade.replace(/[A-Z]/g, adicionarHifen);
+			  document.getElementById("msgErro").innerHTML = resultado;				
+			}
+
+			window.onload = function() {
+				document.getElementById("btnExecutar").onclick = modificar;
+			}
+
+			/*
+			window.onload = function () {
+			  function adicionarHifen(match) {
+			    return '-' + match.toLowerCase();
+			  }
+			  
+			  propriedade = "borderTop";
+
+			  resultado = propriedade.replace(/[A-Z]/g, adicionarHifen);
+			  document.getElementById("msgErro").innerHTML = resultado;
+			}
+			*/
+		</script>
+
+	</head>
+	<body>
+		<button id="btnExecutar">Clicar aqui!</button>
+		<div style="color:red;" id="msgErro"></div>
+	</body>
+</html>

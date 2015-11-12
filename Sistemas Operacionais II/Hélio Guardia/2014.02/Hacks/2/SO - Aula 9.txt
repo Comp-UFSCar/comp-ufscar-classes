@@ -1,0 +1,13 @@
+﻿Open MP: extensões de linguagem que podem ser utilizadas pelo programador para determinar como o compilador pode paralelizar o código (utilizando diretivas de códigos, chamada de funções da API e variáveis de ambiente).
+
+
+Critical: região que pode ser executada somente com uma thread por vez.
+
+
+Variáveis de ambiente podem ser utilizadas para definir, por exemplo, o número de threads a ser criada em tempo de execução do programa.
+
+
+Após a criação do time de threads e a execução dos códigos pelas threads, as threads não são destruídas! Elas ficam em um estado de espera até surgir uma requisição para a thread fazer parte de um outro time.
+
+
+

@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<title>COMPILE</title>
+		<meta charset="utf-8"/>
+	
+		<script>
+			function testarER() {
+				texto = "Batatinha quando nasce espalha rama pelo chão.";
+				msg = document.getElementById("msgErro");
+				padrao = /rama/;
+				resultado = texto.replace(padrao,""); 
+				
+				padrao = /espalha/;
+				padrao.compile(padrao);
+				resultado2 = resultado.replace(padrao,"esparrama")
+				msg.innerHTML = resultado2;
+			}
+		</script>
+
+	</head>
+	<body>
+		<p>Falaram que o correto é isso:</p>
+		<p>Batatinha quando nasce espalha rama pelo chão.</p>
+		<p></p>
+		<p>Mas sempre ouvi assim: <button name="verificar" id="btnClicar" onclick="testarER();">Verificar</button></p>
+		<div style="color:red;" id="msgErro"></div>
+	</body>
+</html>

@@ -1,0 +1,94 @@
+﻿COMUNICACAO ENTRE PROCESSOS
+
+
+SO é responsável por manter a tabela de página, trazendo dados do disco quando ocorre uma falta (quando o dado não está na memória).
+
+
+MMU é responsável por traduzir os endereços (índice da tabela de página e deslocamento na página)
+
+
+
+PROCESSO
+
+ 
+Usando sistema de arquivos (menos eficiente):
+Copia do user space para o kernel space e do kernel space para o disco.
+
+read (fd,buf,count)
+buf -> user space
+
+
+Usando Informação compartilhada (mais eficiente pois não faz acesso a disco)
+ Não é necessário cópia do user space ao kernel space, somente escrita e leitura em uma parte da memória compartilhada (pode ter diferentes entradas na tabela de página apontadas para o mesmo end físico). 
+(ex: Pipe).
+
+
+Pipe: redireciona o stdout de um processo para o stdin do outro.
+
+
+pipefd[0]: o_rdonly
+pipefd[1]: o_wronly
+
+Vetor de arquivos abertos:
+[0] stdin
+[1] stout
+[3] stderr
+.
+.
+.
+[M] pipefd[0]
+[N] pipefd[1]
+
+*
+Falar sobre o vetor de arquivos abertos no trabalho! (Como o Linux trata arquivos em diferentes sistemas de arquivos?)
+
+
+ps : mostra o pid
+/proc/"nro_pid"/fd : mostra o vetor de arquivos abertos
+
+
+
+FIFO
+
+
+Garante a comunicação através de um pipe porém os processos não precisam ser parentes (não precisam ter a mesma cópia do vetor de arq abertos).
+
+É criado um arquivo em um diretório que quando aberto por um processo instancia um pipe. Logo é necessário somente o path e o nome do fifo para realizar um pipe.
+
+
+
+MENSAGENS
+
+
+Permite realizar o salvamento de cada mensagem e o recebimento seletivo.
+
+
+
+BLOCOS LÓGICOS
+
+
+Arquivo = sequencia de bytes
+
+Arquivo *NIX
+
+i-node
+- pont, blocos de dados no disco
+
+ver man lseek
+
+ver 
+ipcs -> interprocess communication status
+ver man ipcrm (remove a memoria alocada caso o comando free nao foi utilizado no programa)
+
+
+
+SEMAFORO
+
+
+Na verdade existe um vetor de semáforos pois é possível utilizar mais de um semáforo diferente por programa.
+
+O SO administra o semáforo, de maneira atomica, para permitir que somente 1 processo decremente o semaforo.
+
+No caso de uma chave, (mutex) semaforo == 1 liberado (cond. inicial), semaforo == 0, bloqueado.
+
+

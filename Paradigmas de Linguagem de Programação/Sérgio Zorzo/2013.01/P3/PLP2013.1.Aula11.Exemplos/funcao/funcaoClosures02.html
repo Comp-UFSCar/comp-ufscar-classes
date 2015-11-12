@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8"/>
+		<title>Função</title>
+			<script type="text/javascript">
+			window.onload = function() {
+				var botao = document.getElementsByTagName('button');
+					for (var i=0; i<botao.length; i++) {
+						botao[i].onclick = function() {
+							alert('Você clicou o botão ' + i);
+						};
+					};
+			}
+			</script>
+	</head>
+	<body>
+		<button type="button">Botão 0</button>
+		<button type="button">Botão 1</button>
+		<button type="button">Botão 2</button>
+		<button type="button">Botão 3</button>
+		<button type="button">Botão 4</button>
+		<button type="button">Botão 5</button>
+	<body>
+</html>

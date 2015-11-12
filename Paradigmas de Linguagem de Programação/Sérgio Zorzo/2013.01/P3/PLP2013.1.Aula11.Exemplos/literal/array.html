@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<title>Array</title>
+		<meta charset="utf-8"/>
+		<script>
+			var a = 12;
+			var b = 4;
+
+			ArrayMisto = ["laranja", 34, "casa", true, [1,3,5], a+b];
+
+			var executar = function() {
+				alert(ArrayMisto[0]);
+				alert(ArrayMisto[1]);
+				alert(ArrayMisto[3]);
+				alert(ArrayMisto[4][1]);
+				alert(ArrayMisto[5]);
+			}
+		</script>
+	</head>
+	<body>
+		<h1>Clique no botão para obter valor do array</h1>
+		<input type="button" onclick="executar();" value="Obter valor do Array Misto"/>
+	</body>
+</html>

@@ -1,0 +1,6 @@
+-- funcao que retorna a soma de dois valores
+function soma(a,b)
+   return a++
+end;
+
+print(soma(3,9))

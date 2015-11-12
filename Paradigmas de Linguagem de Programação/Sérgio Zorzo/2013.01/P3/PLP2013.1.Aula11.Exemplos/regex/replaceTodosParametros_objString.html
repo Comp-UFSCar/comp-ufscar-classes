@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<title>Replace</title>
+		<script>
+			function replacer(match, p1, p2, p3, offset, string) {
+			  // p1 is nondigits, p2 digits, and p3 non-alphanumerics
+			  
+			  //string identificada
+			  console.log(match); 
+			  
+			  //Corresponde as extrações de texto de acordo com a expressão regular
+			  console.log(p1);
+			  console.log(p2);			  
+			  console.log(p3);
+
+			  //O deslocamento da string correspondente dentro da cadeia total 
+			  //a ser examinada
+			  console.log(offset);
+
+			  //A sequencia total a ser examinada
+			  console.log(string);
+			  return [p1, p2, p3].join(' - ');
+			};
+			newString = "abc12345#$*%".replace(/([^\d]*)(\d*)([^\w]*)/, replacer);
+			document.write(newString);
+		</script>
+	</head>
+	<body>
+	</body>
+</html>

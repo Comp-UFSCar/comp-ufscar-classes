@@ -1,0 +1,3 @@
+do
+   local  = print; -- Grava a variável “print” em “oldprint”
+end

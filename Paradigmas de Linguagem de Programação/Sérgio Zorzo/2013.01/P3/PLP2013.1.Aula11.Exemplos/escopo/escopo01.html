@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<title>Escopo</title>
+		<meta charset="utf-8"/>
+		<script>
+			a = 10;
+			
+			funcaoUm = function() {
+				var a = 20;
+				alert(a); //alerta o valor 20
+			}
+			
+			funcaoUm();
+
+			funcaoDois = function() {
+				alert(a); //alerta o valor 10
+			}
+
+			funcaoDois();
+
+			alert(a); //alerta o valor 10
+		</script>
+	</head>
+	<body>
+	</body>
+</html>

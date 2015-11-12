@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<title>Eventos</title>
+		<meta charset="utf-8"/>
+		<script type="text/javascript">
+
+		function teste() {
+			alert("teste");
+		}
+
+		window.onload = function() {
+			var botao = document.getElementById("btn");
+			botao.addEventListener("click", function() {
+				alert("O atributo id desse botão é: " + this.id);
+			}, false);
+		}
+		</script>
+	</head>
+	<body>
+		<button id="btn">Clique esse botão</button>		
+	</body>
+</html>

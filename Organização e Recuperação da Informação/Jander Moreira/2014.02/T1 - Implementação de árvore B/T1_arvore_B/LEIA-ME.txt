@@ -1,0 +1,110 @@
+UFSCar	- Organização e Recuperação da Informação
+Prof. Jander Moreira
+
+	Trabalho 1 - Árvore B
+	
+	Alunos:	Thales Eduardo Adair Menato		407976
+			Antônio Pedro Avanzi Nunes		407852							
+			Guilherme Koiti Hoçoya			407887	
+	
+	Visão Geral do Trabalho:
+	
+		Foram criadas as estruturas nos arquivos header e algumas 
+		funções para manipulação das mesmas. 
+		
+		Nós conseguimos concluir apenas as funções de:
+			- Inserção
+			- Remoção
+			- Busca
+			
+		As maiores dificuldades foram com a linguagem de programação
+		em si, sendo que no SO Windows havia problema com o endereço 
+		das memórias, no Linux este problema não ocorria (sempre inicia
+		no 0 / 'null').
+
+		Para os próximos trabalhos iremos utilizar uma linguagem 
+		que possibilite que trabalhemos de uma maneira mais ágil e
+		simples.
+		
+______________________________Arquivos______________________________
+
+	Headers
+	
+################	[config.h]	########################
+
+Arquivo [config.h] para definir as macros que serão utilizadas no programa:
+
+	+ ORDEM : ordem da árvore a ser utilizada
+	+ MAXIMO_CHAVES : recebe ordem - 1
+	+ MINIMO_CHAVES : recebe (orderm - 1) / 2
+	+ TRUE : integer 0
+	+ FALSE : integer -1
+
+################	[arvoreb.h]	########################
+
+Arquivo [arvoreb.h] para a estrutura tArvoreB:
+
+	tNo *raiz;
+		Ponteiro para a raíz da árvore
+
+	int ordem;
+		Variável para controle da ordem da árvore.
+		Obs: há um macro ORDEM no arquivo [config.h], evitar discrepância de informações.
+
+################	[dado.h]	########################
+
+Arquivo [dado.h] contendo a estrutura tDado:
+
+	int chave
+		possui o valor da chave
+	void *info
+		possui o conteúdo da chave, podendo ser uma cadeia de caracteres, número inteiro, ou qualquer coisa.
+
+	
+################	[no.h]	########################
+
+	Arquivo [no.h] contendo a estrutura do tipo tNo:
+
+	tDado dado[MAXIMO_CHAVES]
+		carrega todas chaves e seu conteúdo
+	no *pont[ORDEM]
+		possui os ponteiros para os filhos de cada chave
+	int cont
+		controla a quantidade de chaves atual no nó
+		
+__________________________________________________		
+		
+	Sources
+	
+################	[main.c]	########################
+
+	Arquivo para teste geral das funções.
+	Nada funcional implementado ainda.
+	
+################	[dado.c]	########################
+	
+	**Protótipos:**
+	`tDado * inicializaDado_ponteiro()`
+	`void inicializaDado(tDado *dado)`
+	`void insereDado(tDado *dado, int chave, void *info)`
+	`void finalizaDado(tDado *dado)`
+
+################	[no.c]	########################
+		
+	**Protótipos:**
+	
+	`int noCheio(tNo * no)`
+	`int ehFolha(tNo *no)`
+	`tNo * escolheFilho(tNo *no, int chave)`
+	`int insereChave(tNo *no, tDado dado)`
+	`int busqueEInsira(tNo *no, tDado dadoNovo, int *houvePromocao, tDado *dadoPromovido, tNo **novoNo)`
+	`void divida(tNo *no, tDado dadoNovo, tNo * noDireita, tNo **novoNo, tDado *dadoPromovido)`
+	`int buscaChave(tNo *no, int chave)`
+	`int removeChave(tNo *no, tDado dado)`
+	`int remova(tNo *no, tDado dado)`
+	`int estaNoNoh(tNo *no, int chave)`
+	`int busqueERemova(tNo *no, tDado dado, int houveViolacao)`
+	`void localizeSubstituto(tNo *no, tDado *dado)`
+	`void trateViolacao(tNo *pai, tNo *filho)`
+	`void removePonteiro(tNo *no, tNo *remover)`
+	`void facaFusao(tNo *pai, tNo *filho)`

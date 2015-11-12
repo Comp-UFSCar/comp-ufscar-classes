@@ -1,0 +1,50 @@
+﻿- [PROVA] Como o SO mantém a separação da memória entre os processos?
+
+
+Através da MMU (na CPU). Para cada processo o SO consulta a page table, que contém um status (indica se a página está ou nao na memória) e uma página física (endereço físico).
+
+
+Endereço efetivo: 
+
+Endereço de alguma instrução: 20 bits mais significativos indicam o nro de pag na tabela de pagina e os outros 12 bits indicam o deslocamento. 
+
+O nro de página é o índice da tabela de página, onde contém o endereço físico. Entao o endereço efetivo será o endereço físico proveniente da tabela de página deslocado tantos bits quantos forem indicados no deslocamento.
+
+ 
+O SO é responsável por manter a tabela de página?
+
+
+-----------------------------------------------------------------------
+
+
+task_struct : estrutura que o linux usa para representar um processo
+(ver em Structure sched.h em lxr.linux.no)
+
+
+sighand_struct : Para cada processo, o SO mantém um vetor de tratamento de sinais.
+
+
+
+POLÍTICA DE ESCALONAMENTO
+
+[PROVA] Descreva a troca de contexto
+
+- Começar por tabela de página pq os registradores sao restaurados a partir da tabela de página
+
+
+Valor de nice: valor de prioridade estática
+
+
+Affinity mask: bitmap que indica os possíveis cores que um processo pode rodar
+
+
+Um processo só pode dimunuir o uso ou a prioridade da CPU
+
+
+[PROVA] ver usage.c em so2/src/limits
+
+
+[PROVA] ver exception.c em so2/src/sinais
+
+Exceção é uma interrupção síncrona.
+SO trata as exceções! Salva flags e consulta o vetor de interrupçoes pra desviar o processador para a rotina de tratamento de exceções...

@@ -1,0 +1,5 @@
+(defun esta_em (x lista)
+  (if (= (car (member x lista)) x)
+      (print '(esta na lista))
+    )
+)

@@ -1,0 +1,21 @@
+digraph ATN {
+rankdir=LR;
+s102[fontsize=11, label="102", shape=doublecircle, fixedsize=true, width=.6];
+s373[fontsize=11,label="{373*\nd=3|{<p0>|<p1>}}", shape=record, fixedsize=false, peripheries=1];
+s372[fontsize=11,label="&larr;\n372", shape=circle, fixedsize=true, width=.55, peripheries=1];
+s375[fontsize=11,label="375*", shape=circle, fixedsize=true, width=.55, peripheries=1];
+s374[fontsize=11,label="374", shape=circle, fixedsize=true, width=.55, peripheries=1];
+s101[fontsize=11,label="101", shape=circle, fixedsize=true, width=.55, peripheries=1];
+s369[fontsize=11,label="369", shape=circle, fixedsize=true, width=.55, peripheries=1];
+s371[fontsize=11,label="&rarr;\n371*", shape=circle, fixedsize=true, width=.55, peripheries=1];
+s370[fontsize=11,label="370", shape=circle, fixedsize=true, width=.55, peripheries=1];
+s101 -> s369 [fontname="Times-Italic", label="&epsilon;"];
+s369 -> s373 [fontsize=11, fontname="Courier", arrowsize=.7, label = "'0'..'9'", arrowhead = normal];
+s373:p0 -> s371 [fontname="Times-Italic", label="&epsilon;"];
+s373:p1 -> s374 [fontname="Times-Italic", label="&epsilon;"];
+s371 -> s370 [fontname="Times-Italic", label="&epsilon;"];
+s374 -> s102 [fontname="Times-Italic", label="&epsilon;"];
+s370 -> s372 [fontsize=11, fontname="Courier", arrowsize=.7, label = "'0'..'9'", arrowhead = normal];
+s372 -> s375 [fontname="Times-Italic", label="&epsilon;"];
+s375 -> s373 [fontname="Times-Italic", label="&epsilon;", style="dashed"];
+}

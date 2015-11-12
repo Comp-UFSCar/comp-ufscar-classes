@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8"/>
+		<title>Função</title>
+		<script>
+			function testeEscopo() {
+				soma = 2 + 6; 
+				alert("A soma é: " + soma);
+			};
+			
+			testeEscopo();  
+			
+			try {
+				alert("O dodro da soma é: " + 2*soma);
+			} catch(e) {
+				alert(e.message);
+			};
+		</script>
+	</head>
+	<body>
+	<body>
+</html>

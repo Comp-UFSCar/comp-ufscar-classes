@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<title>Declarar Estrutura</title>
+		<meta charset="utf-8"/>
+		<script>
+			var x = prompt("Entre um número maior que zero e menor que 11","");
+			try {
+				if(x<=0) {
+					throw("er1");
+				}
+				if(x>=11) {
+					throw("er2");
+				}
+				if(isNaN(parseInt(x))) {
+					throw("er3");
+				}
+			} catch(e) {
+				if (e == "er1") {
+					alert("O número deve ser maior que zero");
+				}
+				if (e == "er2") {
+					alert("O número deve ser menor que 11");
+				}
+				if (e == "er3") {
+					alert("Entre somente número maior que zero e menor que 11");
+				}
+			}
+		</script>
+	</head>
+	<body>
+	</body>
+</html>

@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<title>Objeto Cilindro</title>
+		<meta charset="utf-8"/>		
+		<script>
+			function Cilindro(r,h) {
+				this.raioBase = r;
+				this.altura = h;
+			};
+
+			Cilindro.prototype.obterNome = function () {
+				return "Bermuda";
+			}
+
+			cilindroUm = new Cilindro(2,5);
+
+
+			alert("Raio da base: "+cilindroUm.raioBase + 
+				  "\nAltura: "+cilindroUm.altura +
+				  "\nNome: "+cilindroUm.obterNome()
+				);	
+		</script>
+	</head>
+	<body>
+	</body>
+</html>

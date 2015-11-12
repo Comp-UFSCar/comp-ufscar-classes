@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<title>EXEC</title>
+		<meta charset="utf-8"/>
+	
+		<script>
+			function testarER() {
+				var campo = document.getElementById("palavra");
+				var msg = document.getElementById("msgErro");
+				var padrao = /aS/;
+				msg.innerHTML = padrao.exec(campo.value);
+			}
+		</script>
+
+	</head>
+	<body>
+		<p>Digitar uma palavra. Padrão a ser identificado /aS/</p>
+		<p><input type="text" id="palavra"/></p>
+		<button name="verificar" id="btnClicar" onclick="testarER();">Verificar</button>
+		<div style="color:red;" id="msgErro"></div>
+	</body>
+</html>

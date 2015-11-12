@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<title>Acender a luz</title>
+		<script>
+		function mudarImagem() {
+			element=document.getElementById('luz');
+			if (element.src.match("bulbon")) {
+		  		element.src="pic_bulboff.gif";
+		  	}
+			else {
+		  		element.src="pic_bulbon.gif";
+		  	}
+		}
+		</script>
+	</head>
+<body>
+<img id="luz" onclick="mudarImagem()" src="pic_bulboff.gif" width="100" height="180">
+</body>
+</html>
+

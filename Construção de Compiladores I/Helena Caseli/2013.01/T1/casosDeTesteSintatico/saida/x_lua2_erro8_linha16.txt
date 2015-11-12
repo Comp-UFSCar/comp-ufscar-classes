@@ -1,0 +1,3 @@
+Erro: linha 16:5 no viable alternative at input 'cont=='
+Erro: linha 18:0 extraneous input 'end' expecting {'local', 'while', 'if', 'until', 'break', 'do', 'function', 'for', 'return', 'repeat', NOME}
+Fim da analise. Com erros sintaticos.

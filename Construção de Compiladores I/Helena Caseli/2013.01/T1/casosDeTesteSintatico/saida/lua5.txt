@@ -1,0 +1,6 @@
+Fim da analise. Sem erros sintaticos.
+Tabela de simbolos:
+lexema=y, tipo=VARIAVEL
+lexema=a, tipo=VARIAVEL
+lexema=x, tipo=VARIAVEL
+lexema=print, tipo=FUNCAO

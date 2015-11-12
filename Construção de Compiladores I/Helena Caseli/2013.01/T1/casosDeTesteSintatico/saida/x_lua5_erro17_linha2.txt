@@ -1,0 +1,2 @@
+Erro: linha 2:5 no viable alternative at input '-;'
+Fim da analise. Com erros sintaticos.

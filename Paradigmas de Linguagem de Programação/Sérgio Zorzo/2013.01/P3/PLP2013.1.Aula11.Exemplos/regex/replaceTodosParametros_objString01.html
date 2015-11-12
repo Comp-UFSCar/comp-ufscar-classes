@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<title>Replace</title>
+		<script>
+			function replacer(match, offset, string) {
+			  // p1 is nondigits, p2 digits, and p3 non-alphanumerics
+			  
+			  //string identificada
+			  console.log("match -> "+match); 
+			  
+			  //O deslocamento da string correspondente dentro da cadeia total 
+			  //a ser examinada
+			  console.log("offset -> "+offset);
+
+			  //A sequencia total a ser examinada
+			  console.log("string -> "+string);
+			  return "a";
+			};
+			newString = "abcd".replace(/bc/, replacer);
+			document.write(newString);
+		</script>
+	</head>
+	<body>
+	</body>
+</html>

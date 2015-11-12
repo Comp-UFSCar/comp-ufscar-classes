@@ -1,0 +1,4 @@
+Erro: linha 16:1 extraneous input 'until' expecting {'local', 'while', '-', '*', 'or', 'if', '<', '<=', '~=', 'break', 'and', 'else', 'elseif', 'do', '%', '^', 'function', '+', 'for', 'return', ';', 'repeat', '>', '/', '==', '>=', 'end', '..', NOME}
+Erro: linha 16:11 no viable alternative at input 'cont=='
+Erro: linha 22:0 mismatched input '<EOF>' expecting 'until'
+Fim da analise. Com erros sintaticos.

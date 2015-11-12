@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<title>Escopo</title>
+		<meta charset="utf-8"/>
+		<script>			
+			a =50;
+
+			// Como foi criado uma variável a = 20,
+			// espera-se que o primeiro alert revele o 
+			// valor de a. No entanto, como existe uma 
+			// variável a local de valor 20, definido 
+			// dentro da função, a variável é válida 
+			// dentro de toda a função e o primeiro alerta
+			// por estar antes da declaração da variável local
+			// "sabe" que foi criado um contexto de validade
+			// para a , mas não conhece o seu valor por isso 
+			// retornando indefinido.
+
+			funcaoUm = function() {
+				alert(a);
+				var a = 20;
+				alert(a); // alerta o valor 20
+				function funcaoAninhada() {
+					var a = 40;
+					alert(a);
+				}
+				funcaoAninhada(); //executa a função aninhada
+				alert(a);
+			}
+			funcaoUm(); //executa a função um
+			
+			alert(a);
+		</script>
+	</head>
+	<body>
+	</body>
+</html>

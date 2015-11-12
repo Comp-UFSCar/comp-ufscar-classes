@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<title>Música</title>
+		<meta charset="utf-8"/>		
+		<script>
+			function Musica (musica, nomeBanda) { 
+				titulo = musica; 
+				banda = nomeBanda; 
+				this.concatenar = function() {
+					return titulo + "-" + banda;
+				}
+			}
+
+			window.onload=function() {
+				var listaMusica = new Array();
+				listaMusica[0] = new Musica("Putting on the Ritz", "Ella Fitzgerald");
+				try {
+					alert(listaMusica[0].titulo);
+				} catch(e) {
+					alert(e);
+				}
+
+				alert(listaMusica[0].concatenar());
+			}
+		</script>
+	</head>
+	<body>
+	</body>
+</html>

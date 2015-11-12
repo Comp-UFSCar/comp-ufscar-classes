@@ -1,0 +1,2 @@
+Erro: linha 3:8 mismatched input '=' expecting {'-', '*', 'or', '<', '<=', '~=', 'and', '%', '^', '+', '>', 'then', '/', '==', '>=', '..'}
+Fim da analise. Com erros sintaticos.

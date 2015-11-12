@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<title>Música</title>
+		<meta charset="utf-8"/>		
+		<script>
+			function Musica (musica, nomeBanda) { 
+				this.titulo = musica; 
+				this.banda = nomeBanda; 
+				this.concatenar = function() {
+					return this.titulo + "-" + this.banda;
+				}
+			}
+
+			window.onload=function() { 
+				var listaMusica = new Array(); 
+				listaMusica[0] = new Musica("Chasing", "Snow Patrol");
+				alert(listaMusica[0].titulo);
+			}
+		</script>
+	</head>
+	<body>
+	</body>
+</html>

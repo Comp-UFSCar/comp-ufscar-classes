@@ -1,0 +1,2 @@
+Erro: linha 3:12 no viable alternative at input 'a++'
+Fim da analise. Com erros sintaticos.

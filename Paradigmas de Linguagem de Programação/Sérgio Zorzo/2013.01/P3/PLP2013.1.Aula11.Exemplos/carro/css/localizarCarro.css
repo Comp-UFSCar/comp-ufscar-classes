@@ -1,0 +1,39 @@
+* {
+	margin: 0px;
+	padding: 0px;
+	font: 16px Arial,Helvetica,sans-serif;
+}
+
+article {
+	float: left;
+	padding: 5px;
+}
+
+article:nth-of-type(2) {
+	padding: 10px;
+}
+			
+p {
+	padding-bottom: 10px;
+}
+
+#imagem {
+	text-align: center;
+	border: 1px solid;
+}
+			
+#imgCarro {
+	width: 80%;
+}
+
+input.button {
+	border:1px solid;
+	font-size: 0.9em;
+	width: 205px;				
+}
+
+input.text{
+	border:1px solid;
+	font-size: 0.9em;
+	width: 60px;
+}

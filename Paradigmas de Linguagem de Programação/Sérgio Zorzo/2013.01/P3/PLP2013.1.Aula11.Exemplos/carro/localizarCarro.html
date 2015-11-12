@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<title>Quanto custa para alugar um carro?</title>
+		<meta charset="utf-8"/>
+		<link rel="stylesheet" href="css/localizarCarro.css"/>
+		<script src="js/localizarCarro.js"></script>
+	</head>
+	<body>
+		<section>
+			<article>
+				<div id="imagem">
+					<img src="imagem/carro.png" id="imgCarro"/>
+				</div>
+			</article>
+
+			<article>
+				<form action="#" method="post" id="calculo" name="formCalculo">
+					<p>
+						Qual o modelo do carro? 
+						<select name="selectCarro" id="tipoCarro">
+							<option value="1">Hatch</option>
+							<option value="2">Sedan</option>
+							<option value="3">SUV</option>
+							<option value="4">Caminhão</option>
+						</select>
+					</p>
+					<p>
+						Quantas portas?
+						<input class="text" type="text" id="qtdPortas" name="inQtdPortas"/>
+					</p>
+					<p>
+						Quanto dias vai usar?
+						<input class="text" type="text" id="diasDeUso" name="inDiasDeUso"/>
+					</p>
+					<p>
+						Valor total:
+						<input class="text" type="text" id="valorTotal" name="inVlrTotal"/>
+					</p>					
+					<input class="button" type="button" name="btnCalcPreco" id="calcPreco" value="Calcular Preço"/>
+				</form>
+			</article>
+		</section>
+	</body>
+</html>

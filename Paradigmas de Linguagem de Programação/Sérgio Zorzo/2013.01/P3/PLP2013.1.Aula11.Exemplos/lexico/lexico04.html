@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<title>Chamada dos eventos</title>
+		<meta charset="utf-8"/>
+		<script>
+
+			window.onload = function() {
+				document.getElementById("btnFunciona01").onClick=carregar;
+				document.getElementById("btnFunciona02").onclick=carregar;				
+			}
+
+			function carregar() {
+				alert("Testando chamada do onclick!");
+			}
+
+		</script>
+	</head>
+	<body>
+		<button id="btnFunciona01">Não funciona!</button>
+		<button id="btnFunciona02">Funciona!</button>
+	</body>
+</html>

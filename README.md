@@ -1,4 +1,1 @@
-﻿# Computable Repository
-
-Computer Science - UFSCar
-
+﻿# Bsc. Computer Science - UFSCar São Carlos

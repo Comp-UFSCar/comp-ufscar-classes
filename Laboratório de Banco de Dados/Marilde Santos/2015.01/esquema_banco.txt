@@ -1,0 +1,75 @@
+banco
+(
+	PK(nroBanco), 
+	cnpj, nome, 
+	cep, estado, 
+	cidade, 
+	logradouro, 
+	numero, 
+	complemento
+)
+
+agencia(
+	PK(
+		FK_banco(nroBanco), 
+		nroAgencia
+	), 
+	cidade
+)
+
+conta
+(
+	PK(
+		FK_agencia(nroAgencia),
+		nroConta,
+		tipo_conta references tipoConta(tipo_conta)
+}
+
+tipoConta
+(
+	PK(tipo_conta)
+)
+
+contaCorrente
+(
+	PK(FK_conta(nroConta),
+	limite
+)
+
+contaPoupanca
+(
+	PK(FK_conta(nroConta),
+	aniversario
+)
+
+possui
+(
+	PK(
+		FK_cliente(cpf),
+		FK_conta(nroConta),
+	),
+	titular
+)
+
+cliente 
+(
+	PK(cpf),
+	prenome,
+	sobrenome,
+)
+
+email 
+(
+	PK(FK_cliente(cpf)),
+	email
+)
+
+movimentacao 
+(
+	PK(
+		FK_cliente(cpf),
+		DataHora
+	),
+	valor,
+	tipo
+)

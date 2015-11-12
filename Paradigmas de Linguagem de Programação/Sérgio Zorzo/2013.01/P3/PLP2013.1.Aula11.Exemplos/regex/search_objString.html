@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<title>SEARCH</title>
+		<meta charset="utf-8"/>
+	
+		<script>
+			function testarER() {
+				var texto = "Estudando JavaScript em PLP.";
+				var msg = document.getElementById("msgErro");
+				var padrao = /Ja/g;
+				var resultado = texto.search(padrao);
+
+				msg.innerHTML = resultado;
+			}
+		</script>
+
+	</head>
+	<body>
+		<p><button name="verificar" id="btnClicar" onclick="testarER();">Verificar</button></p>
+		<div style="color:red;" id="msgErro"></div>
+	</body>
+</html>

@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<title>Eventos</title>
+		<meta charset="utf-8"/>
+		<script type="text/javascript">
+		window.onload = function() {
+			var botao = document.getElementById("btn");	
+			var clicadoUm = function() {		
+				alert("Botão clicado - um");
+			};	
+			
+			var clicadoDois = function() {		
+				alert("Botão clicado - dois");
+			};	
+			
+			var clicadoTres = function() {		
+				alert("Botão clicado - tres");
+			};	
+			
+			botao.addEventListener("click", clicadoUm, false)
+			botao.addEventListener("click", clicadoDois, false)
+			botao.addEventListener("click", clicadoTres, false)
+		}
+		</script>
+	</head>
+	<body>
+		<button id="btn">Clique esse botão</button>		
+	</body>
+</html>

@@ -1,0 +1,3 @@
+Erro: linha 7:12 mismatched input '3' expecting {'-', '*', 'or', '<', '<=', '~=', 'and', '%', '^', ')', '+', '>', '/', '==', '>=', '..'}
+Erro: linha 7:16 extraneous input ')' expecting {<EOF>, 'local', 'while', 'if', 'break', 'do', 'function', 'for', 'return', 'repeat', NOME}
+Fim da analise. Com erros sintaticos.

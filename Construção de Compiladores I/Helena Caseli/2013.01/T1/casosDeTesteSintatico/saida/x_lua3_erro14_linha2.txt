@@ -1,0 +1,3 @@
+Erro: linha 2:6 no viable alternative at input 'functmaior'
+Erro: linha 5:0 extraneous input 'end' expecting {<EOF>, '-', '*', 'or', '<', '<=', '~=', 'and', '%', '^', '+', ';', '>', '/', '==', '>=', '..'}
+Fim da analise. Com erros sintaticos.

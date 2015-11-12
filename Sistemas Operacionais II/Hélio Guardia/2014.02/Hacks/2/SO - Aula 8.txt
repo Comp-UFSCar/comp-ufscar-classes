@@ -1,0 +1,59 @@
+﻿A implementação do pthread_create chama a função de sistema do Linux clone(). A vantagem é utilizar uma API padronizada, permitindo assim portabilidade de código.
+
+
+
+PROVA: Descreva o que o SO tem que fazer para criar uma thread.
+
+Criar uma estrutura de dados que representa as threads (mesma estrutura dos processos, com os ponteiros dessa estrutura apontando pra main thread (thread que originou as outras)).
+ 
+Cada thread tem sua pilha, ou seja, tem que ter um ponteiro para cada thread apontando um lugar no espaço compartilhado da memória. Além disso a signal mask, CPU affinity e política de escalonamento são diferentes para cada thread, portando o SO tem que ajustar. Além disso é necessário criar um contexto inicial: para isso o endereço da função passada por parametro na criação da thread é colocado na pilha da thread. Os demais registradores (flags) são zerados ou é deixado lixo.
+
+
+
+Para terminar a thread sem terminar o processo todo é necessário chamar o pthread_exit ou deixar a função passada por parametro na criação da thread retornar.
+
+Lei de Amdahl: A melhoria de desempenho resultante da introdução de processamento paralelizado é depende da porcentagem de código paralelizável. (Não haverá ganho de desempenho para uma porção de código que não é paralelizavel).
+
+
+
+Thread Cancellation: mecanismo que permite o cancelamento de qualquer outra thread. Cada thread possui um parametro que permite ou nao ser cancelada.
+
+
+
+Tratamento de Sinal: qualquer thread que não bloqueou um determinado sinal (usando pthread_sigmask) tratará o sinal enviado. Isso não ocorre no caso de uma exceção, esta deve ser tratada pela mesma thread que gerou essa exceção.
+
+
+
+Quando trabalhamos com o processo como um todo, estamos lidando com a main thread.
+
+
+
+É possível ajustar o tamanho da pilha de cada thread. Isso é útil pois pode ser que a thread faça uso de uma matriz como variável local de uma função, necessitando grande espaço na pilha, já que variáveis locais são salvas na pilha.
+
+
+
+pthread_once: Só a primeira thread que chamar essa função irá fazer a rotina apontada por ela, garantindo que a rotina será executada somente uma vez.
+
+
+
+pthread_yield: faz a thread liberar o processador, retornando a fila de prontos.
+
+
+
+SINCRONIZAÇÃO DE THREADS
+
+
+Não existe uma hierarquia de threads em um processo.
+
+
+
+Spin: implementa o busy wait para evitar a troca de contexto. Vantajoso quando o bloqueio é curto e não compensa o overhead da troca de contexto.
+
+
+
+Barreira: Espera todas as threads chegarem num mesmo ponto da execução (do código). Útil para saber qual thread está mais carregada em termos de processamento.
+
+
+
+Especificação do trab: www.erad.dc.ufscar.br
+

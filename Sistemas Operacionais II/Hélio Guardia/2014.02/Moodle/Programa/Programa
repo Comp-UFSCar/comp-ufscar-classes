@@ -1,0 +1,56 @@
+Criar um programa que leia 2 matrizes do terminal, ou de algum arquivo definido por redirecionamento de STDIN, e use vários processos para realizar a soma dessas matrizes.
+
+A leitura das matrizes é feita lendo inicialmente 2 valores inteiros que correspondem às dimensões das matrizes que serão somadas, respectivamente o número de linhas e o número de colunas. Segue-se a leitura de cada elemento da primeira matriz, linha por linha, um elemento de cada vez.
+
+Para a soma das matrizes, deve ser usado um número de processos igual a 2 vezes o número de processadores ou cores do computador.
+
+Ao final da soma, a matriz resultante deve ser impressa na tela. Não é preciso imprimir as linhas na ordem correta, mas é preciso identificar cada linha, imprimindo-se o número da linha seguido de ":" e a lista de elementos.
+
+As linhas não podem misturar-se na impressão, ou seja, uma linha deve ser impressa completamente antes de uma próxima começar a ser impressa.
+
+Exemplo:
+
+4
+4
+
+1
+1
+1
+1
+2
+2
+2
+2
+3
+3
+3
+3
+4
+4
+4
+4
+4
+4
+4
+4
+3
+3
+3
+3
+2
+2
+2
+2
+1
+1
+1
+1
+
+Saída:
+
+0: 5 5 5 5
+2: 5 5 5 5
+1: 5 5 5 5
+3: 5 5 5 5
+
+(linhas podem ser impressas fora de ordem).
