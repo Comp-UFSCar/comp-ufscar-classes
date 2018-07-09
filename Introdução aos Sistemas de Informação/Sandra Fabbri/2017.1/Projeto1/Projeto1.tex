@@ -1,0 +1,183 @@
+\documentclass[notitlepage]{article}
+
+\usepackage[portuges]{babel}
+\usepackage[utf8]{inputenc}
+\usepackage{amsmath}
+\usepackage{titlesec}
+\usepackage{indentfirst}
+\usepackage{graphicx}
+\usepackage{multicol,lipsum}
+\usepackage{times}
+\usepackage[top=2.5cm, bottom=2.5cm, left=3cm, right=3cm]{geometry}
+\usepackage{setspace}
+\usepackage{etex}
+\usepackage{tabto}
+
+\addto\captionsportuges{% Replace "english" with the language you use
+  \renewcommand{\contentsname}%
+    {4\hspace{4.25mm} Índice}%
+}
+
+\begin{document}
+%\maketitle
+\begin{flushright}
+    \begin{bfseries}
+        \Huge{Documento de Requisitos}\\
+    \end{bfseries}
+    \rule{16cm}{3pt}\vskip1cm
+\end{flushright}
+
+	\begin{center}
+		\large{Universidade Federal de São Carlos}\\
+		\large{Introdução a Sistemas de Informação}\\ 
+		\large{Professora Dra. Sandra Fabbri}\\
+		\large{São Carlos, SP - Brasil, 05/2017}\\
+        \vspace{45pt}
+        \textbf{\LARGE{Projeto: Sistema de Gerenciamento de Hotel}}\\
+		\vspace{1,5cm}
+	\end{center}
+	
+	\begin{flushleft}
+		\begin{tabbing}
+		Bruna Zamith Santos, 628093\\
+		Guilherme Nishi Kanashiro, 628298\\
+		Henrique Frajacomo, 726536\\
+		Leonardo Utida Alcantara, 628182\\
+		Rodolfo Krambeck Asbahr, 628042\\
+		Tiago Bachiega de Almeida, 628247
+	\end{tabbing}
+ \end{flushleft}
+	\vspace{1cm}
+\nopagebreak
+
+
+
+\section{Introdução}
+\subsection{Propósito do Documento de Requisitos}
+Este documento de requisitos objetiva a elucidação de todos os requisitos e especificações necessários para o desenvolvimento de um sistema de gerenciamento de hotel.
+\subsection{Escopo do Produto}
+O sistema deve servir como uma base para o gerenciamento de um hotel. Consiste de uma aplicação Web gratuita e deve ser atualizado em tempo real, de forma que todos que o acessarem tenham as últimas informações sobre o hotel.
+\subsection{Visão Geral do Restante do Documento}
+O presente documento está organizado como descrito a seguir: Na seção 2, é apresentada uma descrição geral do sistema em questão, como sua perspectiva, suas principais funções, restrições e dependências, assim como as características dos usuários. A seção 3 aborda os requisitos funcionais e não funcionais do sistema. A seção 4 corresponde ao Índice do documento. 
+\section{Descrição Geral}
+\subsection{Perspectiva do Produto}
+Tendo em vista que o sistema visa facilitar o gerenciamento do hotel e torná-lo mais eficiente, este deve ser intuitivo aos seus usuários, com interfaces claras e funções bem definidas. O sistema conta com três ambientes diferentes: ambiente do cliente, ambiente do hóspede e ambiente do funcionário.\\
+\indent Busca-se, dentre outros propósitos, que o cliente possa ele mesmo efetuar a reserva: Desta forma, o sistema deve exibir todas as informações de quartos e serviços disponíveis ao cliente, e possuir suporte a pagamento online. Não obstante, deve cadastrar as informações do cliente e enviar por e-mail um documento de confirmação da reserva. \\
+\indent Além disso, os funcionários do hotel poderão acessar e armazenar informações sobre os hóspedes e quartos, a fim de possuir uma visão geral sobre as necessidades de limpeza e disponibilidade dos quartos, serviços/produtos consumidos e dados do cliente.\\
+\indent O sistema possuirá um módulo de manutenção, onde todos os usuários serão capazes de reportar e diagnosticar problemas de funcionamento. 
+\subsection{Funções do Produto}
+Tanto o ambiente do cliente quanto o ambiente do funcionário deverão permitir o cadastro de clientes. Além disso, o ambiente do cliente deve possibilitar a obtenção de informações sobre o hotel e seus serviços, permitindo a realização de reservas de quartos. Na seção de reservas haverão informações sobre os quartos disponíveis, incluindo preço e seus respectivos serviços. Com relação aos pagamentos serão permitidos o uso de cartão de crédito para pagamento online ou pagamento no ato do \textit{check-in}, podendo este ser feito com cartão de crédito, de débito ou à vista. \\
+\indent A partir do momento em que o cliente faz \textit{check-in}, torna-se um hóspede. Então, passa a ter acesso a novas opções no seu ambiente, como reclamações referentes ao quarto e avaliação de sua estadia.\\
+\indent O ambiente do funcionário permite o cadastro de quartos e serviços extras exigidos pelo hóspede, além de uma visão geral que permita o gerenciamento interno do hotel.
+\subsection{Características do Usuário}
+Existem três tipos usuários do sistema:
+\begin{itemize}
+\item Os clientes, que são potenciais hóspedes, poderão utilizar o sistema para verificar disponibilidade e características dos quartos, pesquisar serviços e efetuar a reserva. Os mesmos não precisam ter treinamento prévio para o uso desse ambiente. 
+\item Os hóspedes, que já fizeram \textit{check-in} no hotel e podem fazer reclamações e avaliar os serviços do hotel. 
+\item Os funcionários do hotel, que buscam o seu gerenciamento e um nível de acesso que possibilite obter informações internas. Estes devem possuir treinamento e conhecimentos específicos relativos ao sistema. Somente o gerente do hotel e os recepcionistas terão acesso ao sistema.
+\end{itemize}
+\subsection{Restrições Gerais}
+O sistema deverá rodar em computadores pessoais (PCs) comuns, em aparelhos celulares ou em tablets, desde que haja acesso à Internet, tela com no mínimo 800x600 pixels e um dos principais navegadores instalado, como Internet Explorer, Google Chrome, Mozilla Firefox ou Safari. 
+\subsection{Suposições e Dependências}
+Sendo um sistema Web, ele torna-se altamente dependente do serviço de Internet para seu funcionamento geral.  Além disso, o bom funcionamento do sistema depende da qualidade da conexão interna, entre os terminais do hotel e da boa utilização por parte dos administradores.
+\section{Requisitos Específicos}
+\subsection{Requisitos Funcionais}
+\textbf{Funções Comuns para Clientes e Funcionários}
+\begin{enumerate}
+	\item[RF.CF1 ] O sistema deve permitir a inclusão, alteração e remoção de clientes, com os seguintes dados: nome, data de nascimento, endereço, CEP, cidade, estado, telefone, e-mail, senha pessoal, número do documento de identificação ou passaporte. 
+	\item[RF.CF2 ] O sistema guarda e exibe as seguintes informações referentes aos quartos cadastrados: disponibilidade, número máximo de pessoas, quantidade e tipo de camas no quarto, status de limpeza e tipo do quarto.
+	\item[RF.CF3 ] O sistema deve permitir realizar uma reserva de quarto disponível coletando as seguintes informações: quantidade de pessoas, data de entrada e de saída, número de diárias e valor das diárias e em seguida atualizar a base de dados do sistema alterando a disponibilidade do quarto. 
+	\item[RF.CF4 ] O código de defesa do consumidor deve ser mostrado a qualquer usuário que necessite vê-lo.
+	\item[RF.CF5 ] Os usuários poderão logar em suas contas através de seus e-mails e senhas em um menu de login.
+	\item[RF.CF6 ] O sistema deve permitir o cancelamento da reserva seguindo as regras de cancelamento, explicitadas no RNF10. 
+	\item[RF.CF7 ] O sistema envia dados da reserva para o funcionário, de forma que consiga saber a atual configuração dos quartos e dos serviços exigidos. As mesmas informações são enviadas ao cliente de forma que ele tenha as informações do que foi exigido na reserva.
+	\item[RF.CF8 ] Os usuários podem procurar pelas informações das reservas feitas pelo sistema seguindo as regras definidas no RNF11. 
+	\item[RF.CF9 ] Deve haver um botão que direciona o usuário para um ambiente de solicitação de manutenção e reclamações. Essa solicitação fica armazenada no sistema para a futura solução do problema.
+	\item[RF.CF10 ] Para esses usuários deverá haver um espaço de cancelamento de reserva. Funcionários podem acessar as reservas feitas e cancelá-las e clientes podem cancelar sua reserva. 
+	\item[RF.CF11 ] Deve existir um espaço referente a curiosidades e história do hotel contando os principais eventos que aconteceram, pessoas famosas que já se hospedaram e história dos donos.
+\end{enumerate}
+\textbf{Funções para Clientes}
+\begin{enumerate}
+	\item[RF.C1 ] Sempre que houver acesso ao site com o intuito de realizar alguma ação como reserva, cancelamento e outras, o sistema deve verificar com um captcha de palavras se quem está acessando aquele ambiente é realmente uma pessoa. 
+	\item[RF.C2 ] Os clientes poderão ver as avaliações feitas pelos hóspedes antigos em uma página destinada a isto. Serão exibidos o comentário, a data, a avaliação em 5 estrelas e o nome do hóspede que avaliou.
+	\item[RF.C3 ] Antes de concluir a reserva, o sistema deve exibir os Termos de Compromisso do hotel e pedir a confirmação de leitura do cliente.
+	\item[RF.C4 ] Deve existir um espaço para pagamento no sistema, que deve ser exibido ao cliente logo antes da conclusão da reserva.
+\end{enumerate}
+\textbf{Funções para Hóspedes}
+\begin{enumerate}
+	\item[RF.H1 ] O sistema deve conter um espaço possuir um espaço onde o hóspede pode avaliar/dar um \textit{feedback} sobre o hotel e sua estadia. Este \textit{feedback} deve conter um espaço para comentário, para avaliação em 5 estrelas e deve ficar público para os clientes. 
+	\item[RF.H2 ] O hóspede pode, durante sua estadia, fazer reclamações sobre seu quarto ou os serviços contratados.
+	\item[RF.H3 ] O sistema deve identificar que o hóspede fez \textit{check-out} e a partir deste momento ele não pode mais usar a função especificada em RF.H2. 
+\end{enumerate}
+\textbf{Funções para Funcionários}
+\begin{enumerate}
+	\item[RF.F1 ] O sistema deve permitir a inclusão, alteração e remoção de funcionários, com os seguintes dados: nome, cargo, e-mail e senha pessoal. 
+	\item[RF.F2 ] O funcionário deve poder cadastrar as seguintes informações referentes aos quartos: disponibilidade, número máximo de pessoas, quantidade e tipo de camas no quarto, status de limpeza e tipo do quarto.
+	\item[RF.F3 ] O funcionário pode responder, por e-mail, as avaliações feitas pelos hóspedes, de acordo com o RF.H1.
+	\item[RF.F4 ] O sistema deve ter um painel com as reclamações dos hóspedes, visível apenas aos funcionários, de acordo com o RF.H2. 
+	\item[RF.F5 ] O funcionário deve poder cadastrar o que foi consumido do frigobar por cada quarto. As informações são: produto, quantidade, preço, quarto e hóspede.
+	\item[RF.F6 ] O funcionário pode cadastrar serviços extras exigidos pelo cliente durante a estadia, para posterior cobrança. Os serviços extras são: novas toalhas, sauna, café da manhã, vinho, refeição.
+\end{enumerate}
+
+\subsection{Requisitos Não Funcionais}
+\begin{enumerate}
+	\item[RNF1 ] Todos os dados dos clientes e funcionários cadastrados no sistema devem ser criptografados.
+	\item[RNF2 ] Durante a contratação do serviço pelo cliente, a navegação é feita por botões de “anterior”, “próximo” e “concluir reserva”.
+	\item[RNF3 ] Há uma restrição do tempo de 30 minutos para conclusão da reserva, caso contrário a mesma é ignorada pelo sistema.
+	\begin{enumerate}
+	\item[RNF3 a) ] Neste caso, um aviso em pop-up aparece para o cliente, informando que ele deve recomeçar o processo.
+	\end{enumerate}
+	\item[RNF4 ] O pagamento deve ser integralmente pago no momento da reserva.
+	\item[RNF5 ] Ao concluir a reserva, o sistema gera um número único de identificação da reserva.
+	\item[RNF6 ] Ao concluir a reserva, o sistema deve enviar um e-mail de confirmação para o cliente.
+	\begin{enumerate}
+	\item[RNF6 a) ] Este e-mail deve informar os seguintes dados: data da reserva, número único de identificação, endereço do hotel e nome do cliente.
+	\end{enumerate}	 
+	\item[RNF7 ] As condições de reserva devem respeitar o Código de Defesa do Consumidor.
+	\item[RNF8 ] Durante o cadastro dos clientes, de acordo com o RF.CF1, é feita a validação da idade informada. Se for menor de 18 anos, não é permitida a conclusão do cadastro.
+	\begin{enumerate}
+	\item[RNF8 a) ] É exibido um aviso em pop-up para o cliente.	
+	\end{enumerate}	 	
+	\item[RNF9 ] Durante o cadastro dos clientes, de acordo com o RF.CF1, só são considerados como número do documento de identificação o CPF (Cadastro de Pessoa Fisica) ou o RG (Registro Geral).
+	\begin{enumerate}
+	\item[RNF9 a) ] Esta informação é especificada para o cliente.	
+	\end{enumerate}	
+	\item[RNF10 ] As regras de cancelamento de reserva são: Mínimo de 10 dias de antes da data informada de \textit{check-in}, ou multa de 30\% do valor da reserva. Isto é, apenas 70\% do valor é restituído. 
+	\begin{enumerate}
+	\item[RNF10 a) ] Estas informações serão explicitadas no Termo de Compromisso.	
+	\item[RNF10 b) ] Um aviso em pop-up será exibido para o cliente quando este clicar em cancelar a reserva, lembrando-o da multa.
+	\item[RNF10 c) ] Deve ser enviado um e-mail aos funcionários informando a necessidade de restituição do valor (integral ou 70\%, dependendo do prazo).
+	\item[RNF10 d) ] O sistema deve enviar um e-mail ao cliente confirmando o cancelamento.
+	\end{enumerate}		
+	\item[RNF11 ] Os clientes só poderão ver as informações de suas próprias reservas. Enquanto os os funcionários podem ver de qualquer reserva.
+	\item[RNF12 ] O sistema possui diferentes níveis de acesso, de acordo com a categoria do usuários.
+	\begin{enumerate}
+	\item[RNF12 a) ] Funcionários possuem o nível de acesso mais alto, podendo alterar, cancelar e criar reservar; cadastrar, alterar dados e remover clientes; e também editar qualquer ambiente do sistema.
+	\item[RNF12 b) ] Clientes podem se cadastrar, alterar seus dados e apagar seu próprio cadastro. Além disso, também podem pedir reservas e cancelar sua própria reserva.
+	\item[RNF12 c) ] Hóspedes podem assinar novos serviços ou criar novas reservas.
+	\end{enumerate}			
+	\item[RNF13 ] De acordo com o RF.C1, o Captcha mostra uma imagem com uma determinada palavra ao usuário e ele deve digitá-la em um campo específico, corretamente.
+	\begin{enumerate}
+	\item[RNF12 a) ] A imagem é atualizada até que o cliente digite a resposta corretamente.
+	\end{enumerate}	
+	\item[RNF14 ] Caso uma reserva precise ser feita pessoalmente ou por telefone para um cliente que não possui cadastro é necessário que ele seja cadastrado pelo funcionário primeiramente.
+	\item[RNF15 ] Somente com a confirmação em RF.C3, o cliente pode prosseguir para as próximas etapas.
+	\item[RNF16 ] As etapas da reserva são, nesta ordem: escolha de um quarto disponível, escolha das datas de entrada e saída, escolha de serviços extras, escolha da forma de pagamento, aceitação dos termos de compromisso e conclusão do pagamento.
+	\item[RNF17 ] O pagamento por cartão deve ser protegido por algum software especializado, de terceiros, que tenha um bom desempenho de segurança de dados.
+	\item[RNF18 ] O prazo para alteração e cancelamento de reserva deve ser informado no Termo de Compromisso, de forma que o cliente esteja ciente do mesmo antes de concluir a compra.
+	\item[RNF19 ] Atendendo ao RF.C4, o pagamento pode ser feito inserindo os dados do cartão de crédito ou débito. 
+	\item[RNF20 ] Atendendo ao RF.H2, as reclamações devem ser feitas por meio de um formulário. 
+	\begin{enumerate}
+	\item[RNF20 a) ] Essas reclamações vão diretamente para os funcionários.
+	\item[RNF20 b) ] Junto às informações, deve ser informado o quarto do hóspede.
+	\end{enumerate}	
+	\item[RNF21 ] Cada usuário só pode acessar seu respectivo ambiente.
+\end{enumerate}
+
+\tableofcontents
+
+
+\end{document}
+
+
+
